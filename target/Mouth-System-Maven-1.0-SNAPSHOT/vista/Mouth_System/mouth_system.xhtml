@@ -15,10 +15,13 @@
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <!--css-->  
+            <h:outputStylesheet library="css" name="bootstrap.css" />
             <h:outputStylesheet library="css" name="dashboard.css" />
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="iframe.css" />
+
         </h:head>
         <h:body>
 
@@ -27,11 +30,10 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-                        <div class="sidebar-sticky pt-3">
+                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-inline-block bg-light sidebar collapse">
+                        <div class="sidebar-sticky pt">
 
                             <ul class="nav flex-column">
-
 
 
                                 <li class="nav-item">
@@ -49,7 +51,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="Citas/citas.xhtml" target="sm">
                                         <span data-feather="shopping-cart"></span>
-                                        <i class="fa fa-calendar"></i> #{txt['ms.citas']}
+                                        <i class="fa fa-calendar"></i> #{txt['ms.citas']} <span class="badge badge-danger">3</span>
                                     </a>
                                 </li>
 
@@ -62,7 +64,7 @@
                                 </a>
                             </h6>
                             <ul class="nav flex-column mb-2">
-                              
+
 
                                 <li class="nav-item">
                                     <a class="nav-link" href="Reportes/reportes.xhtml" target="sm">
@@ -109,20 +111,32 @@
                     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
 
-
-                        <iframe width="100%" height="110%" name="sm" frameborder="0" src="Tablero/Dashboard.xhtml"></iframe>
+                        <div class="div-iframe">
+                            <iframe width="100%" height=""  name="sm" frameborder="0" src="Tablero/Dashboard.xhtml" class="" ></iframe>
+                        </div>
 
                     </main>
                 </div>
             </div>
 
+            <ui:include  src="../../complementos/footerSystem.xhtml" />
 
             <!--js--> 
             <!--js--> 
             <h:outputScript library="js" name="jquery-1.7.js"/> 
+            <h:outputScript library="js" name="all.js"/> 
+            <h:outputScript library="js" name="bootstrap.bundle.js"/>
             <h:outputScript library="js" name="bootstrap.js"/> 
-            <h:outputScript library="js" name="bootstrap.min.js"/>
-            <h:outputScript library="js" name="all.min.js"/> 
+            <h:outputScript library="js" name="brands.js"/>
+            <h:outputScript library="js" name="conflict-detection.js"/>
+            <h:outputScript library="js" name="dashboard.js"/>
+            <h:outputScript library="js" name="fontawesome.js"/>
+            <h:outputScript library="js" name="popper.min.js.js"/>
+            <h:outputScript library="js" name="regular.js"/>          
+            <h:outputScript library="js" name="solid.js"/>
+            <h:outputScript library="js" name="toastr.js"/>
+            <h:outputScript library="js" name="v4-shims.js"/>
+
         </h:body>
     </f:view>
 </html>

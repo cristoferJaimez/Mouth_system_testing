@@ -24,19 +24,48 @@
                 <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <button type="button" class="btn btn-sm btn-outline-success">
                             <span data-feather="calendar"></span>
-                            #{txt['ms.botonExportar']}
+                            #{txt['btn.botonNuevaCita']} <i class="fa fa-address-book"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+                        <button type="button" class="btn btn-sm btn-outline-danger">
                             <span data-feather="calendar"></span>
-                            #{txt['ms.botonGrafico']}
+                            #{txt['btn.botonAgenda']} <i class="fa fa-calendar"></i>
                         </button>
                     </div>
 
 
                 </div>
             </div>
+            
+            <div class="container-fluid">
+                <div class="row">
+                    
+                    
+                    
+                </div>
+            </div>
+            
+            
+            
+            
+            <!--modal de citas-->
+            
+            <div class="modal fade"  id="nueva_cita"  tabindex="-1" role="dialog" aria-labelledby="nueva_citaLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            hola
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
             <!--js--> 
             <h:outputScript library="js" name="all.min.js"/> 
             <h:outputScript library="js" name="bootstrap.js"/> 
