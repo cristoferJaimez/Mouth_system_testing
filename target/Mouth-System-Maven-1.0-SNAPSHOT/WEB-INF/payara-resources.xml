@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resources Definitions//EN" "https://
-raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/payara-resources_1_6.dtd ">
-
+<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "https://raw.githubusercontent.com/payara/Payara-Community-Documentation/master/docs/modules/ROOT/pages/schemas/payara-resources_1_6.dtd">
 <resources>
 
     <jdbc-resource enabled="true" jndi-name="java:app/jdbc/appweb_JDNI" object-type="user" pool-name="appweb_Pool">
@@ -36,7 +34,7 @@ raw.githubusercontent.com/payara/Payara-Server-Documentation/master/schemas/paya
                           validate-atmost-once-period-in-seconds="0" 
                           wrap-jdbc-objects="false">
         
-        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system?zeroDateTimeBehavior=CONVERT_TO_NULL [root on Default schema]"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
         <property name="User" value="root"/>
         <property name="Password" value=""/>
         <!--

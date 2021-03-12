@@ -2,7 +2,8 @@ package gaes5.mouth.system.maven.DAO;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 /**
@@ -15,10 +16,9 @@ import javax.persistence.TypedQuery;
 
 public class GenericDAO<T, PK> implements DAO<T, PK>{
 
-    public  static final String PU = "JavaWeb";
+    EntityManagerFactory factory = Persistence.createEntityManagerFactory("JavaWeb");
+    protected EntityManager en = factory.createEntityManager();
     
-    @PersistenceContext(unitName = PU)
-    protected EntityManager  en;
     protected Class<T> className;
     
     
@@ -36,7 +36,7 @@ public class GenericDAO<T, PK> implements DAO<T, PK>{
 
     @Override
     public T obtenGetId(PK id) {
-        return  en.find(this.className, id);
+        return   en.find(this.className, id);
     }
 
     @Override

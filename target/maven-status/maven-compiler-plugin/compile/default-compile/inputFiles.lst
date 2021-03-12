@@ -1,4 +1,7 @@
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\DAO\Interface\Usuarios_LoginDAO.java
+C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\exceptions\NonexistentEntityException.java
+C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\exceptions\PreexistingEntityException.java
+C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\tipoUsuarioJpaController.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Models\tipoUsuario.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Models\datos_usuario.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Models\Usuarios_Login.java
@@ -8,11 +11,13 @@ C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\resources\JavaEE8Resource.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\DAO\JPA\RolDAOJPA.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Config\Java_Mail.java
+C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\exceptions\IllegalOrphanException.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Config\ConectDB.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Services\RolServices.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\DAO\Interface\RolDAO.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\DAO\JPA\UserDAOJPA.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\javaMail\mailSend.java
+C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\datos_usuarioJpaController.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Config\Test.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\DAO\JPA\Usuarios_LoginDAOJPA.java
 C:\Users\Cristo\Desktop\Angular\JAVA SENA\Mouth-System-Maven\src\main\java\gaes5\mouth\system\maven\Services\UserServices.java

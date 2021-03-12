@@ -11,6 +11,8 @@ gaes5\mouth\system\maven\Models\datos_usuario.class
 gaes5\mouth\system\maven\Config\ConectDB.class
 gaes5\mouth\system\maven\Config\Java_Mail.class
 gaes5\mouth\system\maven\DAO\Interface\RolDAO.class
+gaes5\mouth\system\maven\exceptions\IllegalOrphanException.class
+gaes5\mouth\system\maven\exceptions\NonexistentEntityException.class
 gaes5\mouth\system\maven\DAO\Interface\UserDAO.class
 gaes5\mouth\system\maven\Models\tipoUsuario_.class
 gaes5\mouth\system\maven\DAO\GenericDAO.class
@@ -19,5 +21,8 @@ gaes5\mouth\system\maven\Config\Test.class
 gaes5\mouth\system\maven\JAXRSConfiguration.class
 gaes5\mouth\system\maven\Services\RolServices.class
 gaes5\mouth\system\maven\Models\Usuarios_Login.class
+gaes5\mouth\system\maven\datos_usuarioJpaController.class
+gaes5\mouth\system\maven\tipoUsuarioJpaController.class
+gaes5\mouth\system\maven\exceptions\PreexistingEntityException.class
 gaes5\mouth\system\maven\DAO\DAO.class
 gaes5\mouth\system\maven\DAO\JPA\Usuarios_LoginDAOJPA.class
