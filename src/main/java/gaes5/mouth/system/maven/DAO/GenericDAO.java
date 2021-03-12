@@ -16,7 +16,7 @@ import javax.persistence.TypedQuery;
 
 public class GenericDAO<T, PK> implements DAO<T, PK>{
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("JavaWeb");
+    EntityManagerFactory factory = Persistence.createEntityManagerFactory("mouth_system_app");
     protected EntityManager en = factory.createEntityManager();
     
     protected Class<T> className;
