@@ -9,7 +9,7 @@ import java.sql.DriverManager;
  */
 public class ConectDB {
 
-    private static String url = "jdbc:mysql://localhost:3306/mouth_system";
+    private static String url = "jdbc:mysql://localhost:3306/mouth_system?zeroDateTimeBehavior=CONVERT_TO_NULL";
     private static String usuario = "root";
     private static String password = "";
 
