@@ -1,5 +1,6 @@
 package gaes5.mouth.system.maven.Config;
 
+import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,16 +19,13 @@ import javax.mail.internet.MimeMessage;
  *
  * @author Cristo
  */
-
 @RequestScoped
 @Named
 public class Java_Mail {
-    
-   private static String email;
-   private static String userName;
-   private static String msm;
-   
-   
+
+    private static String email;
+    private static String userName;
+    private static String msm;
 
     public String getEmail() {
         return email;
@@ -55,37 +53,37 @@ public class Java_Mail {
         this.msm = msm;
         System.out.println(msm);
     }
-    
-    
-   
-    
+
     // enviar un mensaje 
-    
     public static void sendMail(String recipienteMsm) throws MessagingException {
 
-        System.out.println("Iniciando envio de mensaje");
+        try {
+            System.out.println("Iniciando envio de mensaje");
 
-        Properties properties = new Properties();
+            Properties properties = new Properties();
 
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true"); //TLS
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.port", "587");
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true"); //TLS
 
-        String myEmail = "jaimez07788@gmail.com";
-        String myPassword = "rmatxomqcqgbiuws";
+            String myEmail = "jaimez07788@gmail.com";
+            String myPassword = "rmatxomqcqgbiuws";
 
-        Session session = Session.getInstance(properties, new Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(myEmail, myPassword);
-            }
-        });
+            Session session = Session.getInstance(properties, new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(myEmail, myPassword);
+                }
+            });
 
-        Message message = prepareMessage(session, myEmail, recipienteMsm);
+            Message message = prepareMessage(session, myEmail, recipienteMsm);
 
-        Transport.send(message);
-        System.out.println("Mensaje enviado con exito!!!");
+            Transport.send(message);
+            System.out.println("Mensaje enviado con exito!!!");
+        } catch (MessagingException e) {
+                System.out.println("Error en internet");
+        }
 
     }
 
@@ -95,7 +93,7 @@ public class Java_Mail {
             message.setFrom(new InternetAddress(myEmail));
             message.setRecipient(Message.RecipientType.TO, new InternetAddress(myEmail));
             message.setSubject(userName);   //Titulo del msm
-            message.setText( msm ); // texto del msm
+            message.setText(msm); // texto del msm
             return message;
         } catch (MessagingException ex) {
             Logger.getLogger(Java_Mail.class.getName()).log(Level.SEVERE, null, ex);

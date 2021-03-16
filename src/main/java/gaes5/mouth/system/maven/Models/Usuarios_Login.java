@@ -32,7 +32,7 @@ public class Usuarios_Login implements Serializable{
     @Column
     private String Contrasenna;
     @Column
-    private datos_usuario num_doc;
+    private Datos_Usuario num_doc;
 
     
     
@@ -53,11 +53,11 @@ public class Usuarios_Login implements Serializable{
         this.Contrasenna = Contrasenna;
     }
 
-    public datos_usuario getNum_doc() {
+    public Datos_Usuario getNum_doc() {
         return num_doc;
     }
 
-    public void setNum_doc(datos_usuario num_doc) {
+    public void setNum_doc(Datos_Usuario num_doc) {
         this.num_doc = num_doc;
     }
     

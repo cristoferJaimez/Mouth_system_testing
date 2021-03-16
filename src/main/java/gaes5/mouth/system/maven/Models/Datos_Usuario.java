@@ -23,7 +23,7 @@ import javax.persistence.Table;
     @NamedQuery(name = "datos_usuario.getEmail", query = "SELECT obj From datos_usuario obj WHERE obj.num_doc = :name")
 })
 
-public class datos_usuario implements Serializable {
+public class Datos_Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,7 +57,7 @@ public class datos_usuario implements Serializable {
    
     @Column
     @ManyToOne
-    private tipoUsuario id_tipo_usuario;
+    private Tipo_Usuario id_tipo_usuario;
 
     // <editor-fold defaultstate="collapsed" desc="Metodo SETTER Y GETTER. Click on the + sign on the left to edit the code.">
     public int getId() {
@@ -132,11 +132,11 @@ public class datos_usuario implements Serializable {
         this.nacionbalidad = nacionbalidad;
     }
 
-    public tipoUsuario getId_tipo_usuario() {
+    public Tipo_Usuario getId_tipo_usuario() {
         return id_tipo_usuario;
     }
 
-    public void setId_tipo_usuario(tipoUsuario id_tipo_usuario) {
+    public void setId_tipo_usuario(Tipo_Usuario id_tipo_usuario) {
         this.id_tipo_usuario = id_tipo_usuario;
     }
 

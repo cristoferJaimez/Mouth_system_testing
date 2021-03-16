@@ -2,7 +2,7 @@ package gaes5.mouth.system.maven.DAO.Interface;
 
 import java.util.List;
 import gaes5.mouth.system.maven.DAO.DAO;
-import gaes5.mouth.system.maven.Models.datos_usuario;
+import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import javax.ejb.Local;
 
 /**
@@ -11,8 +11,8 @@ import javax.ejb.Local;
  */
 
 @Local
-public interface UserDAO  extends DAO<datos_usuario, Integer>{
+public interface UserDAO  extends DAO<Datos_Usuario, Integer>{
     //mostrar usuarios por nombre
-    List<datos_usuario>ObtenerUsuarios(String name);    
+    List<Datos_Usuario>ObtenerUsuarios(String name);    
     
 }

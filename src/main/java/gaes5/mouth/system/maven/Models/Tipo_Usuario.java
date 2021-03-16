@@ -13,7 +13,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "roles")
-public class tipoUsuario implements Serializable {
+public class Tipo_Usuario implements Serializable {
 
     @Id
     @Column ( name = "id_tipo_usuario")

@@ -4,7 +4,7 @@ import gaes5.mouth.system.maven.DAO.GenericDAO;
 import gaes5.mouth.system.maven.DAO.Interface.UserDAO;
 //librerias de java
 import java.util.List;
-import gaes5.mouth.system.maven.Models.datos_usuario;
+import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import javax.ejb.Stateless;
 
 /**
@@ -14,15 +14,15 @@ import javax.ejb.Stateless;
  */
 
 @Stateless
-public class UserDAOJPA extends GenericDAO<datos_usuario, Integer> implements UserDAO{
+public class UserDAOJPA extends GenericDAO<Datos_Usuario, Integer> implements UserDAO{
     
     //cosntructor
     public  UserDAOJPA(){
-        super(datos_usuario.class);
+        super(Datos_Usuario.class);
     }
 
     @Override
-    public List<datos_usuario> ObtenerUsuarios(String name) {
+    public List<Datos_Usuario> ObtenerUsuarios(String name) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
        
