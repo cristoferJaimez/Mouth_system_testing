@@ -1,6 +1,5 @@
-package gaes5.mouth.system.maven.java_email;
+package gaes5.mouth.system.maven.Mail;
 
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +19,7 @@ import javax.mail.internet.MimeMessage;
  * @author Cristo
  */
 @RequestScoped
-@Named
+@Named("Java_Mail")
 public class Java_Mail {
 
     private static String email;

@@ -21,6 +21,7 @@ public class Medico implements Serializable{
        @GeneratedValue(strategy = GenerationType.IDENTITY)
        @Column(name ="id_medico")
        private Integer id;
+       
        @Column
        private Datos_Usuario num_doc;
 

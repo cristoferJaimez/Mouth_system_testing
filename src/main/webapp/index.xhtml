@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <f:view locale="#{internazionalBean.localidad}">
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>Mouth System</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,18 +19,12 @@
             <h:outputStylesheet library="css" name="all.css" />
         </h:head>
         <h:body style="background-color: #f8f9fa;">
-
+            
             <!--navBar-->
             <ui:include src="complementos/navBarIndex.xhtml" />
 
-
             <!--cuerpo index-->
-            <main role="main">
-
-
-
-
-
+            <main role="main">  
                 <!-- Slider-->
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">

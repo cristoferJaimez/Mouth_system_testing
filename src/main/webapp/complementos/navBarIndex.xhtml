@@ -5,11 +5,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title></title>
-        <h:link outcome="home">
-            <h:graphicImage value="../resources/img/icoo.png" style="border:none" />
-        </h:link>
-       
+        <title></title>  
         <!--css-->  
         <h:outputStylesheet library="css" name="bootstrap.css" />
         <h:outputStylesheet library="css" name="bootstrap-grid.css" />
@@ -17,8 +13,10 @@
         <h:outputStylesheet library="css" name="all.css" />
     </h:head>
     <h:body>
-        <header>
-            <nav id="home" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm ">
+        
+        <h:head>
+            <i id="home"></i>
+            <nav id="" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm ">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample10" aria-controls="navbarsExample10" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -56,10 +54,10 @@
                             <h:panelGrid columns="2" class="btn " style="color: #9a9da0">
                                 <i class="fa fa-language fa-lg mr-2"></i>
                                 <div class="">
-                                    <h:selectOneMenu  value="#{internazionalBean.localidad}"
+                                    <h:selectOneMenu  value="#{internazionalizacionBean.localidad}"
                                                       onchange="submit()"
-                                                      valueChangeListener="#{internazionalBean.cambiarIdioma}">
-                                        <f:selectItems  class="lead form-control" value="#{internazionalBean.listaPaises}" />
+                                                      valueChangeListener="#{internazionalizacionBean.cambiarIdioma}">
+                                        <f:selectItems  class="lead form-control" value="#{internazionalizacionBean.listaPaises}" />
                                     </h:selectOneMenu>  
                                 </div>  
                             </h:panelGrid>
@@ -69,7 +67,7 @@
                     </ul>
                 </div>
             </nav>
-        </header>
+        </h:head>
         <!--js--> 
         <h:outputScript library="js" name="all.min.js"/> 
         <h:outputScript library="js" name="bootstrap.js"/> 

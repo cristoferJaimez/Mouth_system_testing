@@ -1,5 +1,6 @@
 //paquetes importados 
 package gaes5.mouth.system.maven.DAO.JPA;
+
 import gaes5.mouth.system.maven.DAO.GenericDAO;
 import gaes5.mouth.system.maven.DAO.Interface.UserDAO;
 //librerias de java
@@ -13,7 +14,7 @@ import javax.ejb.Stateless;
  * 
  */
 
-@Stateless
+@Stateless  
 public class UserDAOJPA extends GenericDAO<Datos_Usuario, Integer> implements UserDAO{
     
     //cosntructor

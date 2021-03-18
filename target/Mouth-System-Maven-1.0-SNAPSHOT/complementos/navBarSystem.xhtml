@@ -29,10 +29,10 @@
                     <h:panelGrid columns="2" class="btn" style="color: #9a9da0">
                         <i class="fa fa-language fa-lg mr-2"></i>
                         <div class="">
-                            <h:selectOneMenu  value="#{internazionalBean.localidad}"
+                            <h:selectOneMenu  value="#{internazionalizacionBean.localidad}"
                                               onchange="submit()"
-                                              valueChangeListener="#{internazionalBean.cambiarIdioma}">
-                                <f:selectItems  class="lead form-control" value="#{internazionalBean.listaPaises}" />
+                                              valueChangeListener="#{internazionalizacionBean.cambiarIdioma}">
+                                <f:selectItems  class="lead form-control" value="#{internazionalizacionBean.listaPaises}" />
                             </h:selectOneMenu>  
                         </div>  
                     </h:panelGrid>

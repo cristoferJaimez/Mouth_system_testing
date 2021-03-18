@@ -1,21 +1,23 @@
-package beans;
+package gaes5.mouth.system.maven.Internazional;
+
+
 
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.inject.Named;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ValueChangeEvent;
 
 
-@ManagedBean
-@SessionScoped
 /**
  *
  * @author Cristo
  */
+@SessionScoped
+@Named("internazionalizacionBean")
 public class internazionalBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
