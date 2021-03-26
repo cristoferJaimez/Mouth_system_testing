@@ -37,7 +37,7 @@
                             <h:form  id="signIn_form">
                                 <div class="form-group">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
-                                    <h:inputText id="email"  pt:type="email" value="#{emailUser}" required="true" class="form-control" a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
+                                    <h:inputText id="email"  pt:type="email" value="#{usuariosBean}" required="true" class="form-control" a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <strong> <h:message for="email"/> </strong>
                                     </div>
@@ -45,7 +45,7 @@
 
                                 <div class="form-group">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.clave']}</h:outputLabel>
-                                    <h:inputSecret  id="password" pt:type="password" value="#{passUser}" 
+                                    <h:inputSecret  id="password" pt:type="password" value="#{usuariosBean}" 
                                                     required="true" class="form-control" 
                                                     a:placeholder="#{txt['signUp.placeholderContraseña']}" 
                                                     label="Password">
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
 
-                                <h:commandButton type="submit" action="Mouth_System/mouth_system"   value="#{txt['signUp.boton']}" class="btn btn-block btn-outline-info" />
+                                <h:commandButton type="submit" action="#{usuariosBean.guardar(usuario)}"   value="#{txt['signUp.boton']}" class="btn btn-block btn-outline-info" />
 
                             </h:form>
 

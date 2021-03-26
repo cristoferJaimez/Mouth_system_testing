@@ -3,6 +3,7 @@ package gaes5.mouth.system.maven.Models;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -31,113 +34,113 @@ public class Datos_Usuario implements Serializable {
     private Integer id;
 
     @Column
-    private Integer num_doc;
+    private Integer numDoc;
 
     @Column
-    private String pri_nom;
+    private String priNom;
 
     @Column
-    private String seg_nom;
+    private String segNom;
 
     @Column
-    private String pri_ape;
+    private String priApe;
 
     @Column
-    private String seg_ape;
+    private String segApe;
 
     @Column
-    private String tipo_doc;
+    private String tipoDoc;
+
+    @Temporal(TemporalType.DATE) // campo fecha
+    @Column(name = "fecha_nac")
+    private Date fechaNac;
 
     @Column
-    private Date fecha_nac;
+    private String nacionalidad;
 
-    @Column
-    private String nacionbalidad;
-
-   
-    @Column
     @ManyToOne
-    private Tipo_Usuario id_tipo_usuario;
+    @JoinColumn(name = "id_tipo_usuario")
+    private Tipo_Usuario idTipoUsuario;
 
     // <editor-fold defaultstate="collapsed" desc="Metodo SETTER Y GETTER. Click on the + sign on the left to edit the code.">
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Integer getNum_doc() {
-        return num_doc;
+    public Integer getNumDoc() {
+        return numDoc;
     }
 
-    public void setNum_doc(Integer num_doc) {
-        this.num_doc = num_doc;
+    public void setNumDoc(Integer numDoc) {
+        this.numDoc = numDoc;
     }
 
-    public String getPri_nom() {
-        return pri_nom;
+    public String getPriNom() {
+        return priNom;
     }
 
-    public void setPri_nom(String pri_nom) {
-        this.pri_nom = pri_nom;
+    public void setPriNom(String priNom) {
+        this.priNom = priNom;
     }
 
-    public String getSeg_nom() {
-        return seg_nom;
+    public String getSegNom() {
+        return segNom;
     }
 
-    public void setSeg_nom(String seg_nom) {
-        this.seg_nom = seg_nom;
+    public void setSegNom(String segNom) {
+        this.segNom = segNom;
     }
 
-    public String getPri_ape() {
-        return pri_ape;
+    public String getPriApe() {
+        return priApe;
     }
 
-    public void setPri_ape(String pri_ape) {
-        this.pri_ape = pri_ape;
+    public void setPriApe(String priApe) {
+        this.priApe = priApe;
     }
 
-    public String getSeg_ape() {
-        return seg_ape;
+    public String getSegApe() {
+        return segApe;
     }
 
-    public void setSeg_ape(String seg_ape) {
-        this.seg_ape = seg_ape;
+    public void setSegApe(String segApe) {
+        this.segApe = segApe;
     }
 
-    public String getTipo_doc() {
-        return tipo_doc;
+    public String getTipoDoc() {
+        return tipoDoc;
     }
 
-    public void setTipo_doc(String tipo_doc) {
-        this.tipo_doc = tipo_doc;
+    public void setTipoDoc(String tipoDoc) {
+        this.tipoDoc = tipoDoc;
     }
 
-    public Date getFecha_nac() {
-        return fecha_nac;
+    public Date getFechaNac() {
+        return fechaNac;
     }
 
-    public void setFecha_nac(Date fecha_nac) {
-        this.fecha_nac = fecha_nac;
+    public void setFechaNac(Date fechaNac) {
+        this.fechaNac = fechaNac;
     }
 
-    public String getNacionbalidad() {
-        return nacionbalidad;
+    public String getNacionalidad() {
+        return nacionalidad;
     }
 
-    public void setNacionbalidad(String nacionbalidad) {
-        this.nacionbalidad = nacionbalidad;
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
     }
 
-    public Tipo_Usuario getId_tipo_usuario() {
-        return id_tipo_usuario;
+    public Tipo_Usuario getIdTipoUsuario() {
+        return idTipoUsuario;
     }
 
-    public void setId_tipo_usuario(Tipo_Usuario id_tipo_usuario) {
-        this.id_tipo_usuario = id_tipo_usuario;
+    public void setIdTipoUsuario(Tipo_Usuario idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
     }
 
     // </editor-fold>

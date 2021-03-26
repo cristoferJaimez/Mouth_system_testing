@@ -6,30 +6,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  *
  * @author Cristo
  */
-
 @Entity
 @Table(name = "medico")
-public class Medico implements Serializable{
-        
-       @Id
-       @GeneratedValue(strategy = GenerationType.IDENTITY)
-       @Column(name ="id_medico")
-       private Integer id;
-       
-       @Column
-       private Datos_Usuario num_doc;
+public class Medico implements Serializable {
 
-  
-       
-       
-       
-       public Integer getId() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_medico")
+    private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "num_doc")
+    private Datos_Usuario numDoc;
+
+
+
+    public Integer getId() {
         return id;
     }
 
@@ -37,16 +37,12 @@ public class Medico implements Serializable{
         this.id = id;
     }
 
-    public Datos_Usuario getNum_doc() {
-        return num_doc;
+    public Datos_Usuario getNumDoc() {
+        return numDoc;
     }
 
-    public void setNum_doc(Datos_Usuario num_doc) {
-        this.num_doc = num_doc;
+    public void setNumDoc(Datos_Usuario numDoc) {
+        this.numDoc = numDoc;
     }
-       
-       
-       
-       
-    
+
 }

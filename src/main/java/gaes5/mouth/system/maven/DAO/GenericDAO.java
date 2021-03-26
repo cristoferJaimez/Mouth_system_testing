@@ -25,6 +25,10 @@ public class GenericDAO<T, PK> implements DAO<T, PK>{
     public GenericDAO(Class<T> className){
         this.className = className;
        }
+
+    public GenericDAO() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     @Override

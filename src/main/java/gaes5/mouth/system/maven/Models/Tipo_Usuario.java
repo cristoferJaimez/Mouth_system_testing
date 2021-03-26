@@ -1,6 +1,7 @@
 package gaes5.mouth.system.maven.Models;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,4 +44,10 @@ public class Tipo_Usuario implements Serializable {
     }
     
     // </editor-fold>
+
+   
+
+    
+    
+    
 }

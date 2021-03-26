@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,15 +26,18 @@ public class Agenda implements Serializable {
     @Column(name ="id_agenda")
     private Integer id;
     
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fecha_inicio")
+    private Date fechaInicio;
     
-    @Column
-    private Date fecha_inicio;
     
-    @Column
-    private Date fecha_fin;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "fecha_fin")
+    private Date fechaFin;
     
-    @Column
-    private Medico id_medico;
+    @ManyToOne
+    @JoinColumn
+    private Medico idMedico;
 
     public Integer getId() {
         return id;
@@ -40,31 +47,27 @@ public class Agenda implements Serializable {
         this.id = id;
     }
 
-    public Date getFecha_inicio() {
-        return fecha_inicio;
+    public Date getFechaInicio() {
+        return fechaInicio;
     }
 
-    public void setFecha_inicio(Date fecha_inicio) {
-        this.fecha_inicio = fecha_inicio;
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
     }
 
-    public Date getFecha_fin() {
-        return fecha_fin;
+    public Date getFechaFin() {
+        return fechaFin;
     }
 
-    public void setFecha_fin(Date fecha_fin) {
-        this.fecha_fin = fecha_fin;
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
     }
 
-    public Medico getId_medico() {
-        return id_medico;
+    public Medico getIdMedico() {
+        return idMedico;
     }
 
-    public void setId_medico(Medico id_medico) {
-        this.id_medico = id_medico;
-    }
-    
-
-    
-
+    public void setIdMedico(Medico idMedico) {
+        this.idMedico = idMedico;
+    } 
 }
