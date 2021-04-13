@@ -25,16 +25,21 @@ public class UsuariosBean {
     
     
 
-    public String nuevo() {
+    public String Nuevo() {
         Datos_Usuario dateUser = new Datos_Usuario();
         Map<String, Object> sessionMap = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
         sessionMap.put("usuario", dateUser);
         return "cliente creado";
     }
 
-    public String guardar(Datos_Usuario usuario) {
+    public String Guardar(Datos_Usuario usuario) {
         System.out.println("Boton guardar Activado");
         return "Hola desde guardar";
+    }
+    
+    
+    public String Borrar(){
+        return "hola borrando usuario";
     }
 
 }

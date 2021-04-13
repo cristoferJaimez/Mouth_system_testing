@@ -8,8 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,17 +37,16 @@ public class Productos implements Serializable {
     private Date fecha_ven;
 
     @Column
-    private Integer cantidad;
+    private int cantidad;
 
-    @ManyToMany
-    @JoinColumn(name = "id_invantario")
+    @ManyToOne
+    @JoinColumn(name = "id_inventrio")
     private Inventario id_inventario;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "id_categoria")
     private Categoria id_categoria;
 
-    //setter and getter
     public Integer getId() {
         return id;
     }
@@ -81,11 +79,11 @@ public class Productos implements Serializable {
         this.fecha_ven = fecha_ven;
     }
 
-    public Integer getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 

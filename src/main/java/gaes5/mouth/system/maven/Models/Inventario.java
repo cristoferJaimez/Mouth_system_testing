@@ -21,18 +21,18 @@ public class Inventario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_invantario")
-    private Integer id;
+    private Integer id_inventario;
 
     @ManyToOne
     @JoinColumn(name = "numDoc")
     private Datos_Usuario numDoc;
 
     public Integer getId() {
-        return id;
+        return id_inventario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setId(Integer id_inventario) {
+        this.id_inventario = id_inventario;
     }
 
     public Datos_Usuario getNumDoc() {

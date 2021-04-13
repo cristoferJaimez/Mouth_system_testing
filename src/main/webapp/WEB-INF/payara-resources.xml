@@ -34,13 +34,9 @@
                           validate-atmost-once-period-in-seconds="0" 
                           wrap-jdbc-objects="false">
         
-        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system"/>
+        <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="User" value="root"/>
         <property name="Password" value=""/>
-        <!--
-        <property name="serverName" value="localhost"/>
-        <property name="portNumber" value="3306"/>
-        <property name="databaseName" value="mouth_system"/>
-        <property name="connectionAttributes" value=";create=true" />-->
     </jdbc-connection-pool>
 </resources>
