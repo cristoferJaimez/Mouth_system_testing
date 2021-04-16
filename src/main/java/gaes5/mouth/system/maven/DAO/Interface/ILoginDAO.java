@@ -6,14 +6,21 @@
 package gaes5.mouth.system.maven.DAO.Interface;
 
 import gaes5.mouth.system.maven.DAO.DAO;
-import gaes5.mouth.system.maven.Models.Usuarios_Login;
+import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import javax.ejb.Local;
 
+/*
+    metodos puntuales para utilizar
+ */
 /**
  *
- * @author Cristo
+ * @author cristo
  */
 @Local
-public interface Usuarios_LoginDAO extends DAO<Usuarios_Login, Integer>{
-    
+public interface ILoginDAO extends DAO<Datos_Usuario, Integer> {
+
+
+    //consultar usuario el signIn
+    void signIn();
+
 }

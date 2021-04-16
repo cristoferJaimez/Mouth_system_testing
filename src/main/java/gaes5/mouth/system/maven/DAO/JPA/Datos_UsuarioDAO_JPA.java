@@ -1,30 +1,31 @@
-//paquetes importados 
 package gaes5.mouth.system.maven.DAO.JPA;
 
 import gaes5.mouth.system.maven.DAO.GenericDAO;
-import gaes5.mouth.system.maven.DAO.Interface.UserDAO;
-//librerias de java
-import java.util.List;
+import gaes5.mouth.system.maven.DAO.Interface.ILoginDAO;
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import javax.ejb.Stateless;
 
+
+/*
+    extiendo el genericDAO e implemento la interface para poder obtener todos los metodos disponibles
+ */
 /**
  *
- * @author Cristofer Jaimez
- * 
+ * @author cristo
  */
+@Stateless
+public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> implements ILoginDAO {
 
-@Stateless  
-public class UserDAOJPA extends GenericDAO<Datos_Usuario, Integer> implements UserDAO{
-    
-    //cosntructor
-    public  UserDAOJPA(){
+    public Datos_UsuarioDAO_JPA() {
         super(Datos_Usuario.class);
     }
 
+  
+    
+
     @Override
-    public List<Datos_Usuario> ObtenerUsuarios(String name) {
+    public void signIn() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-       
+
 }

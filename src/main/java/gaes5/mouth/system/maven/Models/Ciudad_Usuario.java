@@ -28,30 +28,33 @@ public class Ciudad_Usuario implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_region")
-    private Integer region_id_region;
-
+    private Region region_id_region;
+    
+//<editor-fold defaultstate="collapsed" desc="Setter and GEtter">
+    
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getNom_ciudad_usu() {
         return nom_ciudad_usu;
     }
-
+    
     public void setNom_ciudad_usu(String nom_ciudad_usu) {
         this.nom_ciudad_usu = nom_ciudad_usu;
     }
-
-    public Integer getRegion_id_region() {
+    
+    public Region getRegion_id_region() {
         return region_id_region;
     }
-
-    public void setRegion_id_region(Integer region_id_region) {
+    
+    public void setRegion_id_region(Region region_id_region) {
         this.region_id_region = region_id_region;
     }
+//</editor-fold>
 
 }

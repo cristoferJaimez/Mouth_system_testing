@@ -6,8 +6,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  
-     <f:view locale="#{internazionalizacionBean.localidad}">
+
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>Sign Up</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,7 +24,6 @@
             <ui:include src="../complementos/navBar.xhtml" />
 
 
-
             <div class="container  mt-5">
                 <div class="row ">
 
@@ -37,7 +36,7 @@
                             <h:form  id="signIn_form">
                                 <div class="form-group">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
-                                    <h:inputText id="email"  pt:type="email" value="#{usuariosBean}" required="true" class="form-control" a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
+                                    <h:inputText id="email"  pt:type="email" value="#{SignUpController.user.email}" required="true" class="form-control" a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
                                         <strong> <h:message for="email"/> </strong>
                                     </div>
@@ -45,7 +44,7 @@
 
                                 <div class="form-group">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.clave']}</h:outputLabel>
-                                    <h:inputSecret  id="password" pt:type="password" value="#{usuariosBean}" 
+                                    <h:inputSecret  id="password" pt:type="password" value="#{SignUpController.user.password}" 
                                                     required="true" class="form-control" 
                                                     a:placeholder="#{txt['signUp.placeholderContraseña']}" 
                                                     label="Password">
@@ -57,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.clave2']}</h:outputLabel>
-                                    <h:inputSecret id="password2" pt:type="password" value="#{passUser2}" required="true" class="form-control" a:placeholder="#{txt['signUp.placeholderRcontraseña']} " label="Password">
+                                    <h:inputSecret id="password2" pt:type="password" value="#{SignUpController}" required="true" class="form-control" a:placeholder="#{txt['signUp.placeholderRcontraseña']} " label="Password">
                                         <f:validateLength for="password" maximum="15" minimum="8"/>    
                                     </h:inputSecret>
                                     <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -65,7 +64,7 @@
                                     </div>
                                 </div>
 
-                                <h:commandButton type="submit" action="#{usuariosBean.guardar(usuario)}"   value="#{txt['signUp.boton']}" class="btn btn-block btn-outline-info" />
+                                <h:commandButton action="#{SignUpController.signUp()}"   value="#{txt['signUp.boton']}" class="btn btn-block btn-outline-info" />
 
                             </h:form>
 
@@ -75,7 +74,9 @@
 
 
                 </div>
-                                            <ui:include src="../complementos/footerSystem.xhtml" />
+
+
+                <ui:include src="../complementos/footerSystem.xhtml" />
 
             </div>
 

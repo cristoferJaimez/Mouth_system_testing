@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -22,18 +20,14 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "datos_usuario")
 @NamedQueries(value = {
-    @NamedQuery(name = "datos_usuario.getAllDatosUsuario", query = "SELECT obj FROM datos_usuario obj"),
-    @NamedQuery(name = "datos_usuario.getEmail", query = "SELECT obj From datos_usuario obj WHERE obj.num_doc = :name")
+    @NamedQuery(name = "Datos_Usuario.getAll", query = "SELECT obj FROM Datos_Usuario obj ")
+
 })
 
 public class Datos_Usuario implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_usuario")
-    private Integer id;
-
-    @Column
+    @Column(name = "num_doc")
     private Integer numDoc;
 
     @Column
@@ -58,19 +52,24 @@ public class Datos_Usuario implements Serializable {
     @Column
     private String nacionalidad;
 
+    @Column
+    private String email;
+
+    @Column
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "id_tipo_usuario")
     private Tipo_Usuario idTipoUsuario;
 
-    // <editor-fold defaultstate="collapsed" desc="Metodo SETTER Y GETTER. Click on the + sign on the left to edit the code.">
-    public Integer getId() {
-        return id;
-    }
+    /*@Column
+    private Boolean completo_registro;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+    @Column
+    private Boolean borrado_logico;
+    */
+    
+//<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getNumDoc() {
         return numDoc;
     }
@@ -133,6 +132,23 @@ public class Datos_Usuario implements Serializable {
 
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
+
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Tipo_Usuario getIdTipoUsuario() {
@@ -143,5 +159,22 @@ public class Datos_Usuario implements Serializable {
         this.idTipoUsuario = idTipoUsuario;
     }
 
-    // </editor-fold>
+    /*
+    public Boolean getCompleto_registro() {
+        return completo_registro;
+    }
+
+    public void setCompleto_registro(Boolean completo_registro) {
+        this.completo_registro = completo_registro;
+    }
+
+    public Boolean getBorrado_logico() {
+        return borrado_logico;
+    }
+
+    public void setBorrado_logico(Boolean borrado_logico) {
+        this.borrado_logico = borrado_logico;
+    }
+  */
+//</editor-fold>
 }

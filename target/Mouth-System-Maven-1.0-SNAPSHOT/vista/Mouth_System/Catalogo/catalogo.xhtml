@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-     <f:view locale="#{internazionalizacionBean.localidad}">
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>.:Mouth System:.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,8 +19,10 @@
             <h:outputStylesheet library="css" name="all.css" />
         </h:head>
         <h:body>
+            <ui:include src="../../../complementos/navBar.xhtml" />
 
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+
+            <div class="mt-5 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fas fa-file-image"></i> #{txt['ms.catalogo']}</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">

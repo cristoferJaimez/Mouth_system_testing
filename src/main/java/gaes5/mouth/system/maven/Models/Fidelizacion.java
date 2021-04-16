@@ -30,64 +30,67 @@ public class Fidelizacion implements Serializable {
     private String Observacion;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_paciente")
     private Paciente id_paciente;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "id_medico")
     private Medico id_medico;
 
     @ManyToOne
-    @JoinColumn(name = "id")
-    private Detalle_Fidelizacion id_detalle_fidelizcion;
+    @JoinColumn(name = "id_detalle_fidelizacion")
+    private Detalle_Fidelizacion id_detalle_fidelizacion;
 
-    //setter and getter
+    //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public int getPuntaje() {
         return puntaje;
     }
-
+    
     public void setPuntaje(int puntaje) {
         this.puntaje = puntaje;
     }
-
+    
     public String getObservacion() {
         return Observacion;
     }
-
+    
     public void setObservacion(String Observacion) {
         this.Observacion = Observacion;
     }
-
+    
     public Paciente getId_paciente() {
         return id_paciente;
     }
-
+    
     public void setId_paciente(Paciente id_paciente) {
         this.id_paciente = id_paciente;
     }
-
+    
     public Medico getId_medico() {
         return id_medico;
     }
-
+    
     public void setId_medico(Medico id_medico) {
         this.id_medico = id_medico;
     }
-
-    public Detalle_Fidelizacion getId_detalle_fidelizcion() {
-        return id_detalle_fidelizcion;
+    
+    public Detalle_Fidelizacion getId_detalle_fidelizacion() {
+        return id_detalle_fidelizacion;
     }
-
-    public void setId_detalle_fidelizcion(Detalle_Fidelizacion id_detalle_fidelizcion) {
-        this.id_detalle_fidelizcion = id_detalle_fidelizcion;
+    
+    public void setId_detalle_fidelizacion(Detalle_Fidelizacion id_detalle_fidelizacion) {
+        this.id_detalle_fidelizacion = id_detalle_fidelizacion;
     }
-
+//</editor-fold>
+   
+    
+    
 }

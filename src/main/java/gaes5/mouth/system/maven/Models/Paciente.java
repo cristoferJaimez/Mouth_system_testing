@@ -24,24 +24,27 @@ public class Paciente implements Serializable{
     private Integer id;
     
     @OneToOne
-    @JoinColumn(name = "dato_usuario_num_doc")
-    private Integer dato_usuario_num_doc;
+    @JoinColumn(name = "num_doc")
+    private Datos_Usuario dato_usuario_num_doc;
 
+//<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public Integer getDato_usuario_num_doc() {
+    
+    public Datos_Usuario getDato_usuario_num_doc() {
         return dato_usuario_num_doc;
     }
-
-    public void setDato_usuario_num_doc(Integer dato_usuario_num_doc) {
+    
+    public void setDato_usuario_num_doc(Datos_Usuario dato_usuario_num_doc) {
         this.dato_usuario_num_doc = dato_usuario_num_doc;
     }
+//</editor-fold>
+   
     
     
     

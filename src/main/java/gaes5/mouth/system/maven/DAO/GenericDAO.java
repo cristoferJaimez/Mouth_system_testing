@@ -2,63 +2,67 @@ package gaes5.mouth.system.maven.DAO;
 
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import static javax.swing.UIManager.getInt;
+
+
+/*plantilla mas robusta del dao con la funcionalidad de cada metodo CRUD*/
 
 /**
  *
  * @author Cristofer Jaimez
  * @param <T>
  * @param <PK>
- * 
+ *
  */
+public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
-public class GenericDAO<T, PK> implements DAO<T, PK>{
+    //ENTITY MANAGER FACTORY
+    //EntityManagerFactory factory = Persistence.createEntityManagerFactory("mouth_system_app");
+    //protected EntityManager em = factory.createEntityManager();
 
-    EntityManagerFactory factory = Persistence.createEntityManagerFactory("mouth_system_app");
-    protected EntityManager en = factory.createEntityManager();
+    
+    public static final String PU =  "mouth_system_app";
+    @PersistenceContext( unitName = PU)
+    protected EntityManager em;
+    
     
     protected Class<T> className;
-    
-    
-    public GenericDAO(Class<T> className){
-        this.className = className;
-       }
 
-    public GenericDAO() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //cosntructor
+    public GenericDAO(Class<T> className) {
+        this.className = className;
     }
-    
-    
+
+  
+
     @Override
     public T createPost(T obj) {
-        T newObj = en.merge(obj);
-        en.persist(newObj);
+        T newObj = em.merge(obj);
+        em.persist(newObj);
         return newObj;
     }
 
     @Override
     public T obtenGetId(PK id) {
-        return   en.find(this.className, id);
+        return em.find(this.className, id);
     }
 
     @Override
     public List<T> obtenGetAll() {
-        TypedQuery<T> tq = (TypedQuery<T>) en.createNamedQuery(className.getSimpleName() + ".getAllDatosUsuario", className);
+        TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() + ".getAll", className);
         return tq.getResultList();
     }
 
     @Override
     public void deleteElemetId(PK id) {
-        en.remove(id);
+        em.remove(getInt(id));
     }
 
     @Override
     public void elementPutId(T obj) {
-        en.refresh(obj);
+        createPost(obj);
     }
 
-    
-    
 }

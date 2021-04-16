@@ -14,9 +14,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 /**
- *
+ * 
  * @author Cristo
  */
+
 @Entity
 @Table(name ="agenda")
 public class Agenda implements Serializable {
@@ -39,35 +40,37 @@ public class Agenda implements Serializable {
     @JoinColumn
     private Medico idMedico;
 
+    //<editor-fold defaultstate="collapsed" desc="GETTERs and SETTERS">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public Date getFechaInicio() {
         return fechaInicio;
     }
-
+    
     public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
-
+    
     public Date getFechaFin() {
         return fechaFin;
     }
-
+    
     public void setFechaFin(Date fechaFin) {
         this.fechaFin = fechaFin;
     }
-
+    
     public Medico getIdMedico() {
         return idMedico;
     }
-
+    
     public void setIdMedico(Medico idMedico) {
         this.idMedico = idMedico;
-    } 
+    }
+//</editor-fold>
 }

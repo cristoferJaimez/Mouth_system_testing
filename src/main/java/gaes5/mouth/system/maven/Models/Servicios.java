@@ -34,28 +34,30 @@ public class Servicios implements Serializable {
     //setter and getter
     
     
+    //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public Catalogo_Servicios getId_catalogo() {
         return id_catalogo;
     }
-
+    
     public void setId_catalogo(Catalogo_Servicios id_catalogo) {
         this.id_catalogo = id_catalogo;
     }
-
+    
     public Catalogo_Servicios getId_paciente() {
         return id_paciente;
     }
-
+    
     public void setId_paciente(Catalogo_Servicios id_paciente) {
         this.id_paciente = id_paciente;
     }
+//</editor-fold>
 
 }
