@@ -38,31 +38,31 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
   
 
     @Override
-    public T createPost(T obj) {
+    public T crear(T obj) {
         T newObj = em.merge(obj);
         em.persist(newObj);
         return newObj;
     }
 
     @Override
-    public T obtenGetId(PK id) {
+    public T obtenerId(PK id) {
         return em.find(this.className, id);
     }
 
     @Override
-    public List<T> obtenGetAll() {
+    public List<T> obtenerTodos() {
         TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() + ".getAll", className);
-        return tq.getResultList();
+        return tq.getResultList();  
     }
 
     @Override
-    public void deleteElemetId(PK id) {
+    public void eliminar(PK id) {
         em.remove(getInt(id));
     }
 
     @Override
-    public void elementPutId(T obj) {
-        createPost(obj);
+    public void actualizar(T obj) {
+        crear(obj);
     }
 
 }

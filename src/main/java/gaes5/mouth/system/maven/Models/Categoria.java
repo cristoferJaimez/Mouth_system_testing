@@ -24,20 +24,21 @@ public class Categoria implements Serializable {
     @Column
     private String categoria;
 
+    //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getCategoria() {
         return categoria;
     }
-
+    
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
+//</editor-fold>
 }

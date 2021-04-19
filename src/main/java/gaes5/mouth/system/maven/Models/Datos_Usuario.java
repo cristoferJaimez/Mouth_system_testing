@@ -1,10 +1,13 @@
 package gaes5.mouth.system.maven.Models;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -19,15 +22,16 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "datos_usuario")
-@NamedQueries(value = {
-    @NamedQuery(name = "Datos_Usuario.getAll", query = "SELECT obj FROM Datos_Usuario obj ")
-
-})
+@NamedQueries(value = {})
 
 public class Datos_Usuario implements Serializable {
 
     @Id
-    @Column(name = "num_doc")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_usuario")
+    private int id;
+
+    @Column
     private Integer numDoc;
 
     @Column
@@ -56,20 +60,42 @@ public class Datos_Usuario implements Serializable {
     private String email;
 
     @Column
-    private String password;
+    private String pw;
 
-    @ManyToOne
-    @JoinColumn(name = "id_tipo_usuario")
-    private Tipo_Usuario idTipoUsuario;
+    @Column
+    private BigInteger movil;
 
-    /*@Column
-    private Boolean completo_registro;
+    @Column
+    private BigInteger telefono;
 
     @Column
     private Boolean borrado_logico;
-    */
-    
+
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public BigInteger getMovil() {
+        return movil;
+    }
+
+    public void setMovil(BigInteger movil) {
+        this.movil = movil;
+    }
+
+    public BigInteger getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(BigInteger telefono) {
+        this.telefono = telefono;
+    }
+
     public Integer getNumDoc() {
         return numDoc;
     }
@@ -143,29 +169,12 @@ public class Datos_Usuario implements Serializable {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPw() {
+        return pw;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Tipo_Usuario getIdTipoUsuario() {
-        return idTipoUsuario;
-    }
-
-    public void setIdTipoUsuario(Tipo_Usuario idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
-    }
-
-    /*
-    public Boolean getCompleto_registro() {
-        return completo_registro;
-    }
-
-    public void setCompleto_registro(Boolean completo_registro) {
-        this.completo_registro = completo_registro;
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 
     public Boolean getBorrado_logico() {
@@ -175,6 +184,6 @@ public class Datos_Usuario implements Serializable {
     public void setBorrado_logico(Boolean borrado_logico) {
         this.borrado_logico = borrado_logico;
     }
-  */
+
 //</editor-fold>
 }

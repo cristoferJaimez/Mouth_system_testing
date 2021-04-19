@@ -19,8 +19,7 @@ import javax.ejb.Local;
 @Local
 public interface ILoginDAO extends DAO<Datos_Usuario, Integer> {
 
-
     //consultar usuario el signIn
-    void signIn();
+    Datos_Usuario signIn(String email, String pw);
 
 }

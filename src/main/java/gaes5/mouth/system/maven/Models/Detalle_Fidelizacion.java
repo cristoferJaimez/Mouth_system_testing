@@ -24,23 +24,26 @@ public class Detalle_Fidelizacion implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_paciente")
-    private Paciente id_paciente;
+    @JoinColumn(name = "idusuario_rol")
+    private Usuario_rol Usuario_rol_idusuario_rol;
+    
 
+    //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Integer getId() {
         return id;
     }
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
-
-    public Paciente getId_paciente() {
-        return id_paciente;
+    
+    public Usuario_rol getUsuario_rol_idusuario_rol() {
+        return Usuario_rol_idusuario_rol;
     }
-
-    public void setId_paciente(Paciente id_paciente) {
-        this.id_paciente = id_paciente;
+    
+    public void setUsuario_rol_idusuario_rol(Usuario_rol Usuario_rol_idusuario_rol) {
+        this.Usuario_rol_idusuario_rol = Usuario_rol_idusuario_rol;
     }
+//</editor-fold>
 
 }

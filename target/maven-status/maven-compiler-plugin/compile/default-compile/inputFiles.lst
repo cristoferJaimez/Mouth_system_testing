@@ -1,6 +1,7 @@
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Detalle_Fidelizacion.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Mail/Java_Mail.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Cita.java
+/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Usuario_rol.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Config/Test.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Controllers/SignUpController.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Region.java
@@ -12,8 +13,6 @@
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Detalle_Historia.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Internazional/internazionalBean.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Carta_Dental.java
-/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Medico.java
-/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Contacto_Usuario.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Estado_Cita.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Config/ConectDB.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Servicios.java
@@ -24,13 +23,13 @@
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/DAO/GenericDAO.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Productos.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Controllers/SignInController.java
-/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Paciente.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Tratamiento.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Enums/ConexionDBEnums.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/DAO/Interface/ILoginDAO.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Pais_Usuario.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Inventario.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Services/UsuarioServices.java
+/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Detalle_cita.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Fidelizacion.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Historia_Clinica.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/JAXRSConfiguration.java

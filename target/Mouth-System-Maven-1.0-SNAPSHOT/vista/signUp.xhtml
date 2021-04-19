@@ -5,7 +5,8 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -21,50 +22,103 @@
         <h:body style="background-image: url(../resources/img/maxresdefault.jpg); background-repeat: no-repeat; background-size: initial  ">
 
 
-            <ui:include src="../complementos/navBar.xhtml" />
+            <ui:include src="../complementos/navBar.xhtml" class="mb-5" />
 
 
-            <div class="container  mt-5">
+            <div class="mt-5" style="overflow-x: hidden;" >
+                <div class="5">
+                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm2')}" >
+                        <div class="alert alert-success" role="alert">
+                            Usuario Registado con Exito!!!
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm3')}" >
+                        <div class="alert alert-warning" role="alert">
+                            Algo inesperado paso!!!
+                        </div>
+                    </c:if>
+
+                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm4')}" >
+                        <div class="alert alert-danger mt-1" role="alert" >
+                            Algo inesperado paso muy inesperado!!!
+                        </div>
+                    </c:if>
+                </div>
+
+
+
+
+
+
+                <div class="container  mt-5">
+
+                </div>
                 <div class="row ">
 
-                    <div class="col-md-12 text-center mt-3 ">
-                        <h:graphicImage library="img" name="icoo.png" class="mt-2 img-thumbnail"  style="width: 100px; height: 100px" />
-                    </div>
-
-                    <div class="card mt-3 col-4 mx-auto">
+                    <div class="card  col-8 mx-auto">
                         <div class="card-body">
                             <h:form  id="signIn_form">
-                                <div class="form-group">
-                                    <h:outputLabel class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
-                                    <h:inputText id="email"  pt:type="email" value="#{SignUpController.user.email}" required="true" class="form-control" a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong> <h:message for="email"/> </strong>
+
+                                <div class="row col-sm-12">
+
+                                    <div class="form-group">
+                                        <h:outputLabel class="lead text-muted">#{txt['signUp.priNom']}</h:outputLabel>
+                                        <h:inputText id="tipoUsu"  pt:type="text" value="#{signUpController.usuario.priNom}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h:outputLabel class="lead text-muted">#{txt['signUp.priNom']}</h:outputLabel>
+                                            <h:inputText id="priNom"  pt:type="text" value="#{signUpController.usuario.priNom}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h:outputLabel class="lead text-muted">#{txt['signUp.segNom']}</h:outputLabel>
+                                            <h:inputText id="segNom"  pt:type="text" value="#{signUpController.usuario.segNom}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="row col-sm-12">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h:outputLabel class="lead text-muted">#{txt['signUp.priNom']}</h:outputLabel>
+                                            <h:inputText id="priApe"  pt:type="text" value="#{signUpController.usuario.priApe}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                        </div>
+
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <h:outputLabel class="lead text-muted">#{txt['signUp.segNom']}</h:outputLabel>
+                                            <h:inputText id="segApe"  pt:type="text" value="#{signUpController.usuario.segApe}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group col-sm-12">
+                                    <h:outputLabel class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
+                                    <h:inputText id="email"  pt:type="email" value="#{signUpController.usuario.email}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderEmail']}" label="Email"/>
+
+                                </div>
+
+                                <div class="form-group col-sm-12">
                                     <h:outputLabel class="lead text-muted">#{txt['signIn.clave']}</h:outputLabel>
-                                    <h:inputSecret  id="password" pt:type="password" value="#{SignUpController.user.password}" 
+                                    <h:inputSecret  id="password" pt:type="password" value="#{signUpController.usuario.password}" 
                                                     required="true" class="form-control" 
                                                     a:placeholder="#{txt['signUp.placeholderContraseña']}" 
                                                     label="Password">
                                         <f:validateLength for="password" maximum="15" minimum="8"/>
                                     </h:inputSecret>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong> <h:message for="password"/> </strong>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <h:outputLabel class="lead text-muted">#{txt['signIn.clave2']}</h:outputLabel>
-                                    <h:inputSecret id="password2" pt:type="password" value="#{SignUpController}" required="true" class="form-control" a:placeholder="#{txt['signUp.placeholderRcontraseña']} " label="Password">
-                                        <f:validateLength for="password" maximum="15" minimum="8"/>    
-                                    </h:inputSecret>
-                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                                        <strong> <h:message for="password"/> </strong>
-                                    </div>
+
                                 </div>
 
-                                <h:commandButton action="#{SignUpController.signUp()}"   value="#{txt['signUp.boton']}" class="btn btn-block btn-outline-info" />
+
+                                <h:commandButton   actionListener="#{signUpController.crear()}"   value="#{txt['signUp.boton']}" class=" btn btn-block btn-outline-info" />
 
                             </h:form>
 

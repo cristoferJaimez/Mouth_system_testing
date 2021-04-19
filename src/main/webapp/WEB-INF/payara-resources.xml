@@ -34,7 +34,7 @@
                           validate-atmost-once-period-in-seconds="0" 
                           wrap-jdbc-objects="false">
         
-        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system"/>
+        <property name="URL" value="jdbc:mysql://localhost:3306/mouth_system?zeroDateTimeBehavior=convertToNull&amp;useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"/>
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <property name="User" value="root"/>
         <property name="Password" value=""/>

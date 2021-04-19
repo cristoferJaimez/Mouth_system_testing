@@ -27,18 +27,16 @@ public class Agenda implements Serializable {
     @Column(name ="id_agenda")
     private Integer id;
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_inicio")
     private Date fechaInicio;
     
     
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_fin")
     private Date fechaFin;
     
-    @ManyToOne
-    @JoinColumn
-    private Medico idMedico;
+   
 
     //<editor-fold defaultstate="collapsed" desc="GETTERs and SETTERS">
     public Integer getId() {
@@ -65,12 +63,5 @@ public class Agenda implements Serializable {
         this.fechaFin = fechaFin;
     }
     
-    public Medico getIdMedico() {
-        return idMedico;
-    }
-    
-    public void setIdMedico(Medico idMedico) {
-        this.idMedico = idMedico;
-    }
 //</editor-fold>
 }

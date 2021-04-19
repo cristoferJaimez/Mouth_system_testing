@@ -8,13 +8,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2021-04-16T13:13:16")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2021-04-19T12:35:38")
 @StaticMetamodel(Direccion_Usuario.class)
 public class Direccion_Usuario_ { 
 
+    public static volatile SingularAttribute<Direccion_Usuario, Datos_Usuario> datos_usuario_id_usuario;
     public static volatile SingularAttribute<Direccion_Usuario, Region> region_id_region;
-    public static volatile SingularAttribute<Direccion_Usuario, String> direccion;
-    public static volatile SingularAttribute<Direccion_Usuario, Datos_Usuario> numDoc;
     public static volatile SingularAttribute<Direccion_Usuario, Integer> id;
     public static volatile SingularAttribute<Direccion_Usuario, Pais_Usuario> id_ciudad_usuario;
     public static volatile SingularAttribute<Direccion_Usuario, Pais_Usuario> id_pais_usuario;

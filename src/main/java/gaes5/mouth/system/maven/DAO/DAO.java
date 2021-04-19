@@ -20,18 +20,18 @@ import java.util.List;
 public interface DAO<T, PK> {
 
     //plantilla Crear un nuevo elemento
-    T createPost(T obj);
+    T crear(T obj);
 
     //plantilla :  obtener un elemento por ID
-    T obtenGetId(PK id);
+    T obtenerId(PK id);
 
     //plantilla :  obtener todos los elemento
-    List<T> obtenGetAll();
+    List<T> obtenerTodos();
 
     //plantilla :  Eliminar un elemento por ID (Eliminacion Logica)
-    void deleteElemetId(PK id);
+    void eliminar(PK id);
 
     //plantilla :  Actualizar un elemento por ID
-    void elementPutId(T obj);
+    void actualizar(T obj);
 
 }
