@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -40,11 +41,9 @@ public class SignInController implements Serializable {
         usuarios = usuarioServicios.login(email, pw);
         if (usuario != null) {
             try {
-                if (usuario.getBorrado_logico().toString().equalsIgnoreCase("1")) {
-                    msm = "usuarioOk";
-                } else {
-                    msm = "usuarioBad";
-                }
+                //msm = "usuarioOk";
+                FacesContext fc = FacesContext.getCurrentInstance();
+                fc.getExternalContext().redirect("Mouth_System/mouth_system.xhtml");
             } catch (Exception e) {
                 msm = "error";
             }

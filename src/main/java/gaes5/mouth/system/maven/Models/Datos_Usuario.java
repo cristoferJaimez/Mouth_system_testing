@@ -4,14 +4,11 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -29,47 +26,44 @@ public class Datos_Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_usuario")
-    private int id;
+    private Integer id;
 
-    @Column
+    @Column(name = "num_doc")
     private Integer numDoc;
 
-    @Column
+    @Column(name = "pri_nom")
     private String priNom;
 
-    @Column
+    @Column(name = "seg_nom")
     private String segNom;
 
-    @Column
+    @Column(name = "pri_ape")
     private String priApe;
 
-    @Column
+    @Column(name = "seg_ape")
     private String segApe;
 
-    @Column
+    @Column(name = "tipoDoc")
     private String tipoDoc;
 
     @Temporal(TemporalType.DATE) // campo fecha
     @Column(name = "fecha_nac")
     private Date fechaNac;
 
-    @Column
+    @Column(name = "nacionalidad")
     private String nacionalidad;
 
-    @Column
+    @Column(name = "email")
     private String email;
 
-    @Column
+    @Column(name = "pw")
     private String pw;
 
-    @Column
+    @Column(name = "movil")
     private BigInteger movil;
 
-    @Column
+    @Column(name = "telefono")
     private BigInteger telefono;
-
-    @Column
-    private Boolean borrado_logico;
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public int getId() {
@@ -78,22 +72,6 @@ public class Datos_Usuario implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public BigInteger getMovil() {
-        return movil;
-    }
-
-    public void setMovil(BigInteger movil) {
-        this.movil = movil;
-    }
-
-    public BigInteger getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(BigInteger telefono) {
-        this.telefono = telefono;
     }
 
     public Integer getNumDoc() {
@@ -158,7 +136,6 @@ public class Datos_Usuario implements Serializable {
 
     public void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
-
     }
 
     public String getEmail() {
@@ -177,12 +154,20 @@ public class Datos_Usuario implements Serializable {
         this.pw = pw;
     }
 
-    public Boolean getBorrado_logico() {
-        return borrado_logico;
+    public BigInteger getMovil() {
+        return movil;
     }
 
-    public void setBorrado_logico(Boolean borrado_logico) {
-        this.borrado_logico = borrado_logico;
+    public void setMovil(BigInteger movil) {
+        this.movil = movil;
+    }
+
+    public BigInteger getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(BigInteger telefono) {
+        this.telefono = telefono;
     }
 
 //</editor-fold>

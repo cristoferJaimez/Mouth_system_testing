@@ -27,10 +27,10 @@ public class SignUpController implements Serializable {
     private UsuarioServices usuarioServices;
     private Datos_Usuario usuario;
 
+    private String msm;
+
     public SignUpController() {
     }
-
-    private String msm;
 
     @PostConstruct
     public void init() {
@@ -43,11 +43,9 @@ public class SignUpController implements Serializable {
             usuarioServices.crear(usuario);
             usuario = new Datos_Usuario();
             msm = "msm2";
-
         } catch (Exception e) {
             msm = "msm3 ";
         }
-        msm = "msm4";
     }
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
