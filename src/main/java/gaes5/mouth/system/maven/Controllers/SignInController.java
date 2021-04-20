@@ -41,17 +41,25 @@ public class SignInController implements Serializable {
         usuarios = usuarioServicios.login(email, pw);
         if (usuario != null) {
             try {
-                //msm = "usuarioOk";
-                FacesContext fc = FacesContext.getCurrentInstance();
-                fc.getExternalContext().redirect("Mouth_System/mouth_system.xhtml");
+                if (usuarios.getPw().equalsIgnoreCase(pw) && usuarios.getEmail().equalsIgnoreCase(email)) {
+
+                    try {
+                        //msm = "usuarioOk";
+                        FacesContext fc = FacesContext.getCurrentInstance();
+                        fc.getExternalContext().redirect("Mouth_System/mouth_system.xhtml");
+                    } catch (Exception e) {
+                        msm = "msmErrorLogin01";
+                    }
+
+                } else if (!usuarios.getPw().equalsIgnoreCase(pw) || !usuarios.getEmail().equalsIgnoreCase(email)) {
+                    msm = "msmErrorLogin02";
+                }
             } catch (Exception e) {
-                msm = "error";
+                msm = "msmErrorLogin02";
             }
-        }
 
-        try {
-
-        } catch (Exception e) {
+        } else {
+            msm = "msmErrorLogin03";
         }
     }
 

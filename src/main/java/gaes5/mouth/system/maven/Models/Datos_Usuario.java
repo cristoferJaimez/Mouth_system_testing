@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,7 +20,10 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "datos_usuario")
-@NamedQueries(value = {})
+@NamedQueries(value = {
+    @NamedQuery(name = "Datos_Usuario.Login", query = "SELECT obj From Datos_Usuario obj WHERE obj.email = :correo  and   obj.pw = :pw")
+
+})
 
 public class Datos_Usuario implements Serializable {
 

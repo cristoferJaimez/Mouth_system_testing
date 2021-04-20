@@ -27,7 +27,7 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
     @Override
     public Datos_Usuario signIn(String email, String pw) {
         try {
-            TypedQuery<Datos_Usuario> tq = em.createNamedQuery("Datos_Usuario.Login", className);
+            TypedQuery<Datos_Usuario> tq = em.createNamedQuery(className.getSimpleName() + ".Login", className);
             tq.setParameter("correo", email);
             tq.setParameter("pw", pw);
             List<Datos_Usuario> listaUsuarios = tq.getResultList();

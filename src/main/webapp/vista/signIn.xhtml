@@ -25,19 +25,25 @@
             <ui:include src="../complementos/navBar.xhtml"  class="mb-5"/>
 
             <div class="mt-5">
-                <c:if test="#{signInController.msm.equalsIgnoreCase('usuarioOk')}" >
+                <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin00')}" >
                     <div class="alert alert-success" role="alert">
                         Usuario Encontrado!!!
                     </div>
                 </c:if>
 
-                <c:if test="#{signInController.msm.equalsIgnoreCase('usuarioBad')}" >
+                <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin01')}" >
                     <div class="alert alert-danger" role="alert">
                         Usuario no Encontrado!!!
                     </div>
                 </c:if>
 
-                <c:if test="#{signInController.msm.equalsIgnoreCase('error')}" >
+                <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin02')}" >
+                    <div class="alert alert-danger" role="alert">
+                        Revisa tus datos! estas haciendo algo mal ;)
+                    </div>
+                </c:if>
+                
+                <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin03')}" >
                     <div class="alert alert-warning" role="alert">
                         Algo inesperado paso!!!
                     </div>

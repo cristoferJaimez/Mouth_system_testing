@@ -19,11 +19,19 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <input class="form-control form-control-dark w-100" type="text" placeholder="#{txt['ms.placeHolder']}" aria-label="Search" />
+                <ul class="navbar-nav px-3"> 
+                    <div class="badge badge-dark text-wrap d-flex " style="width: 10rem;">
+                        <i class="fas fa-user-circle mr-3" > </i> #{signInController.usuarios.priNom} #{signInController.usuarios.priApe}  <span class="sr-only">(current)</span>
+                    </div>  
+                </ul>
+                
+
                 <ul class="navbar-nav px-3">
                     <li class="nav-item text-nowrap">
                         <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> #{txt['ms.salir']}</a>
                     </li>
                 </ul>
+
 
                 <h:form class="">
                     <h:panelGrid columns="2" class="btn" style="color: #9a9da0">
