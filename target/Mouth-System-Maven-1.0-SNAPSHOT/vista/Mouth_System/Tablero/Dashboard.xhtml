@@ -4,9 +4,10 @@
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-     <f:view locale="#{internazionalizacionBean.localidad}">
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>.:Mouth System:.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,14 +19,15 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+
         </h:head>
         <h:body>
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"><i class="fas fa-tachometer-alt"></i> #{txt['ms.tablero']}</h1>
+                <h1 class="h2"><i class="fas fa-home"></i> #{txt['ms.tablero']}</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                       
+
                     </div>
 
 
@@ -36,26 +38,117 @@
                 <div class="row">
 
                     <!--Tarjetas de citas proximas-->
-                    <div class="col-md-4 col-sm-6">
+                    <div class="grey-bg container-fluid">
+                        <section id="minimal-statistics">
+                            <div class="row">
 
-                        <div class="card mb-4  shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Ver</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">EStado</button>
-                                    </div>
-                                    <small class="text-muted">9 mins</small>
-                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-xl-3 col-sm-6 col-md-4 col-12"> 
+                                    <div class="card shadow">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="align-self-center">
+
+                                                        <i class="fas fa-user-md fa-5x text-success" ></i>
+                                                    </div>
+                                                    <div class="media-body text-right">
+                                                        <h3>8</h3>
+                                                        <span class="lead text-muted">Odontologos</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-12 col-md-4 ">
+                                    <div class="card shadow">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="align-self-center">
+                                                        <i class="fas fa-hospital-user fa-5x text-warning" ></i>
+                                                    </div>
+                                                    <div class="media-body text-right">
+                                                        <h3>156</h3>
+                                                        <span class="lead text-muted">Pacientes</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-sm-6 col-12 col-md-4">
+                                    <div class="card shadow">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="align-self-center">
+                                                        <i class="fas fa-user-nurse fa-5x text-info" ></i>
+                                                    </div>
+                                                    <div class="media-body text-right">
+                                                        <h3>2</h3>
+                                                        <span class="lead text-muted">Auxiliares</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-3 col-sm-6 col-12 col-md-6 mt-3 ">
+                                    <div class="card shadow">
+                                        <div class="card-content">
+                                            <div class="card-body">
+
+                                                <div class="media d-flex">
+                                                    <div class="media-body text-left">
+                                                        <h3 class="warning">
+                                                            <span class="shadow text-success badge badge-dark">3 <i class="fas fa-bell"></i></span>
+                                                            <span class="text-warning badge badge-dark">2 <i class="fas fa-bell"></i></span>
+                                                            <span class="text-danger badge badge-dark">2 <i class="fas fa-bell-slash"></i></span>
+
+                                                        </h3>
+                                                        <span class="lead text-muted">Calendario</span>
+                                                    </div>
+                                                    <div class="align-self-center">
+
+                                                        <i class="fas fa-calendar-alt fa-5x text-danger"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-3 col-sm-6 col-12 col-md-6 mt-3 ">
+                                    <div class="card shadow">
+                                        <div class="card-content">
+                                            <div class="card-body">
+                                                <div class="media d-flex">
+                                                    <div class="media-body text-left">
+                                                        <h3 class="warning">64.89 %</h3>
+                                                        <span>Conversion Rate</span>
+                                                    </div>
+                                                    <div class="align-self-center">
+                                                        <i class="fas fa-chart-line fa-5x text-warning"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </section>
+
 
                     </div>
-
-
-
 
 
 

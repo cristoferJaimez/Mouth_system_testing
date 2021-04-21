@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-   <f:view locale="#{internazionalizacionBean.localidad}">
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>.:Mouth System:.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,11 +24,11 @@
                 <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1>
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button type="button" class="btn btn-sm btn-outline-success">
+                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#new" >
                             <span data-feather="calendar"></span>
                             #{txt['btn.botonNuevaCita']} <i class="fa fa-address-book"></i>
                         </button>
-                        <button type="button" class="btn btn-sm btn-outline-danger">
+                        <button type="button" class="btn btn-sm btn-outline-danger"  data-toggle="modal" data-target="#view" >
                             <span data-feather="calendar"></span>
                             #{txt['btn.botonAgenda']} <i class="fa fa-calendar"></i>
                         </button>
@@ -37,39 +37,81 @@
 
                 </div>
             </div>
-            
+
             <div class="container-fluid">
                 <div class="row">
-                    
-                    
-                    
+
+                    <!--Tarjetas de citas proximas-->
+                    <div class="grey-bg container-fluid mb-5">
+                        <section id="minimal-statistics">
+                            <div class="col-xl-12 col-sm-12  col-12 col-md-6"> 
+                                <div class="card shadow">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
+                                                <div class="align-self-center">
+                                                    <h:graphicImage class="img-thumbnail hidden-xs" width="80px" height="80px" value="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"></h:graphicImage>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <h3 class="lead text-muted"> <i class="fa fa-user-alt"></i> Cristofer Jaimez</h3>
+                                                    <span class="lead text-muted"><h6><i class="fa fa-teeth"></i> Consulta General</h6></span>
+                                                </div>
+                                                <div class="media-body text-right">
+                                                    <h3 class="lead text-muted text-center"> <i class="fa fa-calendar-check"></i> 30/08/2021</h3>
+                                                    <h3 class="lead text-muted text-center"> <i class="fa fa-clock"></i> 02:30 pm</h3>
+                                                </div>
+
+
+
+                                            </div>
+                                            <h6 class="lead text-success text-center" style="font-size: 0.9em"> <i class="fa fa-check"></i>Activa</h6>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+
+
+
+
+
                 </div>
             </div>
-            
-            
-            
-            
+
+
+
+
             <!--modal de citas-->
-            
-            <div class="modal fade"  id="nueva_cita"  tabindex="-1" role="dialog" aria-labelledby="nueva_citaLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+
+            <div class="modal fade" id="new" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
+                            <h5 class="modal-title text-center lead text-muted" id="exampleModalLabel"><i class="fa fa-calendar-alt fa-1x"></i> Agendar Consulta</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            hola
+                          
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times-circle"> </i></button>
+                            <button type="button" class="btn btn-success"> Agendar <i class="fa fa-calendar-check"></i> </button>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
-            
+
             <!--js--> 
+            <h:outputScript library="js" name="jquery-1.7.js"/> 
             <h:outputScript library="js" name="all.min.js"/> 
             <h:outputScript library="js" name="bootstrap.js"/> 
-            <h:outputScript library="js" name="jquery-1.7.js"/> 
         </h:body>
     </f:view>
 </html>

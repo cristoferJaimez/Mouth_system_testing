@@ -98,6 +98,15 @@
             <artifactId>layout</artifactId>
             <version>7.0.4</version>
         </dependency>
+
+        
+        <!--graficos-->                
+        <dependency>
+            <groupId>org.chartistjsf</groupId>
+            <artifactId>ChartistJSF</artifactId>
+            <version>2.1</version>     
+        </dependency>
+
         
         <dependency>
             <groupId>org.primefaces</groupId>

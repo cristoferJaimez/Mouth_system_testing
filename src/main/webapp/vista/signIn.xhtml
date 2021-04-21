@@ -36,6 +36,12 @@
                         Usuario no Encontrado!!!
                     </div>
                 </c:if>
+                
+                <c:if test="#{signInController.msm.equalsIgnoreCase('redirecting')}" >
+                    <div class="alert alert-danger" role="alert">
+                       Tiempo agotado, por favor inicie session nuevamente. 
+                    </div>
+                </c:if>
 
                 <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin02')}" >
                     <div class="alert alert-danger" role="alert">

@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-     <f:view locale="#{internazionalizacionBean.localidad}">
+    <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>.:Mouth System:.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -19,6 +19,7 @@
             <h:outputStylesheet library="css" name="all.css" />
         </h:head>
         <h:body>
+
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fas fa-file-medical"></i> #{txt['ms.hc']}</h1>
@@ -38,38 +39,95 @@
                 </div>
             </div>
 
-            <div class="container">
+            <div class="container-fluid mx-auto">
                 <div class="row">
 
-                    <div class="col-md-12 col-sm-12 text-center">
-                        <table class="table table-sm table-hover">
-                            <thead>
-                                <th>No</th>
-                                <th>No. Doc.</th>
-                                <th>Nombres y Apellidos</th>
-                                <th><i class="fa fa-cogs"></i></th>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
+                  
+                    <!--Tarjetas de citas proximas-->
+                    <div class="grey-bg container-fluid mb-5">
+                        <section id="minimal-statistics">
+                            <div class="col-xl-12 col-sm-12  col-12 col-md-12"> 
+                                <div class="card shadow">
+                                    <div class="card-content">
+                                        <div class="card-body">
+                                            <div class="media d-flex">
 
-                                        <button class="btn btn-sm btn-outline-danger ">
-                                            <a href="verHistoria.xhtml"><i class=" fas fa-file-pdf"></i></a>
-                                        </button>
-                                        <button class="btn btn-sm btn-outline-info ">
-                                            <a href="verHistoria.xhtml"><i class="fa fa-search"></i></a>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>    
-                        </table>
+                                                <div class="media-body text-center">
+                                                    <h3>8</h3><h2 class="lead text-muted" >20%</h2>
+                                                    <span class="lead text-muted"> <i class="fa fa-male fa-2x text-success"></i></span>
+                                                </div>
+                                                <div class="media-body text-center">
+                                                    <h3 class="">8 <h2 class="lead text-muted" >20%</h2></h3>
+                                                    <span class="lead text-muted"> <i class="fa fa-female fa-2x text-warning"></i></span>
+                                                </div>
+
+                                                <div class="media-body text-center">
+                                                    <h3 class="">8</h3><h2 class="lead text-muted" >20%</h2>
+                                                    <span class="lead text-muted"> <i class="fa fa-child fa-2x text-danger"></i></span>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
                     </div>
 
+
+
                 </div>
+
+
+                <div class="card shadow">
+                    <div class="card-body">
+                        <div class="col-md-12 col-sm-12 text-center">
+                            <table class="table table-sm table-hover">
+                                <thead>
+                                    <th>No</th>
+                                    <th>No. Doc.</th>
+                                    <th>Nombres y Apellidos</th>
+                                    <th><i class="fa fa-cogs"></i></th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+
+                                            <button class="btn btn-sm btn-outline-danger ">
+                                                <a href="verHistoria.xhtml"><i class=" fas fa-file-pdf"></i></a>
+                                            </button>
+                                            <button class="btn btn-sm btn-outline-info ">
+                                                <a href="verHistoria.xhtml"><i class="fa fa-search"></i></a>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>    
+                            </table>
+                        </div>
+
+
+
+                        <nav  aria-label="...">
+                            <ul class="pagination pagination-sm ">
+                                <li class="page-item active" aria-current="page">
+                                    <span class="page-link">1</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+
             </div>
+
 
 
             <!--js--> 
