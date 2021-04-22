@@ -30,6 +30,9 @@ public class Cita implements Serializable {
     @Column(name = "fecha_hora")
     private Date fecha_hora;
 
+    @Column
+    private String descripcion;
+
     @ManyToOne
     @JoinColumn(name = "id_agenda")
     private Agenda id_agenda;
@@ -42,31 +45,39 @@ public class Cita implements Serializable {
     public Integer getId() {
         return id;
     }
-    
+
     public void setId(Integer id) {
         this.id = id;
     }
-    
+
     public Date getFecha_hora() {
         return fecha_hora;
     }
-    
+
     public void setFecha_hora(Date fecha_hora) {
         this.fecha_hora = fecha_hora;
     }
-    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Agenda getId_agenda() {
         return id_agenda;
     }
-    
+
     public void setId_agenda(Agenda id_agenda) {
         this.id_agenda = id_agenda;
     }
-    
+
     public Estado_Cita getId_estado_cita() {
         return id_estado_cita;
     }
-    
+
     public void setId_estado_cita(Estado_Cita id_estado_cita) {
         this.id_estado_cita = id_estado_cita;
     }

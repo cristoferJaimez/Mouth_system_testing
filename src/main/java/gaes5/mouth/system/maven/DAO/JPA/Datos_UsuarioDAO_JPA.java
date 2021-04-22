@@ -21,8 +21,6 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
     public Datos_UsuarioDAO_JPA() {
         super(Datos_Usuario.class);
     }
-    
-    
 
     @Override
     public Datos_Usuario signIn(String email, String pw) {
@@ -36,6 +34,22 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
                 return null;
             } else {
                 return listaUsuarios.get(0);
+            }
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public Datos_Usuario searchUser(Integer numDoc) {
+        try {
+            TypedQuery<Datos_Usuario> tq = em.createNamedQuery(className.getSimpleName() + ".Search", className);
+            tq.setParameter("dato", numDoc);
+            List<Datos_Usuario> lista = tq.getResultList();
+            if (lista.isEmpty()) {
+                return null;
+            } else {
+                return lista.get(0);
             }
         } catch (Exception e) {
             return null;

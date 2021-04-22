@@ -21,5 +21,7 @@ public interface ILoginDAO extends DAO<Datos_Usuario, Integer> {
 
     //consultar usuario el signIn
     Datos_Usuario signIn(String email, String pw);
+    
+    Datos_Usuario searchUser(Integer numDoc);
 
 }

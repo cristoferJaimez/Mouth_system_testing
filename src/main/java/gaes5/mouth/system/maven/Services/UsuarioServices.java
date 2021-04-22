@@ -41,4 +41,8 @@ public class UsuarioServices {
         return ilogindao.signIn(email, pw);
     }
 
+    
+    public Datos_Usuario searchUser(Integer numDoc){
+        return ilogindao.searchUser(numDoc);
+    }
 }

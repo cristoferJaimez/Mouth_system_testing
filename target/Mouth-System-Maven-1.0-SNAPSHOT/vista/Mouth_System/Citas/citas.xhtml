@@ -3,8 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -44,44 +46,44 @@
                     <!--Tarjetas de citas proximas-->
                     <div class="grey-bg container-fluid mb-5">
                         <section id="minimal-statistics">
-                            <div class="col-xl-12 col-sm-12  col-12 col-md-6"> 
+                            <div class="col-xl-12 col-sm-12  col-12 col-md-4"> 
                                 <div class="card shadow">
                                     <div class="card-content">
                                         <div class="card-body">
                                             <div class="media d-flex">
-                                                <div class="align-self-center">
-                                                    <h:graphicImage class="img-thumbnail hidden-xs" width="80px" height="80px" value="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"></h:graphicImage>
+                                                <div class="align-self-center mr-2">
+                                                    <h:graphicImage class="img-thumbnail rounded-circle hidden-xs" width="80px" height="80px" value="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"></h:graphicImage>
                                                 </div>
                                                 <div class="media-body text-right">
-                                                    <h3 class="lead text-muted"> <i class="fa fa-user-alt"></i> Cristofer Jaimez</h3>
-                                                    <span class="lead text-muted"><h6><i class="fa fa-teeth"></i> Consulta General</h6></span>
-                                                </div>
-                                                <div class="media-body text-right">
-                                                    <h3 class="lead text-muted text-center"> <i class="fa fa-calendar-check"></i> 30/08/2021</h3>
-                                                    <h3 class="lead text-muted text-center"> <i class="fa fa-clock"></i> 02:30 pm</h3>
+                                                    <h3 class="lead  text-left text-muted"> <i class="fa fa-user-alt"></i> Cristofer Jaimez</h3>
+                                                    <span class="lead text-left  text-muted"><h6><i class="fa fa-teeth"></i> Consulta General</h6></span>
                                                 </div>
 
 
 
                                             </div>
-                                            <h6 class="lead text-success text-center" style="font-size: 0.9em"> <i class="fa fa-check"></i>Activa</h6>
 
+                                            <div class="mt-1 stats text-right" style="font-size: 0.8em;"> <i class="fa fa-calendar-alt"></i> 23/02/2020 <i class="fa fa-clock"></i> 02:00 pm   <span class="text-info"> Activa</span> </div>
 
                                         </div>
+
                                     </div>
                                 </div>
+
+
+
+
                             </div>
                         </section>
 
 
                     </div>
-
-
-
-
-
                 </div>
             </div>
+
+
+
+            <!--mensajes-->
 
 
 
@@ -98,15 +100,76 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                          
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times-circle"> </i></button>
-                            <button type="button" class="btn btn-success"> Agendar <i class="fa fa-calendar-check"></i> </button>
+                            <h:form>
+
+                                <div class="form-group">
+                                    <h:outputLabel for="bp" class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
+                                    <h:inputText id="bp" pt:type="search" required="true" value="#{searchPatientControllers.numDoc}"  class="form-control" onkeypress="#{searchPatientControllers.searchUser()}" a:placeholder=" #{txt['ms.placeHolder']}" label="Email"></h:inputText>
+                                    <strong> <h:message for="bp"/> </strong>
+
+                                    <div class="mt-5">
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
+                                            <div class="alert alert-success" role="alert">
+                                                Usuario Encontrado!!! #{searchPatientControllers.usuario.priNom}
+                                            </div>
+                                        </c:if>
+                                        
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userBad')}" >
+                                            <div class="alert alert-danger" role="alert">
+                                                Usuario NO Encontrado!!!
+                                            </div>
+                                        </c:if>
+                                        
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError01')}" >
+                                            <div class="alert alert-info" role="alert">
+                                                primer msm 01
+                                            </div>
+                                        </c:if>
+                                        
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
+                                            <div class="alert alert-warning" role="alert">
+                                                Segundo msm error en el Query
+                                            </div>
+                                        </c:if>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="nacionalidad" class="lead text-muted"><i class="fa fa-laptop-medical fa-1x"></i> Motivo de Cita</label>
+                                        <h:selectOneMenu value="" required="true" class="form-control" label="Alerta">
+                                            <f:selectItem itemLabel="" itemValue=""></f:selectItem>
+                                            <f:selectItem itemLabel="Colombiano" itemValue="Colombiano"></f:selectItem>
+                                            <f:selectItem itemLabel="Extranjero" itemValue="Extranjero"></f:selectItem>
+                                        </h:selectOneMenu>
+                                        <h:message for="nacionalidad" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                    </div>
+
+
+                                    <div class="row ">
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <h:outputLabel for="fechaCita" class="lead text-muted"> <i class="fa fa-calendar-check fa-1x"></i>  Fecha </h:outputLabel>
+                                                <h:inputText id="fechaCita"  pt:type="datetime-local" value="" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                                <h:message for="fechaCita" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </h:form>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-dark" data-dismiss="modal"><i class="fa fa-times-circle"> </i></button>
+                                <button type="button" class="btn btn-success"> Agendar <i class="fa fa-calendar-check"></i> </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>  
 
             <!--js--> 
             <h:outputScript library="js" name="jquery-1.7.js"/> 

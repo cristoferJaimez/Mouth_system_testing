@@ -36,6 +36,7 @@
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Fidelizacion.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Historia_Clinica.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/JAXRSConfiguration.java
+/home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Controllers/SearchPatientControllers.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Tipo_Usuario.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Agenda.java
 /home/cristo/Documentos/GitHub/Mouth_System/src/main/java/gaes5/mouth/system/maven/Models/Direccion_Usuario.java
