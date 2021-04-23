@@ -6,7 +6,8 @@
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -100,12 +101,14 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <h:form>
+                            <h:form id="form">
 
                                 <div class="form-group">
-                                    <h:outputLabel for="bp" class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
-                                    <h:inputText id="bp" pt:type="search" required="true" value="#{searchPatientControllers.numDoc}"  class="form-control" onkeypress="#{searchPatientControllers.searchUser()}" a:placeholder=" #{txt['ms.placeHolder']}" label="Email"></h:inputText>
-                                    <strong> <h:message for="bp"/> </strong>
+                                    <h:outputLabel for="numDoc"  class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
+                                    <h:inputText  required="true" id="numDoc"  value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
+                                        <f:ajax event="keyup"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
+                                    </h:inputText>
+
 
                                     <div class="mt-5">
                                         <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
@@ -113,31 +116,22 @@
                                                 Usuario Encontrado!!! #{searchPatientControllers.usuario.priNom}
                                             </div>
                                         </c:if>
-                                        
-                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userBad')}" >
-                                            <div class="alert alert-danger" role="alert">
-                                                Usuario NO Encontrado!!!
-                                            </div>
-                                        </c:if>
-                                        
-                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError01')}" >
-                                            <div class="alert alert-info" role="alert">
-                                                primer msm 01
-                                            </div>
-                                        </c:if>
-                                        
+
+
+
                                         <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
                                             <div class="alert alert-warning" role="alert">
-                                                Segundo msm error en el Query
+                                                Usuario no Encontrado  
                                             </div>
                                         </c:if>
 
                                     </div>
 
-
+                 
+                                    
                                     <div class="form-group">
                                         <label for="nacionalidad" class="lead text-muted"><i class="fa fa-laptop-medical fa-1x"></i> Motivo de Cita</label>
-                                        <h:selectOneMenu value="" required="true" class="form-control" label="Alerta">
+                                        <h:selectOneMenu value="#{citasControllers.cita.descripcion}" required="true" class="form-control" label="Alerta">
                                             <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                             <f:selectItem itemLabel="Colombiano" itemValue="Colombiano"></f:selectItem>
                                             <f:selectItem itemLabel="Extranjero" itemValue="Extranjero"></f:selectItem>
@@ -150,7 +144,9 @@
                                         <div class="col">
                                             <div class="form-group">
                                                 <h:outputLabel for="fechaCita" class="lead text-muted"> <i class="fa fa-calendar-check fa-1x"></i>  Fecha </h:outputLabel>
-                                                <h:inputText id="fechaCita"  pt:type="datetime-local" value="" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                                <h:inputText id="fechaCita"  pt:type="datetime-local" value="#{citasControllers.cita.fecha_hora}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta">
+                                                    <f:convertDateTime dateStyle="full" pattern="yyyy-mm-ddThh:mm"/>  
+                                                </h:inputText>
                                                 <h:message for="fechaCita" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                             </div>
 
@@ -175,6 +171,8 @@
             <h:outputScript library="js" name="jquery-1.7.js"/> 
             <h:outputScript library="js" name="all.min.js"/> 
             <h:outputScript library="js" name="bootstrap.js"/> 
+            <h:outputScript library="js" name="alerts.js"/> 
+
         </h:body>
     </f:view>
 </html>

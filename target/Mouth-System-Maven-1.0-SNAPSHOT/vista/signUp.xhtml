@@ -21,92 +21,104 @@
             <h:outputStylesheet library="css" name="fontawesome.css" />
             <h:outputStylesheet library="css" name="all.css" />
         </h:head>
-        <h:body style="background-image: url(../resources/img/maxresdefault.jpg); background-repeat: no-repeat; background-size: initial  ">
+        <h:body style="">
 
 
             <ui:include src="../complementos/navBar.xhtml" class="mb-5" />
 
 
+
             <div class="mt-5" style="overflow-x: hidden;" >
-                <div class="5">
-                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm2')}" >
-                        <div class="alert alert-success" role="alert">
-                            Usuario Registado con Exito!!!
-                        </div>
-                    </c:if>
 
-                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm3')}" >
-                        <div class="alert alert-warning" role="alert">
-                            Algo inesperado paso!!!
-                        </div>
-                    </c:if>
+                <c:if test="#{signUpController.msm.equalsIgnoreCase('msm2')}" >
 
-                    <c:if test="#{signUpController.msm.equalsIgnoreCase('msm4')}" >
-                        <div class="alert alert-danger mt-1" role="alert" >
-                            Algo inesperado paso muy inesperado!!!
-                        </div>
-                    </c:if>
-                </div>
+                    <div class="alert alert-success mt-3" role="alert" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>El Usuario, </strong>fue  Registrado Exitosamente!!! <h:outputLabel value="#{searchPatientControllers.usuario.email}"/>
+                    </div>
+
+                </c:if>
+
+                <c:if test="#{signUpController.msm.equalsIgnoreCase('userOk')}" >
+                    <div class="alert alert-info mt-3" role="alert" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>El Usuario, </strong>Ya esta Registrado!!! <h:outputLabel value="#{searchPatientControllers.usuario.email}"/>
+                    </div>
+                </c:if>
+
+                <c:if test="#{signUpController.msm.equalsIgnoreCase('msm3')}" >
+                    <div class="alert alert-warning mt-3" role="alert" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>Upss!!</strong>Algo inesperado paso!!! <h:outputLabel value="#{searchPatientControllers.usuario.email}"/>
+                    </div>
+                </c:if>
+
+                <c:if test="#{signUpController.msm.equalsIgnoreCase('msm4')}" >
+                    <div class="alert alert-danger mt-3" role="alert" id="success-alert">
+                        <button type="button" class="close" data-dismiss="alert">x</button>
+                        <strong>Upss!!</strong>Algo inesperado paso, por favor revisa QUERyS!!! <h:outputLabel value="#{searchPatientControllers.usuario.email}"/>
+                    </div>
+                </c:if>
+            </div>
 
 
 
 
 
 
-                <div class="container  mt-5">
+            <div class="container mt-5">
 
-                </div>
+
                 <div class="row ">
 
-                    <div class="card  col-8 mx-auto shadow">
+                    <div class="card   col-sm-12 col-md-8 ml-1 mr-1 mx-auto shadow">
                         <div class="card-body">
-                            <h:form  id="signIn_form">
+                            <h:form  id="signUp_form">
 
-
-
-                                <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group">
+                                <div class="row col-sm-12 ">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm ">
                                             <h:outputLabel for="priNom" class="lead text-muted">#{txt['signUp.priNom']}</h:outputLabel>
-                                            <h:inputText id="priNom"  pt:type="text" value="#{signUpController.usuario.priNom}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="priNom" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="priNom"  pt:type="text" value="#{signUpController.usuario.priNom}" required="true" requiredMessage="Ingrese Primer Nombre"  class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta" />
+                                            <h:message for="priNom" class="card text-center mt-2 bg-danger" style=" color:#fff;"></h:message>
+
+
                                         </div>
 
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel for="segNom" class="lead text-muted">#{txt['signUp.segNom']}</h:outputLabel>
-                                            <h:inputText id="segNom"  pt:type="text" value="#{signUpController.usuario.segNom}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="segNom" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="segNom"  pt:type="text" value="#{signUpController.usuario.segNom}" required="true" requiredMessage="Ingrese Segundo Nombre" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:message for="segNom" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
                                     </div>
                                 </div>
 
-
                                 <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel for="priApe" class="lead text-muted">#{txt['signUp.priApe']}</h:outputLabel>
-                                            <h:inputText id="priApe"  pt:type="text" value="#{signUpController.usuario.priApe}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="priApe" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="priApe"  pt:type="text" value="#{signUpController.usuario.priApe}" required="true" requiredMessage="Ingrese Primer Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:message for="priApe" class="card text-center mt-2 bg-danger" style=" color:#fff;"  ><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel for="segApe" class="lead text-muted">#{txt['signUp.segApe']}</h:outputLabel>
-                                            <h:inputText id="segApe"  pt:type="text" value="#{signUpController.usuario.segApe}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="segApe" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="segApe"  pt:type="text" value="#{signUpController.usuario.segApe}" required="true"  requiredMessage="Ingrese Segundo Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:message for="segApe" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
                                     </div>
                                 </div>
 
 
                                 <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <label for="tipoDoc" class="lead text-muted">Tipo Documento</label>
-                                            <h:selectOneMenu value="#{signUpController.usuario.tipoDoc}" required="true" class="form-control" label="Alerta">
+                                            <h:selectOneMenu id="tipoDoc" value="#{signUpController.usuario.tipoDoc}" required="true" requiredMessage="Seleccione un tipo de Documento" class="form-control" label="Alerta">
                                                 <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                                 <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad"></f:selectItem>
                                                 <f:selectItem itemLabel="Cedula Ciudadania" itemValue="Cedula Ciudadania"></f:selectItem>
@@ -114,23 +126,21 @@
                                                 <f:selectItem itemLabel="Nit" itemValue="Nit"></f:selectItem>
                                                 <f:selectItem itemLabel="Otro." itemValue="Otro"></f:selectItem>
                                             </h:selectOneMenu>
-                                            <h:message for="tipoDoc" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
-                                            <small id="tplHelp" class="form-text text-muted">Seleccione un tipo de cocumento.</small>
+                                            <h:message for="tipoDoc"  class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
                                     </div>
 
 
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <label for="nacionalidad" class="lead text-muted">Nacionalidad</label>
-                                            <h:selectOneMenu value="#{signUpController.usuario.nacionalidad}" required="true" class="form-control" label="Alerta">
+                                            <h:selectOneMenu  id="nacionalidad" value="#{signUpController.usuario.nacionalidad}" required="true" requiredMessage="Seleccione Nacionalidad" class="form-control" label="Alerta">
                                                 <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                                 <f:selectItem itemLabel="Colombiano" itemValue="Colombiano"></f:selectItem>
                                                 <f:selectItem itemLabel="Extranjero" itemValue="Extranjero"></f:selectItem>
                                             </h:selectOneMenu>
-                                            <h:message for="nacionalidad" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
-                                            <small id="tplHelp" class="form-text text-muted">Seleccione un tipo de cocumento.</small>
+                                            <h:message for="nacionalidad" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
                                     </div>
@@ -140,38 +150,44 @@
 
 
                                 <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel  for="numDoc" class="lead text-muted">#{txt['signUp.numDoc']}</h:outputLabel>
-                                            <h:inputText id="numDoc"  pt:type="number" value="#{signUpController.usuario.numDoc}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="numDoc" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="numDoc"  pt:type="number" value="#{signUpController.usuario.numDoc}" required="true" requiredMessage="Ingrese Número de Documento" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:message for="numDoc" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
-                                            <h:outputLabel for="fechaNac" class="lead text-muted">#{txt['signUp.fechaNac']}</h:outputLabel>
-                                            <p:calendar    value="#{signUpController.usuario.fechaNac}" required="true"></p:calendar>
-                                            <h:message for="fechaNac" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
+                                            <h:outputLabel for="fechaCita" class="lead text-muted">  #{txt['signUp.fechaNac'] }</h:outputLabel>
+                                            <h:inputText id="fechaCita"  pt:type="date" value="#{signUpController.usuario.fechaNac}" converter="#{null}" required="true" requiredMessage="Ingrese Fecha de Nacimiento" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta">
+                                                <f:convertDateTime dateStyle="full" pattern="yyyy-mm-dd"/>  
+                                            </h:inputText>
+                                            <h:message for="fechaCita" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
+
                                     </div>
+
+
                                 </div>
 
 
                                 <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel for="movil" class="lead text-muted">#{txt['signUp.movil']}</h:outputLabel>
-                                            <h:inputText id="movil"  pt:type="number" value="#{signUpController.usuario.movil}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
-                                            <h:message for="movil" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:inputText id="movil"  pt:type="number" value="#{signUpController.usuario.movil}" required="true" requiredMessage="Ingrese Número Celular" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:message for="movil" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
                                     </div>
-                                    <div class="col">
-                                        <div class="form-group">
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm">
                                             <h:outputLabel for="telefono" class="lead text-muted">#{txt['signUp.telefono']}</h:outputLabel>
-                                            <h:inputText id="telefono"  pt:type="number" value="#{signUpController.usuario.telefono}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
-                                            <h:message for="telefono" style="   color:red; "></h:message>
+                                            <h:inputText id="telefono"  pt:type="number" value="#{signUpController.usuario.telefono}" required="true" requiredMessage="Ingrese Número Telefonico de Hogar" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                            <h:message for="telefono" class="card text-center mt-2 bg-danger" style=" color:#fff;"></h:message>
                                         </div>
                                     </div>
                                 </div>
@@ -180,30 +196,45 @@
 
 
                                 <div class="row col-sm-12">
-                                    <div class="col">
-                                        <div class="form-group lead text-muted">
-                                            <h:outputLabel for="correo" class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
-                                            <h:inputText id="email"  pt:type="email" value="#{signUpController.usuario.email}" required="true" class="form-control"  a:placeholder="#{txt['sign.placeholderEmail']}" label="Alerta"/>
-                                            <h:message for="correo" style="color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm lead text-muted">
+                                            <h:outputLabel for="email" class="lead text-muted">#{txt['signIn.correo']}</h:outputLabel>
+                                            <h:inputText id="email"  pt:type="email" value="#{signUpController.usuario.email}" required="true"
+                                                         requiredMessage="Ingrese Correo Electronico"
+                                                         class="form-control"  a:placeholder="#{txt['sign.placeholderEmail']}" label="Alerta"/>
+                                            <h:message for="email" class="card text-center text-small mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <div class="valid-feedback"> Campo Ok!!!</div>
+                                            <div class="invalid-feedback"> Complete Campo!!!</div>
                                         </div>
 
-                                        <div class="form-group lead text-muted">
-                                            <h:outputLabel for="pw" class="lead text-muted">#{txt['signIn.clave']}</h:outputLabel>
+
+
+
+
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <div class="form-group input-group-sm text-small lead text-muted">
+                                            <h:outputLabel for="password" class="lead text-muted">#{txt['signIn.clave']}</h:outputLabel>
                                             <h:inputSecret  id="password" pt:type="password" value="#{signUpController.usuario.pw}" 
-                                                            required="true" class="form-control" 
+                                                            required="true"
+                                                            requiredMessage="Ingrese Contraseña"
+                                                            class="form-control" 
                                                             a:placeholder="#{txt['signUp.placeholderContraseña']}" 
                                                             label="Alerta">
                                                 <f:validateLength for="password" maximum="15" minimum="8"/>
                                             </h:inputSecret>
-                                            <h:message for="pw" style=" color:red; "><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                            <h:message for="password" class="card text-center mt-2 bg-danger" style=" color:#fff;" ></h:message>
 
 
-                                        </div>
-
-
-                                        <h:commandButton   actionListener="#{signUpController.crear()}"   value="#{txt['signUp.boton']}" class=" btn btn-block btn-outline-info" />
+                                        </div> 
 
                                     </div>
+                                    <div class="col-sm-12 col-md-12">
+                                        <h:commandButton     actionListener="#{signUpController.userCheck()}"   value="#{txt['signUp.boton']}" class=" text-monospace  text-capitalize   mt-4 mx-auto btn btn-block btn-info"/>
+                                    </div>
+
+
+
                                 </div>
 
 
@@ -226,12 +257,15 @@
 
 
 
-
             <!--js--> 
-            <h:outputScript library="js" name="jquery-1.7.js"/> 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
             <h:outputScript library="js" name="all.min.js"/> 
             <h:outputScript library="js" name="bootstrap.js"/> 
             <h:outputScript library="js" name="bootstrap.min.js"/> 
+            <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            <h:outputScript library="js" name="alerts.js"/> 
+
         </h:body>
 
     </f:view>

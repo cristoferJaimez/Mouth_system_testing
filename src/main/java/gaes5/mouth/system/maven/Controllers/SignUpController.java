@@ -26,10 +26,11 @@ public class SignUpController implements Serializable {
     @EJB
     private UsuarioServices usuarioServices;
     private Datos_Usuario usuario;
-
+    private Datos_Usuario usuarios;
     private String msm;
 
     public SignUpController() {
+
     }
 
     @PostConstruct
@@ -45,6 +46,24 @@ public class SignUpController implements Serializable {
             msm = "msm2";
         } catch (Exception e) {
             msm = "msm3 ";
+        }
+    }
+
+    public void userCheck() {
+        msm="";
+        try {
+              usuarios = usuarioServices.colsultExistence(usuario.getEmail(), usuario.getNumDoc());
+        if (usuarios.getPriNom() != null) {
+            try {
+                msm = "userOk";
+            } catch (Exception e) {
+                msm = "msm2";
+            }
+        } else {
+            msm = "msm3";
+            }
+        } catch (Exception e) {
+            crear();
         }
     }
 

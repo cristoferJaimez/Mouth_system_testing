@@ -26,7 +26,7 @@
             <!--cuerpo index-->
             <main role="main">  
                 <!-- Slider-->
-                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div id="myCarousel" class="carousel slide  w-100 h-auto" data-ride="carousel" style="height: 100%">
                     <ol class="carousel-indicators">
                         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                         <li data-target="#myCarousel" data-slide-to="1"></li>
@@ -36,7 +36,7 @@
                         <div class="carousel-item active">
                             <h:graphicImage library="img" name="slider1.jpg" class="bd-placeholder-img" />
                             <div class="container">
-                                <div class="carousel-caption text-left">
+                                <div class="carousel-caption text-left card shadow text-dark text-capitalize text-center">
                                     <h1 class="">#{txt['slider.titulo1']}</h1>
                                     <p class="lead">#{txt['slider.subTitulo1']}</p>
                                     <p><a class="btn btn-lg btn-primary lead" href="#">#{txt['slider.boton1']}</a></p>
@@ -47,7 +47,7 @@
                             <h:graphicImage library="img" name="slider2.jpg" class="bd-placeholder-img" />
 
                             <div class="container">
-                                <div class="carousel-caption">
+                                <div class="carousel-caption text-left card shadow text-dark text-capitalize text-center">
                                     <h1>#{txt['slider.titulo2']}</h1>
                                     <p>#{txt['slider.subTitulo2']}</p>
                                     <p><a class="btn btn-lg btn-primary" href="#">#{txt['slider.boton2']}</a></p>
@@ -58,7 +58,7 @@
                             <h:graphicImage library="img" name="slider3.jpg" class="bd-placeholder-img" />
 
                             <div class="container">
-                                <div class="carousel-caption text-right">
+                                <div class="carousel-caption text-left card shadow text-dark text-capitalize text-center">
                                     <h1>#{txt['slider.titulo3']}</h1>
                                     <p>#{txt['slider.subTitulo3']}</p>
                                     <p><a class="btn btn-lg btn-primary" href="#">#{txt['slider.boton2']}</a></p>
@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <h2 class="featurette-heading ">#{txt['empresa.vision']} <span class="text-muted text-right">#{txt['empresa.vision2']}</span></h2>
-                            <p class="lead text-justify">#{txt['empresa.textVision']}</p>
+                            <p class="text-justify">#{txt['empresa.textVision']}</p>
                         </div>
                         <div class="col-md-6 col-sm-12">                        
                             <h:graphicImage style="width: 600px; height: 500px" role="img"   library="img" name="slider3.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid" />

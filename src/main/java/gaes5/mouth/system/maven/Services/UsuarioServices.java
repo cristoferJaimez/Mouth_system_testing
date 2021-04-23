@@ -45,4 +45,8 @@ public class UsuarioServices {
     public Datos_Usuario searchUser(Integer numDoc){
         return ilogindao.searchUser(numDoc);
     }
+    
+    public Datos_Usuario colsultExistence(String email, Integer numDoc ){
+        return  ilogindao.colsultExistence(email, numDoc);
+    }
 }
