@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.Table;
 
 /**
@@ -21,6 +22,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "usuario_rol")
+@NamedQueries(value = {
+})
 public class Usuario_rol implements Serializable {
 
     @Id
@@ -32,7 +35,7 @@ public class Usuario_rol implements Serializable {
     @JoinColumn(name = "id_usuario")
     private Datos_Usuario datos_usuario_id_usuario;
 
-    @ManyToOne
+    @ManyToOne  
     @JoinColumn(name = "id_tipo_usuario")
     private Tipo_Usuario tipo_usuario_id_tipo_usuario;
 

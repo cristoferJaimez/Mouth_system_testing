@@ -1,8 +1,10 @@
 package gaes5.mouth.system.maven.Controllers;
 
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
+import gaes5.mouth.system.maven.Models.Usuario_rol;
 import gaes5.mouth.system.maven.Services.UsuarioServices;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 //import javax.enterprise.context.RequestScoped;
@@ -25,8 +27,13 @@ public class SignUpController implements Serializable {
 
     @EJB
     private UsuarioServices usuarioServices;
+    
+    
+
     private Datos_Usuario usuario;
     private Datos_Usuario usuarios;
+    private List<Usuario_rol> roles;
+
     private String msm;
 
     public SignUpController() {
@@ -50,20 +57,32 @@ public class SignUpController implements Serializable {
     }
 
     public void userCheck() {
-        msm="";
+        msm = "";
         try {
-              usuarios = usuarioServices.colsultExistence(usuario.getEmail(), usuario.getNumDoc());
-        if (usuarios.getPriNom() != null) {
-            try {
-                msm = "userOk";
-            } catch (Exception e) {
-                msm = "msm2";
-            }
-        } else {
-            msm = "msm3";
+            usuarios = usuarioServices.colsultExistence(usuario.getEmail(), usuario.getNumDoc());
+            if (usuarios.getPriNom() != null) {
+                try {
+                    msm = "userOk";
+                } catch (Exception e) {
+                    msm = "msm2";
+                }
+            } else {
+                msm = "msm3";
             }
         } catch (Exception e) {
             crear();
+        }
+    }
+
+    public List<Usuario_rol> typeRols(Integer id) {
+
+        try {
+            roles = usuarioServices.typeRols(id);
+            System.out.println( "roles ------------> "+roles);
+            return roles;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
         }
     }
 
@@ -78,6 +97,14 @@ public class SignUpController implements Serializable {
 
     public String getMsm() {
         return msm;
+    }
+
+    public List<Usuario_rol> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Usuario_rol> roles) {
+        this.roles = roles;
     }
 
     public void setMsm(String msm) {

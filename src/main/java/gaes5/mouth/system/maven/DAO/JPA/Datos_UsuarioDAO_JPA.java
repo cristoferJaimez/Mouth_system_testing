@@ -3,8 +3,10 @@ package gaes5.mouth.system.maven.DAO.JPA;
 import gaes5.mouth.system.maven.DAO.GenericDAO;
 import gaes5.mouth.system.maven.DAO.Interface.ILoginDAO;
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
+import gaes5.mouth.system.maven.Models.Usuario_rol;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 
@@ -22,6 +24,7 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
         super(Datos_Usuario.class);
     }
 
+    //iniciar session
     @Override
     public Datos_Usuario signIn(String email, String pw) {
         try {
@@ -40,6 +43,7 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
         }
     }
 
+    //buscar usuario por doumento
     @Override
     public Datos_Usuario searchUser(Integer numDoc) {
         try {
@@ -56,10 +60,11 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
         }
     }
 
+    //consultar si usuario existe
     @Override
     public Datos_Usuario colsultExistence(String email, Integer numDoc) {
         try {
-            TypedQuery<Datos_Usuario> tq = em.createNamedQuery( "Datos_usuario.ConsultExistence", className);
+            TypedQuery<Datos_Usuario> tq = em.createNamedQuery("Datos_usuario.ConsultExistence", className);
             tq.setParameter("numDoc", numDoc);
             tq.setParameter("email", email);
 
@@ -76,5 +81,7 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
         }
 
     }
+
+  
 
 }

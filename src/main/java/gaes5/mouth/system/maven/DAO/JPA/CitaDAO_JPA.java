@@ -16,4 +16,6 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
         super(Cita.class);
     }
     
+    //crear metodo query nativo
+    
 }

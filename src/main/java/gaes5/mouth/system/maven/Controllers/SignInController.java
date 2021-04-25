@@ -62,6 +62,9 @@ public class SignInController implements Serializable {
             msm = "msmErrorLogin03";
         }
     }
+    
+    
+  
 
     //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public UsuarioServices getUsuarioServicios() {
@@ -72,6 +75,9 @@ public class SignInController implements Serializable {
         this.usuarioServicios = usuarioServicios;
     }
 
+   
+
+   
     public Datos_Usuario getUsuario() {
         return usuario;
     }

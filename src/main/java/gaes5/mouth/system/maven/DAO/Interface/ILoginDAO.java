@@ -7,6 +7,8 @@ package gaes5.mouth.system.maven.DAO.Interface;
 
 import gaes5.mouth.system.maven.DAO.DAO;
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
+import gaes5.mouth.system.maven.Models.Usuario_rol;
+import java.util.List;
 import javax.ejb.Local;
 
 /*
@@ -25,5 +27,7 @@ public interface ILoginDAO extends DAO<Datos_Usuario, Integer> {
     Datos_Usuario searchUser(Integer numDoc);
     
     Datos_Usuario colsultExistence(String email, Integer numDoc);   
+    
+    
 
 }

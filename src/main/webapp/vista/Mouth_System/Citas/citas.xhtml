@@ -105,30 +105,35 @@
 
                                 <div class="form-group">
                                     <h:outputLabel for="numDoc"  class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
-                                    <h:inputText  required="true" id="numDoc"  value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
-                                        <f:ajax event="keyup"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
+                                    <h:inputText  required="true" id="numDoc"   value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
+                                        <f:ajax event="keyup" render="view"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
                                     </h:inputText>
 
 
-                                    <div class="mt-5">
-                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
-                                            <div class="alert alert-success" role="alert">
-                                                Usuario Encontrado!!! #{searchPatientControllers.usuario.priNom}
-                                            </div>
-                                        </c:if>
+                                    <h:panelGrid id="view" class="col-md-12">
+
+                                        <div class="">
+                                           
+
+                                            <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
+                                                <div class="alert alert-success" role="alert">
+                                                    Usuario Encontrado!!! #{searchPatientControllers.usuario.priNom}
+                                                </div>
+                                            </c:if>
 
 
 
-                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
-                                            <div class="alert alert-warning" role="alert">
-                                                Usuario no Encontrado  
-                                            </div>
-                                        </c:if>
+                                            <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
+                                                <div class="alert alert-warning" role="alert">
+                                                    Usuario no Encontrado  
+                                                </div>
+                                            </c:if>
 
-                                    </div>
+                                        </div>
 
-                 
-                                    
+                                    </h:panelGrid>
+
+
                                     <div class="form-group">
                                         <label for="nacionalidad" class="lead text-muted"><i class="fa fa-laptop-medical fa-1x"></i> Motivo de Cita</label>
                                         <h:selectOneMenu value="#{citasControllers.cita.descripcion}" required="true" class="form-control" label="Alerta">
