@@ -59,5 +59,9 @@ public class UsuarioServices {
         return  iusuario_rol.typeRol(id);
     }
     
+    
+    public  List<Usuario_rol>allRolsRegister(){
+        return  iusuario_rol.allRolsRegister();
+    }
   
 }

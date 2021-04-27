@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -22,6 +23,29 @@
 
         </h:head>
         <h:body>
+
+            <c:set var="contador_A" value="${0}" />
+            <c:set var="contador_B" value="${0}" />
+            <c:set var="contador_C" value="${0}" />
+
+            <c:forEach items="#{signUpController.allRolsRegister()}" var="rol" varStatus="pos" >
+           
+                 <c:if  test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
+                        <c:set var="contador_A" value="${contador_A + 1}"  />
+                   
+                </c:if>
+
+                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
+                    <c:set var="contador_B" value="${contador_B  + 1}"  />
+                </c:if>
+
+               
+
+                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
+                    <c:set var="contador_C" value="${contador_C  + 1}"  />
+                </c:if>
+
+            </c:forEach>
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fas fa-home"></i> #{txt['ms.tablero']}</h1>
@@ -49,13 +73,13 @@
                                         <div class="card-content">
                                             <div class="card-body">
                                                 <div class="media d-flex">
-                                                    <div class="align-self-center">
+                                                    <div class="align-self-center ">
 
-                                                        <i class="fas fa-user-md fa-5x text-success" ></i>
+                                                        <i class="fas fa-user-md fa-4x text-success" ></i>
                                                     </div>
                                                     <div class="media-body text-right">
-                                                        <h3>8</h3>
-                                                        <span class="lead text-muted">Odontologos</span>
+                                                        <h3 class="lead">#{contador_A}</h3>
+                                                        <span class="lead text-muted " style="font-size: 0.9em">Odontologos</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,11 +92,11 @@
                                             <div class="card-body">
                                                 <div class="media d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="fas fa-hospital-user fa-5x text-warning" ></i>
+                                                        <i class="fas fa-hospital-user fa-4x text-warning" ></i>
                                                     </div>
                                                     <div class="media-body text-right">
-                                                        <h3>156</h3>
-                                                        <span class="lead text-muted">Pacientes</span>
+                                                        <h3 class="lead">${contador_B}</h3>
+                                                        <span class="lead text-muted" style="font-size: 0.8em">Pacientes</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -85,11 +109,11 @@
                                             <div class="card-body">
                                                 <div class="media d-flex">
                                                     <div class="align-self-center">
-                                                        <i class="fas fa-user-nurse fa-5x text-info" ></i>
+                                                        <i class="fas fa-user-nurse fa-4x text-info" ></i>
                                                     </div>
                                                     <div class="media-body text-right">
-                                                        <h3>2</h3>
-                                                        <span class="lead text-muted">Auxiliares</span>
+                                                        <h3 class="lead"> ${contador_C}</h3>
+                                                        <span class="lead text-muted " style="font-size: 0.8em">Auxiliares</span>
                                                     </div>
                                                 </div>
                                             </div>

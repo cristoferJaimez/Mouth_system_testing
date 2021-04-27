@@ -64,7 +64,11 @@ public class SignInController implements Serializable {
     }
     
     
-  
+
+    public void closeSesion() {
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+    }
 
     //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public UsuarioServices getUsuarioServicios() {
@@ -75,9 +79,6 @@ public class SignInController implements Serializable {
         this.usuarioServicios = usuarioServicios;
     }
 
-   
-
-   
     public Datos_Usuario getUsuario() {
         return usuario;
     }

@@ -9,7 +9,7 @@ import javax.inject.Named;
  *
  * @author cristo
  */
-@Named("URL")
+@Named("URLControlls")
 @SessionScoped
 public class URLControlls implements Serializable {
 
@@ -18,14 +18,17 @@ public class URLControlls implements Serializable {
 
     private String msm;
 
-    public void dasboard() {
+    public void signOut() {
         msm = "";
         try {
-//            FacesContext fc = FacesContext.getCurrentInstance();
-//            fc.getExternalContext().redirect("Tablero/Dashboard.xhtml");
-//            msm = "dasOk";
-              msm = "okmsm";
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.getExternalContext().redirect("../signIn.xhtml");
+            msm = "credencialesBad";
         } catch (Exception e) {
+            
+            System.out.println(e.getMessage());
         }
     }
 

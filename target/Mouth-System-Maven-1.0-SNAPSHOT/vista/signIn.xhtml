@@ -25,6 +25,12 @@
             <ui:include src="../complementos/navBar.xhtml"  class="mb-5"/>
 
             <div class="mt-5">
+                <c:if test="#{signInController.msm.equalsIgnoreCase('credencialesBad')}" >
+                    <div class="alert alert-danger mx-auto text-center" role="alert">
+                        Credenciales perdidas!!!
+                    </div>
+                </c:if>
+
                 <c:if test="#{signInController.msm.equalsIgnoreCase('msmErrorLogin00')}" >
                     <div class="alert alert-success" role="alert">
                         Usuario Encontrado!!!

@@ -45,39 +45,25 @@
                 <div class="row">
 
                     <!--Tarjetas de citas proximas-->
-                    <div class="grey-bg container-fluid mb-5">
-                        <section id="minimal-statistics">
-                            <div class="col-xl-12 col-sm-12  col-12 col-md-4"> 
-                                <div class="card shadow">
-                                    <div class="card-content">
-                                        <div class="card-body">
-                                            <div class="media d-flex">
-                                                <div class="align-self-center mr-2">
-                                                    <h:graphicImage class="img-thumbnail rounded-circle hidden-xs" width="80px" height="80px" value="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/1200px-Angular_full_color_logo.svg.png"></h:graphicImage>
-                                                </div>
-                                                <div class="media-body text-right">
-                                                    <h3 class="lead  text-left text-muted"> <i class="fa fa-user-alt"></i> Cristofer Jaimez</h3>
-                                                    <span class="lead text-left  text-muted"><h6><i class="fa fa-teeth"></i> Consulta General</h6></span>
-                                                </div>
-
-
-
-                                            </div>
-
-                                            <div class="mt-1 stats text-right" style="font-size: 0.8em;"> <i class="fa fa-calendar-alt"></i> 23/02/2020 <i class="fa fa-clock"></i> 02:00 pm   <span class="text-info"> Activa</span> </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-
-
-
+                    <div class="card shadow">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <img class="d-block w-100" src="https://picsum.photos/150?image=641" alt="" />
                             </div>
-                        </section>
+                            <div class="col-sm-7">
+                                <div class="card-block">
+                                    <table class="table table-borderless">
+                                        <tr>
+                                            <td colspan="2" class="text-muted"> Cristofer Jaimez</td>
+                                        </tr>
+                                     
+                                    </table>
 
+                                    <a href="#" class=" text-decoration-none btn btn-outline-info btn-sm ml-4">ver mas... <i class="fa fa-eye"></i></a>
+                                </div>
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -113,7 +99,7 @@
                                     <h:panelGrid id="view" class="col-md-12">
 
                                         <div class="">
-                                           
+
 
                                             <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
                                                 <div class="alert alert-success" role="alert">

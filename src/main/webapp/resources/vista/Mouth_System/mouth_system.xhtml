@@ -27,28 +27,22 @@
 
             <div class="container-fluid">
                 <div class="row">
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-danger sidebar collapse">
                         <div class="sidebar-sticky pt-3">
 
                             <ul class="nav flex-column">
-
-
-
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link active" value="Tablero/Dashboard.xhtml" target="sm" >
-                                        <span data-feather="home"></span>
                                         <i class="fas fa-tachometer-alt"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
                                     </h:outputLink>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="Hc/historia_clinica.xhtml" target="sm">
-                                        <span data-feather="file"></span>
                                         <i class="fas fa-file-medical"></i> #{txt['ms.hc']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="Citas/citas.xhtml" target="sm">
-                                        <span data-feather="shopping-cart"></span>
                                         <i class="fa fa-calendar"></i> #{txt['ms.citas']}
                                     </a>
                                 </li>
@@ -101,6 +95,8 @@
                                         <i class="fas fa-sign-out-alt"></i> #{txt['ms.salir']}
                                     </a>
                                 </li>
+                                
+                               
                             </ul>
                         </div>
                     </nav>

@@ -8,6 +8,7 @@ package gaes5.mouth.system.maven.Controllers;
 import gaes5.mouth.system.maven.Models.Cita;
 import gaes5.mouth.system.maven.Services.CitaServices;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
@@ -47,6 +48,9 @@ public class CitasControllers implements Serializable {
         }
 
     }
+    
+    
+   
     
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     

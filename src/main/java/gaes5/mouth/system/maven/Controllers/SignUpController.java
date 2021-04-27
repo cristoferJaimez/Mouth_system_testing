@@ -27,8 +27,6 @@ public class SignUpController implements Serializable {
 
     @EJB
     private UsuarioServices usuarioServices;
-    
-    
 
     private Datos_Usuario usuario;
     private Datos_Usuario usuarios;
@@ -78,10 +76,19 @@ public class SignUpController implements Serializable {
 
         try {
             roles = usuarioServices.typeRols(id);
-            System.out.println( "roles ------------> "+roles);
+            System.out.println("roles ------------> " + roles);
             return roles;
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
+    public List<Usuario_rol> allRolsRegister() {
+        try {
+            roles = usuarioServices.allRolsRegister();
+            return roles;
+        } catch (Exception e) {
             return null;
         }
     }

@@ -19,6 +19,7 @@ public interface IUsuario_rol extends DAO<Usuario_rol, Integer >{
        
     
     List<Usuario_rol> typeRol(Integer id);
-
+    
+    List<Usuario_rol>allRolsRegister();
     
 }

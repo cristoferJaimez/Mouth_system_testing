@@ -41,6 +41,23 @@ public class Usuario_rolDAO_JPA extends GenericDAO<Usuario_rol, Integer> impleme
             return null;
         }
     }
+
+    @Override
+    public List<Usuario_rol> allRolsRegister() {
+        try {
+
+            String query = "SELECT * FROM datos_usuario"
+                    + " JOIN usuario_rol ON datos_usuario.id_usuario = usuario_rol.datos_usuario_id_usuario"
+                    + " JOIN tipo_usuario ON usuario_rol.tipo_usuario_id_tipo_usuario = tipo_usuario.id_tipo_usuario";
+            Query qt = em.createNativeQuery(query, Usuario_rol.class);
+            //System.out.println("Lista de roles: " + qt.getResultList());
+            List<Usuario_rol> lista = qt.getResultList();
+            //System.out.println( "usuarios rol "+lista);
+            return lista;
+        } catch (Exception e) {
+            return null;
+        } 
+    }
     
     
     
