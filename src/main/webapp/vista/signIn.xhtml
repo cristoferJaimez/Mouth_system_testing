@@ -25,9 +25,9 @@
             <ui:include src="../complementos/navBar.xhtml"  class="mb-5"/>
 
             <div class="mt-5">
-                <c:if test="#{signInController.msm.equalsIgnoreCase('credencialesBad')}" >
+                <c:if test="#{URLControlls.msm.equalsIgnoreCase('credencialesBad')}" >
                     <div class="alert alert-danger mx-auto text-center" role="alert">
-                        Credenciales perdidas!!!
+                        Credenciales perdidas!!! por favor inicie de nuevo sesion!!
                     </div>
                 </c:if>
 

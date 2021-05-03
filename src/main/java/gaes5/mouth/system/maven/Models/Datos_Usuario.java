@@ -22,6 +22,7 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "datos_usuario")
 @NamedQueries(value = {
+    @NamedQuery(name = "Datos_Usuario.getAll",query = "SELECT obj FROM Datos_Usuario obj"),
     @NamedQuery(name = "Datos_Usuario.Login", query = "SELECT obj From Datos_Usuario obj WHERE obj.email = :correo  and   obj.pw = :pw"),
     @NamedQuery(name=  "Datos_usuario.ConsultExistence" , query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :numDoc OR obj.email = :email"),
     @NamedQuery(name = "Datos_Usuario.Search", query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :dato")

@@ -12,7 +12,7 @@
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
-            <title>.:Mouth System:. </title>
+            <title>.:Mouth System:.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <!--css-->  
@@ -21,16 +21,32 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloader.css" />
+
             <!--<h:outputStylesheet library="css" name="iframe.css" />-->
+
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css"/>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
         </h:head>
         <h:body id="body">
+            
+        
+             <div class="contenedor_loader">
+                <div class="loader">
+
+                </div>
+            </div>
 
             <ui:include src="../../complementos/navBarSystem.xhtml" />
 
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
                 #{URLControlls.signOut()}
             </c:if>
+
+                   <!--loader page-->
+
+           
 
 
             <div class="container-fluid">
@@ -52,25 +68,32 @@
                                                     <i class=" fa fa-user-shield  fa-2x text-info ml-1 mr-2 "></i>  #{signInController.usuarios.email}                                                                                                                 
                                                 </a>
                                             </li>
-                                           <div style="width: 200px; border-bottom: 1px solid black;"></div>
+                                            <div class="w-100" style="border-bottom: 1px solid black;"></div>
+
                                             <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
 
 
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
+                                                        <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}" class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
+
+
+
                                                 </c:if>
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                        <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}"  class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm"  style="font-size: 0.7em;">
+                                                            <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                  
                                                         </a>
                                                     </li>
+
+
+
                                                 </c:if>
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
@@ -83,7 +106,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -100,21 +123,19 @@
                                     </div>
                                 </div>
 
+
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
-                                        <span data-feather="home"></span>
                                         <i class="text-muted fas fa-tachometer-alt mr-2"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
                                     </h:outputLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
-                                        <span data-feather="file"></span>
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
                                         <i class="text-muted fas fa-file-medical mr-2"></i> #{txt['ms.hc']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="Citas/citas.xhtml" target="sm">
-                                        <span data-feather="shopping-cart"></span>
                                         <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']} <span class="badge badge-danger">3 <i class="fa fa-bell"></i> </span>
                                     </a>
                                 </li>
@@ -124,27 +145,23 @@
                             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                 <span><i class="fas fa-toolbox mr-3"></i> #{txt['ms.administracion']}</span>
                                 <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                                    <span data-feather="plus-circle"></span>
                                 </a>
                             </h6>
                             <ul class="nav flex-column mb-2">
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
-                                        <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']}
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
+                                        <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']} 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
-                                        <span data-feather="users"></span>
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
                                         <i class="text-muted fa fa-box mr-2"></i> #{txt['ms.inventario']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
+                                    <a class=" disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
                                         <i class="text-muted fas fa-file-image mr-2"></i> #{txt['ms.catalogo']}
                                     </a>
                                 </li>
@@ -155,9 +172,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="User/cuenta.xhtml" target="sm">
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="User/ListadoUsuarios.xhtml" target="sm">
                                         <span data-feather="file-text"></span>
-                                        <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}
+                                        <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}s
                                     </a>
                                 </li>
 
@@ -191,13 +208,13 @@
 
             <script type="text/javascript">
                 $(document).ready(function () {
-                $('#estado').hide();
-                        $('#rowUp').hiden();
-                }
+                    $('#listaUsuarios').DataTable();
+                });
             </script>
             <script src="sweetalert2.all.min.js"></script>
             <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
             <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+            <h:outputScript library="js" name="loader.js"/> 
 
         </h:body>
     </f:view>

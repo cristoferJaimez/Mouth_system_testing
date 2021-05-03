@@ -5,6 +5,7 @@ import gaes5.mouth.system.maven.Models.Usuario_rol;
 import gaes5.mouth.system.maven.Services.UsuarioServices;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Iterator;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 //import javax.enterprise.context.RequestScoped;
@@ -87,6 +88,8 @@ public class SignUpController implements Serializable {
     public List<Usuario_rol> allRolsRegister() {
         try {
             roles = usuarioServices.allRolsRegister();
+
+
             return roles;
         } catch (Exception e) {
             return null;

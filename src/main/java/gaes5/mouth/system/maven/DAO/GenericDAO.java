@@ -51,7 +51,7 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
     @Override
     public List<T> obtenerTodos() {
-        TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() + ".getAll", className);
+        TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() +".getAll", className);
         return tq.getResultList();  
     }
 
@@ -61,8 +61,8 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     }
 
     @Override
-    public void actualizar(T obj) {
-        crear(obj);
+    public T actualizar(T obj) {
+       return crear(obj);
     }
 
 }

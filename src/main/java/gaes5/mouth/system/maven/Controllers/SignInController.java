@@ -23,6 +23,8 @@ public class SignInController implements Serializable {
     private Datos_Usuario usuario;
     private Datos_Usuario usuarios;
 
+    private Datos_Usuario editUser = new Datos_Usuario();
+
     //variables de entorno
     private String msm;
     private String email;
@@ -62,8 +64,18 @@ public class SignInController implements Serializable {
             msm = "msmErrorLogin03";
         }
     }
-    
-    
+
+//    editar usuario
+    public void updateUser() {
+        msm = "";
+        try {
+            usuarioServicios.actualizar(usuario);
+            msm = "updateUserOk";
+        } catch (Exception e) {
+            msm = "updateError";
+        }
+            msm = "problemQuery";
+    }
 
     public void closeSesion() {
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
@@ -77,6 +89,14 @@ public class SignInController implements Serializable {
 
     public void setUsuarioServicios(UsuarioServices usuarioServicios) {
         this.usuarioServicios = usuarioServicios;
+    }
+
+    public Datos_Usuario getEditUser() {
+        return editUser;
+    }
+
+    public void setEditUser(Datos_Usuario editUser) {
+        this.editUser = editUser;
     }
 
     public Datos_Usuario getUsuario() {

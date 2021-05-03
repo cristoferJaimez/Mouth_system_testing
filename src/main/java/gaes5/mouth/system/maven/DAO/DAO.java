@@ -32,6 +32,6 @@ public interface DAO<T, PK> {
     void eliminar(PK id);
 
     //plantilla :  Actualizar un elemento por ID
-    void actualizar(T obj);
+    T actualizar(T obj);
 
 }

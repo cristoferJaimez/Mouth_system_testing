@@ -19,8 +19,21 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloader.css" />
+
         </h:head>
         <h:body>
+
+
+            <!--loader page-->
+
+            <div class="contenedor_loader">
+                <div class="loader">
+                </div>
+
+            </div>
+
+
 
             <div class="d-flex  text-left flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <i class="img-thumbnail circle fas fa-users-cog fa-2x ml-3 mr-5"></i> <span class="lead mr-2">#{signInController.usuarios.priNom} </span> <span>#{signInController.usuarios.priApe} </span>
@@ -33,7 +46,11 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-12">
                         <div class="card shadow-lg "   >
-                            
+                  
+                            <h:commandButton class="btn btn-success btn-sm col-3 mt-1 ml-1" value="Editar">
+                                
+                            </h:commandButton>
+
                             <div class="card-body mx-auto">
                                 <i class="mt-3 m-3  fa fa-user fa fa-10x img-thumbnail"></i>
                                 <table class="table table-sm table-responsive-sm" style="font-size: 0.55em;">
@@ -86,7 +103,7 @@
                     </div>
 
                     <div class="col-md-8 col-sm-12">
-                                           
+
                     </div>
 
                 </div>
@@ -94,9 +111,12 @@
 
 
             <!--js--> 
+            <h:outputScript library="js" name="jquery-1.7.js"/> 
+
             <h:outputScript library="js" name="all.min.js"/> 
             <h:outputScript library="js" name="bootstrap.js"/> 
-            <h:outputScript library="js" name="jquery-1.7.js"/> 
+            <h:outputScript library="js" name="loader.js"/> 
+
         </h:body>
     </f:view>
 </html>

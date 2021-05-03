@@ -64,4 +64,9 @@ public class UsuarioServices {
         return  iusuario_rol.allRolsRegister();
     }
   
+    
+//    editar usuario
+    public Datos_Usuario updateUser(Datos_Usuario usuario){
+        return ilogindao.actualizar(usuario);
+    }
 }
