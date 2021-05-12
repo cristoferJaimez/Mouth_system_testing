@@ -3,6 +3,7 @@ gaes5/mouth/system/maven/Models/Inventario.class
 gaes5/mouth/system/maven/Config/Test.class
 gaes5/mouth/system/maven/Models/Catalogo_Servicios.class
 gaes5/mouth/system/maven/Models/Localidad_Usuario_.class
+gaes5/mouth/system/maven/Services/PromocionesServices.class
 gaes5/mouth/system/maven/Models/Fidelizacion.class
 gaes5/mouth/system/maven/DAO/JPA/CitaDAO_JPA.class
 gaes5/mouth/system/maven/Models/Servicios_.class
@@ -11,6 +12,8 @@ gaes5/mouth/system/maven/Controllers/URLControlls.class
 gaes5/mouth/system/maven/Models/Detalle_Fidelizacion.class
 gaes5/mouth/system/maven/Models/Categoria_.class
 gaes5/mouth/system/maven/Models/Datos_Usuario.class
+gaes5/mouth/system/maven/Controllers/PromocionesControllers.class
+gaes5/mouth/system/maven/DAO/Interface/IPromocionesDAO.class
 gaes5/mouth/system/maven/Models/Productos_.class
 gaes5/mouth/system/maven/ChartistJSF/ChartBarDasboard.class
 gaes5/mouth/system/maven/Enums/ConexionDBEnums.class
@@ -35,6 +38,7 @@ gaes5/mouth/system/maven/Models/Direccion_Usuario.class
 gaes5/mouth/system/maven/Models/Detalle_Carta_.class
 gaes5/mouth/system/maven/DAO/Interface/IUsuario_rol.class
 gaes5/mouth/system/maven/Models/Detalle_Fidelizacion_.class
+gaes5/mouth/system/maven/Models/Promociones.class
 gaes5/mouth/system/maven/Mail/Java_Mail.class
 gaes5/mouth/system/maven/Controllers/CitasControllers.class
 gaes5/mouth/system/maven/Models/Catalogo_Servicios_.class
@@ -44,6 +48,7 @@ gaes5/mouth/system/maven/Models/Detalle_Carta.class
 gaes5/mouth/system/maven/Models/Tipo_Usuario.class
 gaes5/mouth/system/maven/Models/Usuario_rol_.class
 gaes5/mouth/system/maven/Models/Agenda_.class
+gaes5/mouth/system/maven/Models/Promociones_.class
 gaes5/mouth/system/maven/Models/Estado_Cita.class
 gaes5/mouth/system/maven/Mail/Java_Mail$1.class
 gaes5/mouth/system/maven/DAO/GenericDAO.class
@@ -61,7 +66,9 @@ gaes5/mouth/system/maven/Models/Servicios.class
 gaes5/mouth/system/maven/Models/Region_.class
 gaes5/mouth/system/maven/Models/Region.class
 gaes5/mouth/system/maven/Models/Tipo_Usuario_.class
+gaes5/mouth/system/maven/DAO/JPA/PromocionesDAO_JPA.class
 gaes5/mouth/system/maven/Models/Agenda.class
+gaes5/mouth/system/maven/Controllers/pictureController.class
 gaes5/mouth/system/maven/Controllers/SignInController.class
 gaes5/mouth/system/maven/Models/Tratamiento_.class
 gaes5/mouth/system/maven/Controllers/ListasControlls.class

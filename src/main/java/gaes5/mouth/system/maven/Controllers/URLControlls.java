@@ -26,29 +26,44 @@ public class URLControlls implements Serializable {
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.getExternalContext().redirect("../signIn.xhtml");
             msm = "credencialesBad";
-            
+
         } catch (IOException e) {
             msm = "credencialesBad";
             System.out.println(e.getMessage());
         }
     }
-    
-    
+
     public void signOutUsers() {
         msm = "";
         try {
             FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
             FacesContext fc = FacesContext.getCurrentInstance();
             fc.getExternalContext().redirect("../mouth_system.xhtml");
-      
+
             msm = "credencialesBad";
-            
+
         } catch (IOException e) {
-            
+
             System.out.println(e.getMessage());
         }
     }
-    
+
+    public void pacientes() {
+        msm = "";
+        try {
+
+            FacesContext fc = FacesContext.getCurrentInstance();
+            fc.getExternalContext().redirect("Paciente/index.xhtml ");
+
+            msm = "credencialesBad";
+
+        } catch (IOException e) {
+
+            System.out.println(e.getMessage());
+        }
+    }
+
+   
 
     public String getMsm() {
         return msm;

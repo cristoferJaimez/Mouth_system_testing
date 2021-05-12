@@ -12,7 +12,7 @@
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
-            <title>.:Mouth System:.</title>
+            <title>.:Mouth System | Pacientes</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <!--css-->  
@@ -21,16 +21,28 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloaderP.css" />
+
             <!--<h:outputStylesheet library="css" name="iframe.css" />-->
 
         </h:head>
         <h:body id="body">
 
-            <ui:include src="../../../complementos/navBarSystem.xhtml" />
+
+            <div class="contenedor_loader">
+
+                <div class="loader"></div>
+            </div>
+
+
+            <ui:include src="../../../complementos/navBarSystemP.xhtml" />
 
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
+                
                 #{URLControlls.signOutUsers()}
             </c:if>
+
+
 
 
 
@@ -54,7 +66,7 @@
                                                 </a>
                                             </li>
                                             <div class="w-100" style="border-bottom: 1px solid black;"></div>
-                                            
+
                                             <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
 
 
@@ -107,23 +119,23 @@
 
                                     </div>
                                 </div>
-                              
+
 
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
                                         <i class="text-muted fas fa-tachometer-alt mr-2"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
                                     </h:outputLink>
                                 </li>
-                              
+
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="Citas/citas.xhtml" target="sm">
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="../Citas/AgendarPaciente.xhtml" target="sm">
                                         <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']} <span class="badge badge-danger">3 <i class="fa fa-bell"></i> </span>
                                     </a>
                                 </li>
 
                             </ul>
 
-                           
+
                             <ul class="nav flex-column mb-2">
 
 
@@ -159,12 +171,12 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                 $('#estado').hide();
-               
                 }
             </script>
             <script src="sweetalert2.all.min.js"></script>
             <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
             <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+            <h:outputScript library="js" name="loader.js"/> 
 
         </h:body>
     </f:view>

@@ -21,16 +21,30 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloader.css" />
+
             <!--<h:outputStylesheet library="css" name="iframe.css" />-->
 
-        </h:head>
-        <h:body id="body">
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css"/>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
-            <ui:include src="../../complementos/navBarSystem.xhtml" />
+        </h:head>
+        <h:body id="body" >
+
+
+            <div class="contenedor_loader">
+
+                <div class="loader"></div>
+            </div>
+
+            <ui:include src="../../../complementos/navBarSystem.xhtml" />
 
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
-                #{URLControlls.signOut()}
+                #{URLControlls.signOutUsers()}
             </c:if>
+
+            <!--loader page-->
+
 
 
 
@@ -49,19 +63,19 @@
                                         <ul class="nav flex-column">
 
                                             <li class="nav-item ">
-                                                <a class="mx-auto   text-capitalize btn-block text-decoration-none btn btn-outline-secondary btn-sm" href="User/cuenta.xhtml" target="sm" style="font-size: 0.6em; border: none">
+                                                <a class="mx-auto   text-capitalize btn-block text-decoration-none btn btn-outline-secondary btn-sm" href="../User/cuenta.xhtml" target="sm" style="font-size: 0.6em; border: none">
                                                     <i class=" fa fa-user-shield  fa-2x text-info ml-1 mr-2 "></i>  #{signInController.usuarios.email}                                                                                                                 
                                                 </a>
                                             </li>
                                             <div class="w-100" style="border-bottom: 1px solid black;"></div>
-                                            
+
                                             <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
 
 
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
+                                                        <a  href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}" class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -72,8 +86,8 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                        <a  href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}"  class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm"  style="font-size: 0.7em;">
+                                                            <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                  
                                                         </a>
                                                     </li>
 
@@ -83,7 +97,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-user-nurse fa-2x text-info ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -91,7 +105,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="#" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -107,7 +121,11 @@
 
                                     </div>
                                 </div>
-                              
+
+
+
+
+
 
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
@@ -115,13 +133,22 @@
                                     </h:outputLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
                                         <i class="text-muted fas fa-file-medical mr-2"></i> #{txt['ms.hc']}
                                     </a>
                                 </li>
+                                
+                                 <c:set var="contador_A" value="${0}" />
+                                 
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="Citas/citas.xhtml" target="sm">
-                                        <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']} <span class="badge badge-danger">3 <i class="fa fa-bell"></i> </span>
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="../Citas/citas.xhtml" target="sm">
+                                        <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']}  
+                                        <c:forEach items="#{citasControllers.todasCitas()}" var="cita">
+                                            <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <c:set var="contador_A" class="badge-danger" value="${contador_A + 1}"  />
+                                            </c:if>
+                                        </c:forEach>    
+                                        <span class="badge badge-danger"> ${contador_A} <i class="ml-1 fa fa-bell"></i> </span> 
                                     </a>
                                 </li>
 
@@ -136,33 +163,30 @@
 
 
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
-                                        <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']}
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
+                                        <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']} 
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
-                                        <span data-feather="users"></span>
+                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
                                         <i class="text-muted fa fa-box mr-2"></i> #{txt['ms.inventario']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
+                                    <a class=" disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
                                         <i class="text-muted fas fa-file-image mr-2"></i> #{txt['ms.catalogo']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Fidelizacion/fidelizacion.xhtml" target="sm">
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="../Fidelizacion/fidelizacion.xhtml" target="sm">
                                         <span data-feather="file-text"></span>
                                         <i class="text-muted fas fa-star-half mr-2"></i> #{txt['ms.fidelizacion']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="User/cuenta.xhtml" target="sm">
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="../User/ListadoUsuarios.xhtml" target="sm">
                                         <span data-feather="file-text"></span>
-                                        <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}
+                                        <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}s
                                     </a>
                                 </li>
 
@@ -170,7 +194,7 @@
 
                                     <h:commandLink  value="#{txt['ms.salir']}" class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;">
                                         <i class="text-muted fas fa-sign-out-alt mr-2"></i>
-                                        <f:ajax event="click" render="body"  listener="#{URLControlls.signOut()}"></f:ajax>
+                                        <f:ajax event="click" render="body"  listener="#{URLControlls.signOutUsers()}"></f:ajax>
                                     </h:commandLink>
 
                                 </li>
@@ -183,7 +207,7 @@
                     </nav>
                     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 
-                        <iframe width="100%" height="800px"  name="sm" frameborder="0" src="Tablero/Dashboard.xhtml" class="" ></iframe>
+                        <iframe width="100%" height="800px"  name="sm" frameborder="0" src="../Tablero/Dashboard.xhtml" class="" ></iframe>
 
                     </main>
                 </div>
@@ -196,13 +220,13 @@
 
             <script type="text/javascript">
                 $(document).ready(function () {
-                $('#estado').hide();
-               
-                }
+                    $('#listaUsuarios').DataTable();
+                });
             </script>
             <script src="sweetalert2.all.min.js"></script>
             <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
             <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+            <h:outputScript library="js" name="loader.js"/> 
 
         </h:body>
     </f:view>

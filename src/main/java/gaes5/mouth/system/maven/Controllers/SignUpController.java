@@ -4,8 +4,8 @@ import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import gaes5.mouth.system.maven.Models.Usuario_rol;
 import gaes5.mouth.system.maven.Services.UsuarioServices;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 //import javax.enterprise.context.RequestScoped;
@@ -47,6 +47,7 @@ public class SignUpController implements Serializable {
     public void crear() {
         msm = "";
         try {
+//            System.out.println("datos del forma" +usuario);
             usuarioServices.crear(usuario);
             usuario = new Datos_Usuario();
             msm = "msm2";
@@ -77,7 +78,14 @@ public class SignUpController implements Serializable {
 
         try {
             roles = usuarioServices.typeRols(id);
-            System.out.println("roles ------------> " + roles);
+            
+            //ver los roles
+            for(Usuario_rol i : roles){
+              System.out.println("rol del usuario-->: " + i.getTipo_usuario_id_tipo_usuario().getCargo());
+            }
+            
+            
+            
             return roles;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -89,7 +97,7 @@ public class SignUpController implements Serializable {
         try {
             roles = usuarioServices.allRolsRegister();
 
-
+          
             return roles;
         } catch (Exception e) {
             return null;

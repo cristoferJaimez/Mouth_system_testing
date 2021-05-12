@@ -22,6 +22,7 @@ public class SignInController implements Serializable {
     private UsuarioServices usuarioServicios;
     private Datos_Usuario usuario;
     private Datos_Usuario usuarios;
+    private Datos_Usuario Editarusuarios = new Datos_Usuario();
 
     private Datos_Usuario editUser = new Datos_Usuario();
 
@@ -69,18 +70,24 @@ public class SignInController implements Serializable {
     public void updateUser() {
         msm = "";
         try {
-            usuarioServicios.actualizar(usuario);
+            usuarioServicios.actualizar(Editarusuarios);
             msm = "updateUserOk";
         } catch (Exception e) {
             msm = "updateError";
         }
-            msm = "problemQuery";
+        msm = "problemQuery";
     }
+    
+    
+    
 
-    public void closeSesion() {
-        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-
-    }
+    
+    
+    
+    
+    
+    
+    
 
     //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public UsuarioServices getUsuarioServicios() {
@@ -139,4 +146,15 @@ public class SignInController implements Serializable {
         this.pw = pw;
     }
 //</editor-fold>
+
+    public Datos_Usuario getEditarusuarios() {
+        return Editarusuarios;
+    }
+
+    public void setEditarusuarios(Datos_Usuario Editarusuarios) {
+        this.Editarusuarios = Editarusuarios;
+    }
+    
+    
+    
 }

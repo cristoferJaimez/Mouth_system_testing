@@ -31,10 +31,24 @@
 
 
 .loader{
-    color: orange;
+    color: green;
     font-size: 7px;
     position: relative;
     animation-delay: -0.16s; 
+}
+
+.titleLoad{
+    color: green;
+    font-size: 20px;
+    position: relative;
+    animation-delay: -0.16s;     
+}
+
+.titleLoad:before,
+.titleLoad:after{
+    content: '';
+    position: absolute;
+    top: 10;
 }
 
 
@@ -64,7 +78,7 @@
         box-shadow :0 2.5em 0 -1.3em;
     } 
     40%{
-         box-shadow: 0 2.5em 0 0;
+        box-shadow: 0 2.5em 0 0;
     }
 } 
 

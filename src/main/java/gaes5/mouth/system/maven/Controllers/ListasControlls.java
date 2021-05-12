@@ -44,12 +44,16 @@ public class ListasControlls implements Serializable {
             msm = "listaBad";
             return null;
         }
-      
+
+    }
+
+    public void getIdUser(int id) {
+        try {
+            System.out.println("id : " + id);
+//            usuarioServicios.obtenerId(id);
+        } catch (Exception e) {
+            System.out.println("no consulto datos");
         }
-    
-    
-    public void userId(int   id ){
-        usuarioServicios.obtenerId(id);
     }
 
     //<editor-fold defaultstate="collapsed" desc="Setter and Getter">

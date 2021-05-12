@@ -21,10 +21,21 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloaderA.css" />
+
             <!--<h:outputStylesheet library="css" name="iframe.css" />-->
 
         </h:head>
         <h:body id="body">
+
+
+            <div class="contenedor_loader">
+
+                <div class="loader"></div>
+            </div>
+
+
+
 
             <ui:include src="../../complementos/navBarSystem.xhtml" />
 
@@ -54,14 +65,14 @@
                                                 </a>
                                             </li>
                                             <div class="w-100" style="border-bottom: 1px solid black;"></div>
-                                            
+
                                             <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
 
 
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -72,7 +83,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
                                                     <li class="nav-item ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -83,7 +94,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="#" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-user-nurse fa-2x text-info ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -91,7 +102,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="../#{rol.tipo_usuario_id_tipo_usuario.cargo}" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -107,7 +118,7 @@
 
                                     </div>
                                 </div>
-                              
+
 
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
@@ -197,12 +208,12 @@
             <script type="text/javascript">
                 $(document).ready(function () {
                 $('#estado').hide();
-               
                 }
             </script>
             <script src="sweetalert2.all.min.js"></script>
             <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
             <script src="//cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+            <h:outputScript library="js" name="loader.js"/> 
 
         </h:body>
     </f:view>

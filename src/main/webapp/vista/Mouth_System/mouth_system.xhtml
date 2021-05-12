@@ -41,6 +41,9 @@
             <ui:include src="../../complementos/navBarSystem.xhtml" />
 
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
+                <script type="text/javascript">
+                    alert("saliendo del sistema");
+                </script>
                 #{URLControlls.signOut()}
             </c:if>
 
@@ -78,6 +81,7 @@
                                                     <li class="nav-item ">
                                                         <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}" class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                            #{URLControlls.pacientes()}
                                                         </a>
                                                     </li>
 
@@ -106,7 +110,7 @@
 
                                                 <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
                                                     <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                        <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="#" style="font-size: 0.7em;">
                                                             <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
                                                         </a>
                                                     </li>
@@ -123,6 +127,10 @@
                                     </div>
                                 </div>
 
+                                
+                                
+                                
+                                
 
                                 <li class="nav-item">
                                     <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >

@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,6 +21,9 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "cita")
+@NamedQueries(value = {
+    @NamedQuery(name = "Cita.getAll",query = "SELECT obj FROM Cita obj ORDER BY obj.fecha_hora ASC")
+})  
 public class Cita implements Serializable {
 
     @Id
@@ -26,11 +31,16 @@ public class Cita implements Serializable {
     @Column(name = "id_cita")
     private Integer id;
 
+    @ManyToOne
+    @JoinColumn( name = "id_usuario")
+    private Datos_Usuario id_usuario;
+    
+    
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_hora")
     private Date fecha_hora;
 
-    @Column
+    @Column(name = "descripcion")
     private String descripcion;
 
     @ManyToOne
@@ -41,6 +51,20 @@ public class Cita implements Serializable {
     @JoinColumn(name = "id_estado_cita")
     private Estado_Cita id_estado_cita;
 
+    public Datos_Usuario getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(Datos_Usuario id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
+ 
+    
+    
+
+    
+    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public Integer getId() {
         return id;
@@ -49,6 +73,10 @@ public class Cita implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+  
+
+  
 
     public Date getFecha_hora() {
         return fecha_hora;

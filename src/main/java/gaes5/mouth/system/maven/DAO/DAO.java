@@ -23,7 +23,7 @@ public interface DAO<T, PK> {
     T crear(T obj);
 
     //plantilla :  obtener un elemento por ID
-    T obtenerId(PK id);
+     T obtenerId(PK id);
 
     //plantilla :  obtener todos los elemento
     List<T> obtenerTodos();

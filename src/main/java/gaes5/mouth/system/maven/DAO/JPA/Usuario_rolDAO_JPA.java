@@ -6,9 +6,7 @@
 package gaes5.mouth.system.maven.DAO.JPA;
 
 import gaes5.mouth.system.maven.DAO.GenericDAO;
-import gaes5.mouth.system.maven.DAO.Interface.ILoginDAO;
 import gaes5.mouth.system.maven.DAO.Interface.IUsuario_rol;
-import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import gaes5.mouth.system.maven.Models.Usuario_rol;
 import java.util.List;
 import javax.ejb.Stateless;

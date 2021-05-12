@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title></title>
+        <!--css-->  
+
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet library="css" name="all.css" />
+
+    </h:head>
+    <h:body style="overflow-x: hidden;">
+        <header>
+            <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow fixed-top">
+                <a class="navbar-brand bg-dark  col-md-3 col-lg-2 mr-0 px-3 lead text-uppercase" href="#">
+                    <h:graphicImage class="img-thumbnail  bg-light" width="50px" height="50px" library="img" name="logo_A.jpeg" ></h:graphicImage>
+                    Mouth System</a>
+                <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <input class="form-control  col-sm-12 col-md-8 form-control-dark w-100" type="search" placeholder="Buscar Cita" aria-label="Search" />
+
+
+
+                <ul class="navbar-nav col-12 mr-auto">
+
+
+                    <li class="nav-item text-nowrap badge-dark small col-sm-12 ">
+
+                        <h:form class="">
+                            <h:panelGrid columns="2" class="btn" style="color: #9a9da0">
+                                <div class="input-group-prepend">
+                                    <i class="fa fa-language fa-lg mr-2 bg-dark"></i>
+                                </div>
+                                <div>
+                                    <h:selectOneMenu
+                                        style="font-size: 0.8em;"
+                                        class="custom-select-sm"
+                                        value="#{internazionalizacionBean.localidad}"
+                                        onchange="submit()"
+                                        valueChangeListener="#{internazionalizacionBean.cambiarIdioma}">
+                                        <f:selectItems value="#{internazionalizacionBean.listaPaises}" />
+                                    </h:selectOneMenu>  
+                                </div>  
+                            </h:panelGrid>
+                        </h:form>
+                    </li>
+
+                </ul>
+
+
+            </nav>
+        </header>
+
+
+        <!--js--> 
+        <h:outputScript library="js" name="jquery-1.7.js"/> 
+        <h:outputScript library="js" name="all.min.js"/> 
+        <h:outputScript library="js" name="bootstrap.js"/> 
+       
+    </h:body>
+</html>
+
