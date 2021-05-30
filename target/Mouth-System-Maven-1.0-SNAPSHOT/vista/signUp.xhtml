@@ -11,7 +11,7 @@
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
-            <title>Sign Up</title>
+            <title>#{txt['titulo.registro']}</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <!--css-->  
@@ -89,7 +89,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="segNom" class="lead text-muted">#{txt['signUp.segNom']}</h:outputLabel>
-                                            <h:inputText id="segNom"  pt:type="text" value="#{signUpController.usuario.segNom}" required="true" requiredMessage="Ingrese Segundo Nombre" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:inputText id="segNom"  pt:type="text" value="#{signUpController.usuario.segNom}" required="true" requiredMessage="Ingrese Segundo Nombre" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre2']}" label="Alerta"/>
                                             <h:message for="segNom" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="priApe" class="lead text-muted">#{txt['signUp.priApe']}</h:outputLabel>
-                                            <h:inputText id="priApe"  pt:type="text" value="#{signUpController.usuario.priApe}" required="true" requiredMessage="Ingrese Primer Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:inputText id="priApe"  pt:type="text" value="#{signUpController.usuario.priApe}" required="true" requiredMessage="Ingrese Primer Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderApellido']}" label="Alerta"/>
                                             <h:message for="priApe" class="card text-center mt-2 bg-danger" style=" color:#fff;"  ><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
@@ -109,7 +109,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="segApe" class="lead text-muted">#{txt['signUp.segApe']}</h:outputLabel>
-                                            <h:inputText id="segApe"  pt:type="text" value="#{signUpController.usuario.segApe}" required="true"  requiredMessage="Ingrese Segundo Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:inputText id="segApe"  pt:type="text" value="#{signUpController.usuario.segApe}" required="true"  requiredMessage="Ingrese Segundo Apellido" class="form-control"  a:placeholder="#{txt['sign.placeholderApellido2']}" label="Alerta"/>
                                             <h:message for="segApe" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <label for="tipoDoc" class="lead text-muted">Tipo Documento</label>
-                                            <h:selectOneMenu id="tipoDoc" value="#{signUpController.usuario.tipoDoc}" required="true" requiredMessage="Seleccione un tipo de Documento" class="form-control" label="Alerta">
+                                            <h:selectOneMenu id="tipoDoc" value="#{signUpController.usuario.tipoDoc}" required="true" requiredMessage="Seleccione un tipo de Documento" a:placeholder="o" class="form-control" label="Alerta">
                                                 <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                                 <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad"></f:selectItem>
                                                 <f:selectItem itemLabel="Cedula Ciudadania" itemValue="Cedula Ciudadania"></f:selectItem>
@@ -155,7 +155,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel  for="numDoc" class="lead text-muted">#{txt['signUp.numDoc']}</h:outputLabel>
-                                            <h:inputText id="numDoc"  pt:type="number" value="#{signUpController.usuario.numDoc}" required="true" requiredMessage="Ingrese Número de Documento" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:inputText id="numDoc"  pt:type="number" value="#{signUpController.usuario.numDoc}" required="true" requiredMessage="Ingrese Número de Documento" class="form-control"  a:placeholder="#{txt['sign.placeholderDocumento']}" label="Alerta"/>
                                             <h:message for="numDoc" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
@@ -164,7 +164,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="fechaCita" class="lead text-muted">  #{txt['signUp.fechaNac'] }</h:outputLabel>
-                                            <h:inputText id="fechaCita"  pt:type="date" value="#{signUpController.usuario.fechaNac}" converter="#{null}" required="true" requiredMessage="Ingrese Fecha de Nacimiento" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta">
+                                            <h:inputText id="fechaCita"  pt:type="date" value="#{signUpController.usuario.fechaNac}" converter="#{null}" required="true" requiredMessage="Ingrese Fecha de Nacimiento" class="form-control"  a:placeholder="#{txt['sign.placeholderCelular']}" label="Alerta">
                                                 <f:convertDateTime dateStyle="full" pattern="yyyy-mm-dd"/>  
                                             </h:inputText>
                                             <h:message for="fechaCita" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
@@ -180,7 +180,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="movil" class="lead text-muted">#{txt['signUp.movil']}</h:outputLabel>
-                                            <h:inputText id="movil"  pt:type="number" value="#{signUpController.usuario.movil}" required="true" requiredMessage="Ingrese Número Celular" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Alerta"/>
+                                            <h:inputText id="movil"  pt:type="number" value="#{signUpController.usuario.movil}" required="true" requiredMessage="Ingrese Número Celular" class="form-control"  a:placeholder="#{txt['sign.placeholderCelular']}" label="Alerta"/>
                                             <h:message for="movil" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
                                         </div>
 
@@ -188,7 +188,7 @@
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
                                             <h:outputLabel for="telefono" class="lead text-muted">#{txt['signUp.telefono']}</h:outputLabel>
-                                            <h:inputText id="telefono"  pt:type="number" value="#{signUpController.usuario.telefono}" required="true" requiredMessage="Ingrese Número Telefonico de Hogar" class="form-control"  a:placeholder="#{txt['sign.placeholderNombre']}" label="Email"/>
+                                            <h:inputText id="telefono"  pt:type="number" value="#{signUpController.usuario.telefono}" required="true" requiredMessage="Ingrese Número Telefonico de Hogar" class="form-control"  a:placeholder="#{txt['sign.placeholderTelefono']}" label="Email"/>
                                             <h:message for="telefono" class="card text-center mt-2 bg-danger" style=" color:#fff;"></h:message>
                                         </div>
                                     </div>

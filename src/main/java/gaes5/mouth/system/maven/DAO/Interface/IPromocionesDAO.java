@@ -19,6 +19,7 @@ import javax.ejb.Local;
 public interface IPromocionesDAO extends DAO<Promociones, Integer> {
 
         List<Promociones>allPromos();
+        void crearPromp( String titulo, String fecha_inicio, String fecha_fin, String descripcion );
 
         
 }

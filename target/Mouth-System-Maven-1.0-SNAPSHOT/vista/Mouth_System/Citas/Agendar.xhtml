@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" >
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -40,8 +41,8 @@
                     </button>
                 </div>
             </c:if>
-            
-             <c:if test="#{citasControllers.msm.equalsIgnoreCase('citaBad')}">
+
+            <c:if test="#{citasControllers.msm.equalsIgnoreCase('citaBad')}">
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>No te Preocupes!</strong> revisa la información intentalo de nuevo!.
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -52,9 +53,17 @@
 
 
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"><i class="fa fa-calendar"></i> Forma</h1>
+                <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1> 
                 <div class="btn-toolbar mb-2 mb-md-0">
-
+                    <div class="btn-group mr-2">
+                        <!--<button class="btn btn-outline-secondary btn-sm w-75" onclick="$('#list').hide(); $('#table').show();"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show(); $('#table').hide();"><i class="fa fa-list"></i></button>-->
+                        <a href="Agendar.xhtml"  class="btn btn-sm btn-success" >
+                            <i class="fa fa-plus"></i>
+                        </a>
+                        <a href="citas.xhtml"  class="btn btn-sm btn-outline-info "  >
+                            <i class="fa fa-calendar"></i>
+                        </a>
+                    </div>
 
 
                 </div>
@@ -65,92 +74,101 @@
 
 
 
-                    <h:form  id="formaCitas" class="col-md-6 col-sm-12 mx-auto">
+                    <div class="card shadow mx-auto col-md-6 mt-5">
+                        <div class="card-body">
+                            <h:form  id="formaCitas" class="col-md-12 col-sm-12 mx-auto">
 
 
 
 
-                        <h:outputLabel for="numDoc"  class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
-                        <h:inputText  required="true" id="numDoc"   value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
-                            <f:ajax event="keyup" render="view"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
-                        </h:inputText>
-
-
-                        <h:panelGrid id="view" class="col-md-12">
-
-                            <div class="">
-
-
-                                <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
-                                    <div class="alert alert-success" role="alert">
-
-
-
-
-                                        Paciente Encontrado!. <strong> #{searchPatientControllers.usuario.priNom}  #{searchPatientControllers.usuario.segNom}  #{searchPatientControllers.usuario.priApe}  #{searchPatientControllers.usuario.segApe}</strong>
-                                        <!--<h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}"   class="bg-white" style="border: none; color: #fff;" disabled="true"></h:inputText>-->
-                                        <h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}" class="form-control d-none"  />
-                                        <script type="text/javascript">
-                                            document.getElementById("formaCitas:idUsu").value = #{searchPatientControllers.usuario.id};
-                                        </script>
-
-                                    </div>
-                                </c:if>
-
-
-
-
-                                <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
-                                    <div class="alert alert-warning" role="alert">
-                                        Usuario no Encontrado  
-                                    </div>
-                                </c:if>
-
-                            </div>
-
-                        </h:panelGrid>
-
-
-
-
-
-
-
-
-                        <div class="col-sm-12 col-md-12">
-                            <div class="form-group input-group-sm">
-                                <h:outputLabel for="descripcion" class="lead text-muted">Descripcion de la Cita</h:outputLabel>
-                                <h:inputText id="descripcion"  pt:type="text" value="#{citasControllers.descripcion}"  required="true" requiredMessage="Ingrese descripcion" class="form-control"   label="Alerta"/>
-                                <h:message for="descripcion" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="col-sm-12 col-md-12">
-                            <div class="form-group input-group-sm">
-                                <h:outputLabel for="fecha" class="lead text-muted">Fecha y hora</h:outputLabel>
-                                <h:inputText id="fecha"  pt:type="datetime-local"   value="#{citasControllers.fecha}" converter="#{null}" required="true" requiredMessage="Ingrese descripcion" class="form-control"   label="Alerta">
-                                    <!--<f:convertDateTime dateStyle="full" pattern="yyyy-mm-dd"/>-->  
+                                <h:outputLabel for="numDoc"  class="lead text-muted"><i class="fa fa-users fa-1x"></i> Buscar Paciente</h:outputLabel>
+                                <h:inputText  required="true" id="numDoc"   value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
+                                    <f:ajax event="keyup" render="view"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
                                 </h:inputText>
-                                <h:message for="fecha" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
 
-                            </div>
+
+                                <h:panelGrid id="view" class="col-md-12">
+
+                                    <div class="">
+
+
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
+                                            <div class="alert alert-success" role="alert">
+
+
+
+
+                                                Paciente Encontrado!. <strong> #{searchPatientControllers.usuario.priNom}  #{searchPatientControllers.usuario.segNom}  #{searchPatientControllers.usuario.priApe}  #{searchPatientControllers.usuario.segApe}</strong>
+                                                <!--<h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}"   class="bg-white" style="border: none; color: #fff;" disabled="true"></h:inputText>-->
+                                                <h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}" class="form-control d-none"  />
+                                                <script type="text/javascript">
+                                            document.getElementById("formaCitas:idUsu").value = #{searchPatientControllers.usuario.id};
+                                                </script>
+
+                                            </div>
+                                        </c:if>
+
+
+
+
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
+                                            <div class="alert alert-warning" role="alert">
+                                                Usuario no Encontrado  
+                                            </div>
+                                        </c:if>
+
+                                    </div>
+
+                                </h:panelGrid>
+
+
+
+
+
+
+
+
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group input-group-sm">
+                                        <h:outputLabel for="descripcion" class="lead text-muted">Descripcion de la Cita</h:outputLabel>
+                                        <h:inputText id="descripcion"  pt:type="text" value="#{citasControllers.descripcion}"  required="true" requiredMessage="Ingrese descripcion" class="form-control"   label="Alerta"/>
+                                        <h:message for="descripcion" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+                                    </div>
+                                </div>
+
+
+
+
+
+                                <div class="col-sm-12 col-md-12">
+                                    <div class="form-group input-group-sm">
+                                        <h:outputLabel for="fecha" class="lead text-muted">Fecha y hora</h:outputLabel>
+                                        <h:inputText id="fecha"  pt:type="datetime-local"   value="#{citasControllers.fecha}" converter="#{null}" required="true" requiredMessage="Ingrese descripcion" class="form-control"   label="Alerta">
+                                            <f:ajax event="keyup" render="viewFecha"></f:ajax>
+                                        </h:inputText>
+                                        <h:message for="fecha" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
+
+                                    </div>
+                                </div>
+
+                                <h:outputLabel id="viewFecha"> 
+                                    
+                                    <!--<ui:fragment  rendered=""></ui:fragment>-->
+                                    
+                                </h:outputLabel>
+
+
+
+                                <h:commandButton action="#{citasControllers.crear()}"  onclick="document.getElementById('sm').contentWindow.location.reload(true);"  class="mt-2 btn btn-success btn-block" value="Guardar">
+                                    <!--<f:ajax event="click" render="forma_"></f:ajax>-->
+                                </h:commandButton>
+
+
+
+
+                            </h:form>
                         </div>
-
-
-
-
-                        <h:commandButton action="#{citasControllers.crear()}"  onclick="document.getElementById('sm').contentWindow.location.reload(true);"  class="mt-2 btn btn-success btn-block" value="Guardar">
-                            <!--<f:ajax event="click" render="forma_"></f:ajax>-->
-                        </h:commandButton>
-
-
-
-
-                    </h:form>
+                    </div>
 
 
 

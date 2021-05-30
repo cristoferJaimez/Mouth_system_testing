@@ -19,6 +19,9 @@ public class PromocionesServices {
         return  ipromocionesDao.crear(promo);
     }
 
+    public void crearPromo( String titulo, String fecha_inicio, String fecha_fin, String descripcion){
+        ipromocionesDao.crearPromp( titulo, fecha_inicio, fecha_fin, descripcion);
+    }
     
    
 }

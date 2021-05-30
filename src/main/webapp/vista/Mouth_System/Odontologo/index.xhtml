@@ -12,7 +12,7 @@
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
-            <title>.:Mouth System:.</title>
+            <title>.:Mouth System:.|.: Odontologo :.</title>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
             <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <!--css-->  
@@ -35,15 +35,14 @@
             </div>
 
 
-            <ui:include src="../../../complementos/navBarSystem.xhtml" />
-
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
                 #{URLControlls.signOutUsers()}
             </c:if>
 
 
-
-            <div class="container-fluid">
+            <c:if class="mt-5" test="#{signInController.usuarios.email != null}">
+                <ui:include src="../../../complementos/navBarSystem.xhtml" />
+                <div class="container-fluid">
                 <div class="row">
                     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse fixed-top">
                         <div class="sidebar-sticky pt-3">
@@ -118,21 +117,21 @@
 
 
                                 <li class="nav-item">
-                                    <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
-                                        <i class="text-muted fas fa-tachometer-alt mr-2"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
+                                    <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left " style="border: none;"  value="../Tablero/Dashboard.xhtml" target="sm" >
+                                        <i class="text-muted fas fa-tachometer-alt mr-2 disabled"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
                                     </h:outputLink>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
-                                        <i class="text-muted fas fa-file-medical mr-2"></i> #{txt['ms.hc']}
+                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left disabled" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
+                                        <i class="text-muted fas fa-file-medical mr-2 disabled"></i> #{txt['ms.hc']}
                                     </a>
                                 </li>
-                                 <c:set var="contador_A" value="${0}" />
-                                 
+                                <c:set var="contador_A" value="${0}" />
+
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="../Citas/citas.xhtml" target="sm">
                                         <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']}  
-                                        <c:forEach items="#{citasControllers.todasCitas()}" var="cita">
+                                        <c:forEach items="#{ListarCitaControllers.todasCitas()}" var="cita">
                                             <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
                                                 <c:set var="contador_A" class="badge-danger" value="${contador_A + 1}"  />
                                             </c:if>
@@ -155,20 +154,20 @@
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left disabled" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
                                         <span data-feather="users"></span>
-                                        <i class="text-muted fa fa-box mr-2"></i> #{txt['ms.inventario']}
+                                        <i class="text-muted fa fa-box mr-2 disabled"></i> #{txt['ms.inventario']}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left disabled" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
                                         <span data-feather="file-text"></span>
-                                        <i class="text-muted fas fa-file-image mr-2"></i> #{txt['ms.catalogo']}
+                                        <i class="text-muted fas fa-file-image mr-2 disabled"></i> #{txt['ms.catalogo']}
                                     </a>
                                 </li>
 
 
                                 <li class="nav-item">
 
-                                      <h:commandLink  value="#{txt['ms.salir']}"  class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;">
+                                    <h:commandLink  value="#{txt['ms.salir']}"  class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;">
                                         <i class="text-muted fas fa-sign-out-alt mr-2"></i>
                                         <f:ajax event="click" render="body"  listener="#{URLControlls.signOutUsers()}"></f:ajax>
                                     </h:commandLink>
@@ -194,6 +193,12 @@
             </div>
 
 
+            </c:if>
+
+
+
+
+            
             <script type="text/javascript">
                 $(document).ready(function () {
                 $('#estado').hide();

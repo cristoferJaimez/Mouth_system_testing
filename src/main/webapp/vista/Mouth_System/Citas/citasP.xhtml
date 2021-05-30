@@ -1,0 +1,484 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <f:view locale="#{internazionalizacionBean.localidad}">
+        <h:head>
+            <title>.:Mouth System:.</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!--css-->  
+            <h:outputStylesheet library="css" name="dashboard.css" />
+            <h:outputStylesheet library="css" name="bootstrap.css" />
+            <h:outputStylesheet library="css" name="bootstrap-grid.css" />
+            <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
+            <h:outputStylesheet library="css" name="all.css" />
+            <h:outputStylesheet library="css" name="preloader.css" />
+
+
+
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"/>
+            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css"/>
+
+
+        </h:head>
+        <h:body onload="$('#list').hide(); $('.citaPausada').hide()">
+
+            <!--loader page-->
+
+            <div class="contenedor_loader">
+                <div class="loader">
+                </div>
+
+            </div>
+
+
+
+            <!--Modales-->
+
+
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title badge badge-info" id="exampleModalLabel"> Informacion de Cita  <h:inputText disabled="true" id="identificador" class="btn btn-outline-light btn-sm w-25" style="border: none"></h:inputText>
+                                <h:inputText disabled="true" id="identificadorNombre" class="btn btn-outline-light btn-sm w-50" style="border: none"></h:inputText>
+                            </h2>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body"> 
+                            <h:form id="formaInfo">
+                                <div class="form-group d-none ">
+                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                    <h:inputText pt:type="text"  value="#{citasControllers.idE}"   class="form-control" id="recipient">
+                                    </h:inputText>
+                                </div>
+
+                                <div class="form-group d-none">
+                                    <label for="recipient-name"  class="col-form-label"></label>
+                                    <h:inputText pt:type="text"    class="form-control" id="doc" >
+                                    </h:inputText>
+                                </div> 
+                                <div class="form-group">
+                                    <h:selectOneMenu value="#{citasControllers.idC}" class="form-control text-center " id="estado">
+                                        <f:selectItem itemValue="1" itemLabel="Activa" />
+                                        <f:selectItem itemValue="3" itemLabel="Pausada" />
+                                    </h:selectOneMenu>
+                                </div>
+
+                                <div class="form-group">
+                                    <h:inputText pt:type="text" value="#{citasControllers.descripcion}"  required="true" requiredMessage="requerido"   class="form-control" id="descripcion">
+                                    </h:inputText>
+                                </div>
+                                <div class="form-group">
+                                    <h:outputText  class="text-uppercase badge badge-info" id="fecha" >
+                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a"  />
+                                    </h:outputText>
+                                    <h:inputText pt:type="datetime-local" converter="#{null}" value="#{citasControllers.fecha}" class="form-control "  required="true" requiredMessage="Debe expesificar el dia"></h:inputText>
+                                </div>
+
+
+
+                                <div class="modal-footer">
+                                    <h:commandButton action="#{citasControllers.actualizar()}" class="btn btn-outline-success btn-block btn-sm" value="Actualizar">
+                                        <!--<f:ajax event="click" listener="" render="newList"></f:ajax>-->
+                                    </h:commandButton>
+                                </div>
+                            </h:form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!--fin del modal-->
+
+
+
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1> 
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button class="btn btn-outline-success btn-sm" onclick="$('.citaPausada').hide('slow'); $('.citaActiva').show('slow');"><i class="fa fa-bell"></i></button>  <button class="btn btn-outline-warning btn-sm" onclick="$('.citaPausada').show('slow'); $('.citaActiva').hide('slow');"><i class="fa fa-bell-slash"></i></button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').hide('slow'); $('.cuadro').show('slow');"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show('slow'); $('.cuadro').hide('slow');"><i class="fa fa-list"></i></button>
+
+
+                        <a href="AgendarPaciente.xhtml"  class="btn btn-sm btn-success" >
+                            <i class="fa fa-calendar-check"></i>
+                        </a>
+                        <a href="Agenda.xhtml"  class="btn btn-sm btn-outline-danger disabled"  >
+                            <i class="fa fa-calendar"></i>
+                        </a>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="container-fluid mx-auto">
+                <div class="row mx-auto">
+
+
+                    <c:set var="usuarioLogin" value="${signInController.usuarios.numDoc}" />
+
+
+                
+
+                        <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista"  >
+
+                            <ui:fragment rendered="#{lista.id_usuario.numDoc.equals(usuarioLogin)}">
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+
+
+
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center citaActiva cuadro">
+                                        <div class="card-header bg-transparent text-muted">
+                                            Consulta # #{lista.id}
+                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                            </h:outputText>
+
+                                        </div>
+                                        <div class="card-body " >
+                                            #{lista.id_usuario.priNom}
+                                            #{lista.id_usuario.priApe}
+                                            <br/>
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                            </ui:fragment>
+
+
+                                            <br/>
+                                            #{lista.descripcion}
+                                            <div class="card-footer bg-transparent">
+                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
+                                                <h:form>
+
+                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                    </h:commandButton>
+                                                </h:form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:fragment>
+
+
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+
+
+
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center citaPausada cuadro">
+                                        <div class="card-header bg-transparent text-muted">
+                                            Consulta # #{lista.id}
+                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                            </h:outputText>
+
+                                        </div>
+                                        <div class="card-body " >
+                                            #{lista.id_usuario.priNom}
+                                            #{lista.id_usuario.priApe}
+                                            <br/>
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                            </ui:fragment>
+
+
+                                            <br/>
+                                            #{lista.descripcion}
+                                            <div class="card-footer bg-transparent">
+                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
+                                                <h:form id="formaid">
+
+                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                    </h:commandButton>
+                                                </h:form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:fragment>
+                            </ui:fragment>
+
+                        </p:repeat>  
+
+
+
+
+
+                    <!--                    <h:panelGrid columns="10" id="list" class="mx-auto">-->
+                    <div id="list" class="mx-auto mt-3">
+                        <table id="listaUsuarios" class="table table-responsive-sm table-sm table-striped table-responsive-sm align-middle   display nowrap"> 
+                            <thead class="text-center text-capitalize">
+                                <th>#</th>
+                                <th>Paciente</th>
+                                <th>Detalle de Cita</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <c:forEach items="#{ListarCitaControllers.todasCitas()}" var="cita">
+                                    <c:if test="#{cita.id_usuario.numDoc.equals(usuarioLogin)}">
+
+                                        <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                            <tr>
+                                                <td>${c = c+1}</td>
+                                                <td>#{cita.id_usuario.priNom}  #{cita.id_usuario.priApe}</td>
+                                                <td>#{cita.descripcion}</td>
+                                                <td>
+                                                    <h:outputText value="#{cita.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                        <samp class="badge btn-outline-success">#{cita.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                        <samp class="badge btn-outline-info">#{cita.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                        <samp class="badge btn-outline-warning">#{cita.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                        <samp class="badge btn-outline-danger">#{cita.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                                    </ui:fragment>
+
+                                                </td>
+                                                <td></td>
+                                            </tr> 
+                                        </c:if>
+                                    </c:if>
+
+
+                                    <c:if test="#{cita.id_usuario.numDoc.equals(usuarioLogin)}">
+
+                                        <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausadas')}">
+                                            <tr>
+                                                <td>${c = c+1}</td>
+                                                <td>#{cita.id_usuario.priNom}  #{cita.id_usuario.priApe}</td>
+                                                <td>#{cita.descripcion}</td>
+                                                <td>
+                                                    <h:outputText value="#{cita.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                                    </h:outputText>
+                                                </td>
+                                                <td>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                        <samp class="badge btn-outline-success">#{cita.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                        <samp class="badge btn-outline-info">#{cita.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                        <samp class="badge btn-outline-warning">#{cita.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                                    </ui:fragment>
+
+                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                        <samp class="badge btn-outline-danger">#{cita.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                                    </ui:fragment>
+
+                                                </td>
+                                                <td></td>
+                                            </tr> 
+                                        </c:if>
+                                    </c:if>
+
+                                </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+                    <!--
+                                        </h:panelGrid>    
+                    -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <!--mensajes-->
+
+
+
+
+
+
+            <!--js--> 
+            <h:outputScript library="js" name="jquery-1.7.js"/> 
+
+            <h:outputScript library="js" name="all.min.js"/> 
+            <h:outputScript library="js" name="bootstrap.js"/> 
+            <h:outputScript library="js" name="loader.js"/> 
+
+            <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+
+            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+
+
+
+            <script type="text/javascript">
+
+
+
+
+                                                        function asignar(id, doc, estado, descripcion, fecha, nombre) {
+                                                            document.getElementById("identificadorNombre").value = nombre;
+
+                                                            document.getElementById("formaInfo:recipient").value = id;
+                                                            document.getElementById("identificador").value = id;
+
+                                                            document.getElementById("formaInfo:doc").value = doc;
+
+                                                            //dotos forma
+
+                                                            document.getElementById("formaInfo:estado").value = estado;
+                                                            document.getElementById("formaInfo:fecha").value = fecha;
+                                                            document.getElementById("formaInfo:descripcion").value = descripcion;
+
+
+
+
+                                                        }
+
+
+
+                                                        $(document).ready(function () {
+
+
+
+                                                            $('#listaUsuarios').DataTable({
+
+                                                                language: {
+                                                                    processing: "Traitement en cours...",
+                                                                    search: "Buscar:",
+                                                                    lengthMenu: "mostrar _MENU_ elementos",
+                                                                    info: "Mostrando  _START_ a _END_ de _TOTAL_ entradas.",
+                                                                    infoEmpty: "Visualización de elementos 0 a 0 de 0 elementos",
+                                                                    infoFiltered: "(filtrado de _MAX_ registros en total)",
+                                                                    infoPostFix: "",
+                                                                    loadingRecords: "Cargando...",
+                                                                    zeroRecords: "No se encontro coincidencias",
+                                                                    emptyTable: "No hay datos disponibles en la tabla.",
+                                                                    paginate: {
+                                                                        first: "Primero",
+                                                                        previous: "anterior",
+                                                                        next: "proximo",
+                                                                        last: "Ultimo",
+                                                                        pagingType: "full_numbers"
+                                                                    },
+                                                                    aria: {
+                                                                        sortAscending: ": activar para ordenar la columna en orden ascendente",
+                                                                        sortDescending: ": activar para ordenar la columna en orden descendente"
+                                                                    }
+
+
+                                                                },
+
+                                                                responsive: 'true',
+                                                                dom: 'Bfrtip',
+                                                                buttons: [
+                                                                    {
+                                                                        extend: 'pdf',
+                                                                        text: '<i class="fa fa-file-pdf"></i>',
+                                                                        className: 'btn btn-danger'
+                                                                    },
+                                                                    {
+                                                                        extend: 'excel',
+                                                                        text: '<i class="fa fa-file-excel"></i> ',
+                                                                        className: 'btn btn-success'
+                                                                    },
+                                                                    {
+                                                                        extend: 'print',
+                                                                        text: '<i class="fa fa-print"></i> ',
+                                                                        className: 'btn btn-info'
+                                                                    }
+                                                                ],
+                                                            });
+                                                            new $.fn.dataTable.Buttons(table, {
+                                                                buttons: [
+                                                                    'copy', 'excel', 'pdf'
+                                                                ]
+                                                            });
+                                                        }
+                                                        );
+            </script>
+
+        </h:body>
+    </f:view>
+</html>
+
+

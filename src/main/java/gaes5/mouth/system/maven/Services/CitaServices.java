@@ -21,8 +21,19 @@ public class CitaServices {
         return icitasDAO.crear(cita);
     }
 
+    public void actualizarCita(int idE, int idC, String des, String fecha){
+        icitasDAO.ActualizarCita(idE, idC, des, fecha);
+    }
+    
     public List<Cita> todasCitas() {
+        System.out.println("retornando desde Servicio");
+        
         return icitasDAO.obtenerTodos();
+    }
+    
+    
+    public List<Cita> newList(){
+        return  icitasDAO.newList();
     }
     
    public void guardarCita(String idU, String des, String fecha){

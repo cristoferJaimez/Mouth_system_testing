@@ -150,16 +150,15 @@
                                 <span class="mb-4 text-center text-capitalize text-uppercase">Nueva Promocion</span>
                                 <div class="mt-2">
 
-                                    <h:form id="promoForm">
+                                    <h:form id="promo">
 
-                                        <h:inputText  pt:type="text"  id="titulo" value="#{promocionesControllers.promocion.titulo}" required="true" />
-                                        <h:inputText  pt:type="date" id="fecha_inicio" value="#{promocionesControllers.promocion.fecha_inicio}" />
-                                        <h:inputText  pt:type="date" id="fecha_fin" value="#{promocionesControllers.promocion.fecha_fin}" />
-                                        <h:inputTextarea value="#{promocionesControllers.promocion.descripcion}" rows="7">
-                                        </h:inputTextarea>
+                                        <h:inputText  pt:type="text"  class="form-control mb-1" id="titulo" value="#{promocionesControllers.titulo}" required="true" />
+                                        <h:inputText  pt:type="date"  class="form-control mb-1"  id="fecha_inicio" value="#{promocionesControllers.fecha_i}" />
+                                        <h:inputText  pt:type="date"   class="form-control mb-1"  id="fecha_fin" value="#{promocionesControllers.fecha_f}" />
+                                        <h:inputTextarea    class="form-control mb-3 "  value="#{promocionesControllers.des}" rows="7" cols="3" />
 
-                                        <h:commandButton value="Guardar" >
-                                            <f:ajax render="msmSend" event="click"  listener="#{promocionesControllers.crear()}"></f:ajax>
+                                        <h:commandButton value="Guardar" class="btn btn-outline-secondary btn-sm btn-block"  >
+                                            <f:ajax render="msmSend" event="click" execute="@promo"  listener="#{promocionesControllers.crear()}"></f:ajax>
                                         </h:commandButton>
 
                                     </h:form>

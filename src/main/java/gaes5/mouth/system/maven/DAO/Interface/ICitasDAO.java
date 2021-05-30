@@ -13,7 +13,11 @@ import javax.ejb.Local;
 public interface ICitasDAO extends DAO<Cita, Integer> {
     
     void nuevaCita( String idU, String des, String fecha);
+    
+    void ActualizarCita( int idE, int idC, String des, String fecha);
 //
 
     public List<Cita> obtenerID( int id);
+    
+    public List<Cita> newList();
 }

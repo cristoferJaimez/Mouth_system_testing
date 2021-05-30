@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gaes5.mouth.system.maven.Controllers;
 
 import gaes5.mouth.system.maven.Models.Cita;
@@ -11,17 +6,20 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
- *
  * @author cristo
  */
 @Named("citasControllers")
-@SessionScoped
+@RequestScoped
 public class CitasControllers implements Serializable {
-
+    
+    
+    
     @EJB
     private CitaServices citaServices;
 
@@ -30,44 +28,54 @@ public class CitasControllers implements Serializable {
 
     //VARIABLES
     private String id;
+    private int idC;
+    private int idE;
+
     private String descripcion;
     private String fecha;
     private int agenda = 1;
     private int estado_cita = 1;
 
     public CitasControllers() {
-
     }
 
     @PostConstruct
     public void init() {
         this.cita = new Cita();
+
     }
 
     public void crear() {
         msm = "";
         try {
-            
             citaServices.guardarCita(id, descripcion, fecha);
-            cita = new Cita();
             msm = "citaOk";
         } catch (Exception e) {
             msm = "citaBad";
         }
 
     }
-    
-    
-    
 
-    public List<Cita> todasCitas() {
-        return citaServices.todasCitas();
+    public void actualizar() {
+        try {
+                    
+            try {
+                
+                citaServices.actualizarCita(idC, idE, descripcion, fecha);
+                cita = new Cita();
+                msm = "actOk";
+
+            } catch (Exception e) {
+                msm = "actBad";
+            }
+
+        } catch (Exception e) {
+            msm = "actBad";
+        }
+
     }
-   
-   
-    public void ver(){
-        System.out.println("hola");
-    }
+    
+ 
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
 //<editor-fold defaultstate="collapsed" desc="comment">
@@ -137,4 +145,19 @@ public class CitasControllers implements Serializable {
     }
 //</editor-fold>
 
+    public int getIdC() {
+        return idC;
+    }
+
+    public void setIdC(int idC) {
+        this.idC = idC;
+    }
+
+    public int getIdE() {
+        return idE;
+    }
+
+    public void setIdE(int idE) {
+        this.idE = idE;
+    }
 }

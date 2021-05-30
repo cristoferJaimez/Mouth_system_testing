@@ -8,7 +8,6 @@ import static javax.swing.UIManager.getInt;
 
 
 /*plantilla mas robusta del dao con la funcionalidad de cada metodo CRUD*/
-
 /**
  *
  * @author Cristofer Jaimez
@@ -21,21 +20,16 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
     //ENTITY MANAGER FACTORY
     //EntityManagerFactory factory = Persistence.createEntityManagerFactory("mouth_system_app");
     //protected EntityManager em = factory.createEntityManager();
-
-    
-    public static final String PU =  "mouth_system_app";
-    @PersistenceContext( unitName = PU)
+    public static final String PU = "mouth_system_app";
+    @PersistenceContext(unitName = PU)
     protected EntityManager em;
-    
-    
+
     protected Class<T> className;
 
     //cosntructor
     public GenericDAO(Class<T> className) {
         this.className = className;
     }
-
-  
 
     @Override
     public T crear(T obj) {
@@ -51,8 +45,11 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
     @Override
     public List<T> obtenerTodos() {
-        TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() +".getAll", className);
-        return tq.getResultList();  
+
+        em.getEntityManagerFactory().getCache().evictAll();
+        TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() + ".getAll", className);
+
+        return tq.getResultList();
     }
 
     @Override
@@ -62,7 +59,7 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
     @Override
     public T actualizar(T obj) {
-       return crear(obj);
+        return crear(obj);
     }
 
 }

@@ -2,6 +2,7 @@ package gaes5.mouth.system.maven.Controllers;
 
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import gaes5.mouth.system.maven.Services.UsuarioServices;
+import java.io.IOException;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -50,7 +51,7 @@ public class SignInController implements Serializable {
                         //msm = "usuarioOk";
                         FacesContext fc = FacesContext.getCurrentInstance();
                         fc.getExternalContext().redirect("Mouth_System/mouth_system.xhtml");
-                    } catch (Exception e) {
+                    } catch (IOException e) {
                         msm = "msmErrorLogin01";
                     }
 
@@ -78,17 +79,7 @@ public class SignInController implements Serializable {
         msm = "problemQuery";
     }
     
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-
+  
     //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public UsuarioServices getUsuarioServicios() {
         return usuarioServicios;

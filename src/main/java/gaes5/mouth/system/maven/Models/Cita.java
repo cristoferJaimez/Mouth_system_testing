@@ -22,8 +22,9 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "cita")
 @NamedQueries(value = {
-    @NamedQuery(name = "Cita.getAll",query = "SELECT obj FROM Cita obj ORDER BY obj.fecha_hora ASC")
-})  
+    @NamedQuery(name = "Cita.getAll", query = "SELECT obj FROM Cita obj ORDER BY obj.fecha_hora ASC"),
+    @NamedQuery(name = "Cita.getAllCita", query = "SELECT obj FROM Cita obj ")
+})
 public class Cita implements Serializable {
 
     @Id
@@ -32,10 +33,9 @@ public class Cita implements Serializable {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn( name = "id_usuario")
+    @JoinColumn(name = "id_usuario")
     private Datos_Usuario id_usuario;
-    
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "fecha_hora")
     private Date fecha_hora;
@@ -59,12 +59,6 @@ public class Cita implements Serializable {
         this.id_usuario = id_usuario;
     }
 
- 
-    
-    
-
-    
-    
     //<editor-fold defaultstate="collapsed" desc="Getter and Setter">
     public Integer getId() {
         return id;
@@ -73,10 +67,6 @@ public class Cita implements Serializable {
     public void setId(Integer id) {
         this.id = id;
     }
-    
-  
-
-  
 
     public Date getFecha_hora() {
         return fecha_hora;

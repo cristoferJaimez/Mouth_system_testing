@@ -34,6 +34,7 @@ public class SearchPatientControllers implements Serializable {
     //variables de entorno
     private String msm;
     private Integer numDoc;
+    private String fecha;
 
     @PostConstruct
     public void init() {
@@ -60,10 +61,40 @@ public class SearchPatientControllers implements Serializable {
             msm = "userError02";
         }
     }
+    
+    
+//      public void searchFecha() {
+//        msm = "";
+//
+//        usuario = usuarioServicios.searchUser(fecha);
+//        if (usuario != null) {
+//            try {
+//                if (usuario.getNumDoc().equals(numDoc)) {
+//                    try {
+//                        msm = "userOk";
+//                    } catch (Exception e) {
+//                        msm = "userBad";
+//                    }
+//                }
+//            } catch (Exception e) {
+//                msm = "userError01";
+//            }
+//        } else {
+//            msm = "userError02";
+//        }
+//    }
 
     public void handleSelect(SelectEvent event) {
         Object item = event.getObject();
         FacesMessage msg = new FacesMessage("Selected", "Item:" + item);
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">

@@ -30,188 +30,195 @@
 
         </h:head>
         <h:body id="body">
-            
-        
-             <div class="contenedor_loader">
+
+
+            <div class="contenedor_loader">
                 <div class="loader">
 
                 </div>
             </div>
 
-            <ui:include src="../../complementos/navBarSystem.xhtml" />
 
             <c:if class="mt-5" test="#{signInController.usuarios.email == null}">
-                <script type="text/javascript">
-                    alert("saliendo del sistema");
-                </script>
                 #{URLControlls.signOut()}
             </c:if>
 
-                   <!--loader page-->
 
-           
-
-
-            <div class="container-fluid">
-                <div class="row">
-                    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse fixed-top">
-                        <div class="sidebar-sticky pt-3">
-                            <ul class="nav flex-column">
-
-                                <button  style="border: none;" class="shadow-sm btn btn-sm  btn-block btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                    <i class="fa fa-user-circle circle text-dark img-thumbnail fa-2x img-fluid img mr-2"></i> <span class="justify-content-start align-text-bottom" style="">#{signInController.usuarios.priNom} #{signInController.usuarios.priApe}  </span>
-                                </button>
-
-                                <div class="collapse flex-fill" id="collapseExample">
-                                    <div class="card mr-auto">
-                                        <ul class="nav flex-column">
-
-                                            <li class="nav-item ">
-                                                <a class="mx-auto   text-capitalize btn-block text-decoration-none btn btn-outline-secondary btn-sm" href="User/cuenta.xhtml" target="sm" style="font-size: 0.6em; border: none">
-                                                    <i class=" fa fa-user-shield  fa-2x text-info ml-1 mr-2 "></i>  #{signInController.usuarios.email}                                                                                                                 
-                                                </a>
-                                            </li>
-                                            <div class="w-100" style="border-bottom: 1px solid black;"></div>
-
-                                            <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
+            <c:if class="mt-5" test="#{signInController.usuarios.email != null}">
 
 
+                <ui:include src="../../complementos/navBarSystem.xhtml" />
 
-                                                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
-                                                    <li class="nav-item ">
-                                                        <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}" class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
-                                                            #{URLControlls.pacientes()}
-                                                        </a>
-                                                    </li>
+                <div class="container-fluid">
+                    <div class="row">
+                        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse fixed-top">
+                            <div class="sidebar-sticky pt-3">
+                                <ul class="nav flex-column">
+
+                                    <button  style="border: none;" class="shadow-sm btn btn-sm  btn-block btn-outline-secondary dropdown-toggle dropdown-toggle-split" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        <i class="fa fa-user-circle circle text-dark img-thumbnail fa-2x img-fluid img mr-2"></i> <span class="justify-content-start align-text-bottom" style="">#{signInController.usuarios.priNom} #{signInController.usuarios.priApe}  </span>
+                                    </button>
+
+                                    <div class="collapse flex-fill" id="collapseExample">
+                                        <div class="card mr-auto">
+                                            <ul class="nav flex-column">
+
+                                                <li class="nav-item ">
+                                                    <a class="mx-auto   text-capitalize btn-block text-decoration-none btn btn-outline-secondary btn-sm" href="User/cuenta.xhtml" target="sm" style="font-size: 0.6em; border: none">
+                                                        <i class=" fa fa-user-shield  fa-2x text-info ml-1 mr-2 "></i>  #{signInController.usuarios.email}                                                                                                                 
+                                                    </a>
+                                                </li>
+                                                <div class="w-100" style="border-bottom: 1px solid black;"></div>
+
+                                                <c:forEach items="#{signUpController.typeRols(signInController.usuarios.id)}" var="rol" varStatus="pos" >
 
 
 
-                                                </c:if>
-
-                                                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
-                                                    <li class="nav-item ">
-                                                        <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}"  class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm"  style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                  
-                                                        </a>
-                                                    </li>
-
-
-
-                                                </c:if>
-
-                                                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
-                                                    <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid img  fa fa-user-nurse fa-2x text-info ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
-                                                        </a>
-                                                    </li>
-                                                </c:if>
-
-                                                <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
-                                                    <li class="nav-item  ">
-                                                        <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="#" style="font-size: 0.7em;">
-                                                            <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
-                                                        </a>
-                                                    </li>
-                                                </c:if>
+                                                    <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Paciente')}">
+                                                        <li class="nav-item ">
+                                                            <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}" class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm" style="font-size: 0.7em;">
+                                                                <i class="img-thumbnail img-fluid  fa fa-hospital-user fa-2x text-warning ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                                #{URLControlls.pacientes()}
+                                                            </a>
+                                                        </li>
 
 
 
-                                            </c:forEach>
+                                                    </c:if>
+
+                                                    <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Odontologo')}">
+                                                        <li class="nav-item ">
+                                                            <a  href="#{rol.tipo_usuario_id_tipo_usuario.cargo}"  class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm"  style="font-size: 0.7em;">
+                                                                <i class="img-thumbnail img-fluid img  fa fa-users fa-2x text-danger ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                  
+                                                            </a>
+                                                        </li>
 
 
 
-                                        </ul>
+                                                    </c:if>
 
+                                                    <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Auxiliar')}">
+                                                        <li class="nav-item  ">
+                                                            <a class="mx-auto text-uppercase   btn-block text-decoration-none  btn-outline-secondary btn-sm " href="" style="font-size: 0.7em;">
+                                                                <i class="img-thumbnail img-fluid img  fa fa-user-nurse fa-2x text-info ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                            </a>
+                                                        </li>
+                                                    </c:if>
+
+                                                    <c:if test="#{rol.tipo_usuario_id_tipo_usuario.cargo.equalsIgnoreCase('Administrador')}">
+                                                        <li class="nav-item  ">
+                                                            <a class="mx-auto text-uppercase    btn-block text-decoration-none  btn-outline-secondary btn-sm " href="#" style="font-size: 0.7em;">
+                                                                <i class="img-thumbnail img-fluid img  fa fa-users-cog fa-2x text-success ml-1 mr-2 "></i>   #{rol.tipo_usuario_id_tipo_usuario.cargo}                                                                                                                 
+                                                            </a>
+                                                        </li>
+                                                    </c:if>
+
+
+
+                                                </c:forEach>
+
+
+
+                                            </ul>
+
+                                        </div>
                                     </div>
-                                </div>
 
-                                
-                                
-                                
-                                
 
-                                <li class="nav-item">
-                                    <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
-                                        <i class="text-muted fas fa-tachometer-alt mr-2"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
-                                    </h:outputLink>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
-                                        <i class="text-muted fas fa-file-medical mr-2"></i> #{txt['ms.hc']}
+
+
+
+
+                                    <li class="nav-item">
+                                        <h:outputLink class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  value="Tablero/Dashboard.xhtml" target="sm" >
+                                            <i class="text-muted fas fa-tachometer-alt mr-2"></i> #{txt['ms.tablero']} <span class="sr-only">(current)</span>
+                                        </h:outputLink>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Hc/historia_clinica.xhtml" target="sm">
+                                            <i class="text-muted fas fa-file-medical mr-2"></i> #{txt['ms.hc']}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="Citas/citas.xhtml" target="sm">
+                                            <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']} <span class="badge badge-danger">3 <i class="fa fa-bell"></i> </span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                    <span><i class="fas fa-toolbox mr-3"></i> #{txt['ms.administracion']}</span>
+                                    <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;"  href="Citas/citas.xhtml" target="sm">
-                                        <i class="text-muted fa fa-calendar-alt mr-2"></i> #{txt['ms.citas']} <span class="badge badge-danger">3 <i class="fa fa-bell"></i> </span>
-                                    </a>
-                                </li>
-
-                            </ul>
-
-                            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                                <span><i class="fas fa-toolbox mr-3"></i> #{txt['ms.administracion']}</span>
-                                <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                                </a>
-                            </h6>
-                            <ul class="nav flex-column mb-2">
+                                </h6>
+                                <ul class="nav flex-column mb-2">
 
 
-                                <li class="nav-item">
-                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
-                                        <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']} 
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
-                                        <i class="text-muted fa fa-box mr-2"></i> #{txt['ms.inventario']}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class=" disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
-                                        <i class="text-muted fas fa-file-image mr-2"></i> #{txt['ms.catalogo']}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Fidelizacion/fidelizacion.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
-                                        <i class="text-muted fas fa-star-half mr-2"></i> #{txt['ms.fidelizacion']}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="User/ListadoUsuarios.xhtml" target="sm">
-                                        <span data-feather="file-text"></span>
-                                        <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}s
-                                    </a>
-                                </li>
+                                    <li class="nav-item">
+                                        <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Reportes/reportes.xhtml" target="sm">
+                                            <i class="text-muted fa fa-cogs mr-2"></i> #{txt['ms.reportes']} 
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Inventario/inventario.xhtml" target="sm">
+                                            <i class="text-muted fa fa-box mr-2"></i> #{txt['ms.inventario']}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class=" disabled nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Catalogo/catalogo.xhtml" target="sm">
+                                            <i class="text-muted fas fa-file-image mr-2"></i> #{txt['ms.catalogo']}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="Fidelizacion/fidelizacion.xhtml" target="sm">
+                                            <span data-feather="file-text"></span>
+                                            <i class="text-muted fas fa-star-half mr-2"></i> #{txt['ms.fidelizacion']}
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;" href="User/ListadoUsuarios.xhtml" target="sm">
+                                            <span data-feather="file-text"></span>
+                                            <i class="text-muted fas fa-users-cog mr-2"></i> #{txt['ms.perfil']}s
+                                        </a>
+                                    </li>
 
-                                <li class="nav-item">
+                                    <li class="nav-item">
 
-                                    <h:commandLink  value="#{txt['ms.salir']}" class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;">
-                                        <i class="text-muted fas fa-sign-out-alt mr-2"></i>
-                                        <f:ajax event="click" render="body"  listener="#{URLControlls.signOut()}"></f:ajax>
-                                    </h:commandLink>
+                                        <h:commandLink  value="#{txt['ms.salir']}" class="nav-link btn btn-outline-info btn-block shadow-sm btn-sm text-left" style="border: none;">
+                                            <i class="text-muted fas fa-sign-out-alt mr-2"></i>
+                                            <f:ajax event="click" render="body"  listener="#{URLControlls.signOut()}"></f:ajax>
+                                        </h:commandLink>
 
-                                </li>
-
-
-                            </ul>
+                                    </li>
 
 
-                        </div>
-                    </nav>
-                    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+                                </ul>
 
-                        <iframe width="100%" height="800px"  name="sm" frameborder="0" src="Tablero/Dashboard.xhtml" class="" ></iframe>
 
-                    </main>
+                            </div>
+                        </nav>
+                        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+
+                            <iframe width="100%" height="800px"  name="sm" frameborder="0" src="Tablero/Dashboard.xhtml" class="" ></iframe>
+
+                        </main>
+                    </div>
+
+
+
+
                 </div>
 
+            </c:if>
+
+
+            <!--loader page-->
 
 
 
-            </div>
+
+
 
 
             <script type="text/javascript">
