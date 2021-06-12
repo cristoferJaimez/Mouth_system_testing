@@ -3,13 +3,12 @@ package gaes5.mouth.system.maven.Controllers;
 import gaes5.mouth.system.maven.Models.Cita;
 import gaes5.mouth.system.maven.Services.CitaServices;
 import java.io.Serializable;
-import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
+
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author cristo
@@ -31,6 +30,9 @@ public class CitasControllers implements Serializable {
     private int idC;
     private int idE;
 
+    
+    DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+    
     private String descripcion;
     private String fecha;
     private int agenda = 1;
@@ -73,6 +75,28 @@ public class CitasControllers implements Serializable {
             msm = "actBad";
         }
 
+    }
+    
+    public boolean compararFEcha(){
+        try {
+           if(fecha.equalsIgnoreCase(tiempo.toString())){
+               msm = "fechaPAso";
+           }else{}
+            
+            if(citaServices.compararFecha(fecha) == false){
+                msm = "fechaOK";
+                System.out.println("fecha--> " + fecha);
+                return true;
+            }else{
+                msm ="fechaBad";
+                return false;
+            }
+           
+        } catch (Exception e) {
+            System.out.println("Error al comparar fechas controlador: " + e.getMessage());
+            msm = "fachaCath";
+            return false;
+        }
     }
     
  
