@@ -9,7 +9,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
             <title>.:Mouth System:.</title>
@@ -22,7 +21,7 @@
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
             <h:outputStylesheet library="css" name="preloader.css" />
-
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 
 
             <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"/>
@@ -30,7 +29,7 @@
 
 
         </h:head>
-        <h:body onload="$('#list').hide(); $('.citaPausada').hide()">
+        <h:body onload="$('#list').hide(); $('#btnAct').hide(); #{ListarCitaControllers.todasCitas()}">
 
             <!--loader page-->
 
@@ -41,6 +40,37 @@
             </div>
 
 
+            <h:panelGroup id="msm">
+
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('actBad')}" class="col-12">
+                    <div class="alert alert-danger">
+                        no se actualizo :(
+                    </div>
+                </c:if>
+
+
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaBad')}" class="col-12">
+                    <div class="alert alert-danger">
+                        La fecha<strong> No</strong> esta disponible intenta con otra
+                    </div>
+                </c:if>
+
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaOk')}" class="col-12">
+                    <div class="alert alert-success">
+                        La fecha<strong> Si</strong> esta disponible.
+                    </div>
+                </c:if>
+
+
+
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('actOk')}" class="col-12">
+                    <div class="alert alert-success">
+                        Actualizacion OK
+                    </div>
+                </c:if>
+            </h:panelGroup>
+
+
 
             <!--Modales-->
 
@@ -49,6 +79,39 @@
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
+
+
+
+                        <h:panelGroup id="msm2">
+
+
+
+                            <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaBad')}" class="col-12">
+                                <div class="alert alert-danger">
+                                    La fecha<strong> No</strong> esta disponible intenta con otra
+                                </div>
+                            </c:if>
+
+                            <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaOk')}" class="col-12">
+                                <div class="alert alert-success">
+                                    La fecha<strong> Si</strong> esta disponible.
+                                </div>
+                            </c:if>
+                            
+                            
+                             <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaPAso')}" class="col-12">
+                                <div class="alert alert-info">
+                                    La fecha<strong> Ya </strong> no esta disponible, por que es una fecha vieja.
+                                </div>
+                            </c:if>
+
+
+
+                           
+                        </h:panelGroup>
+
+
+
                         <div class="modal-header">
                             <h2 class="modal-title badge badge-info" id="exampleModalLabel"> Informacion de Cita  <h:inputText disabled="true" id="identificador" class="btn btn-outline-light btn-sm w-25" style="border: none"></h:inputText>
                                 <h:inputText disabled="true" id="identificadorNombre" class="btn btn-outline-light btn-sm w-50" style="border: none"></h:inputText>
@@ -73,7 +136,9 @@
                                 <div class="form-group">
                                     <h:selectOneMenu value="#{citasControllers.idC}" class="form-control text-center " id="estado">
                                         <f:selectItem itemValue="1" itemLabel="Activa" />
+                                        <f:selectItem itemValue="2" itemLabel="En Espera" />
                                         <f:selectItem itemValue="3" itemLabel="Pausada" />
+                                        <f:selectItem itemValue="4" itemLabel="Cancelada" />
                                     </h:selectOneMenu>
                                 </div>
 
@@ -83,9 +148,11 @@
                                 </div>
                                 <div class="form-group">
                                     <h:outputText  class="text-uppercase badge badge-info" id="fecha" >
-                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a"  />
+                                        <f:convertDateTime pattern="MMMM-dd-yyyy"  />
                                     </h:outputText>
-                                    <h:inputText pt:type="datetime-local" converter="#{null}" value="#{citasControllers.fecha}" class="form-control "  required="true" requiredMessage="Debe expesificar el dia"></h:inputText>
+                                    <h:inputText pt:type="date" converter="#{null}" value="#{citasControllers.fecha}" class="form-control "  required="true" requiredMessage="Debe expesificar el dia">
+                                        <f:ajax event="click" listener="#{citasControllers.compararFEcha()}"  render="msm2">  </f:ajax>
+                                    </h:inputText>
                                 </div>
 
 
@@ -106,18 +173,18 @@
 
 
 
+            <!--inicio de cuerpo de tarjetas-->
+
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1> 
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button class="btn btn-outline-success btn-sm" onclick="$('.citaPausada').hide('slow'); $('.citaActiva').show('slow');"><i class="fa fa-bell"></i></button>  <button class="btn btn-outline-warning btn-sm" onclick="$('.citaPausada').show('slow'); $('.citaActiva').hide('slow');"><i class="fa fa-bell-slash"></i></button>
-                        <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').hide('slow'); $('.cuadro').show('slow');"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show('slow'); $('.cuadro').hide('slow');"><i class="fa fa-list"></i></button>
-
-
+                        <button class="btn btn-outline-warning btn-sm w-75" onclick="$('.viewActiva').hide('slow');$('.viewCancelada').hide('slow'); $('.viewEmEspera').show('slow');"><i class="fa fa-bell"></i></button>
+                        <button class="btn btn-outline-success btn-sm w-75" onclick="$('.viewCancelada').hide('slow'); $('.viewEmEspera').hide('slow'); $('.viewActiva').show('slow');"><i class="fa fa-bell"></i></button>  <button class="btn btn-outline-danger btn-sm" onclick="$('.viewCancelada').show('slow');$('.viewActiva').hide('slow'); $('.viewEmEspera').hide('slow');"><i class="fa fa-bell-slash"></i></button>
                         <a href="AgendarPaciente.xhtml"  class="btn btn-sm btn-success" >
-                            <i class="fa fa-calendar-check"></i>
+                            <i class="fa fa-plus"></i>
                         </a>
-                        <a href="Agenda.xhtml"  class="btn btn-sm btn-outline-danger disabled"  >
+                        <a href="citasP.xhtml"  class="btn btn-sm btn-outline-secondary disabled"  >
                             <i class="fa fa-calendar"></i>
                         </a>
                     </div>
@@ -126,73 +193,22 @@
                 </div>
             </div>
 
-            <div class="container-fluid mx-auto">
-                <div class="row mx-auto">
+            <h:panelGroup id="newList"  layout="block" class="col-12 mx-auto">
+
+                <div class="container">
+                    <div class="row">
+
+                        <!--curpo de tarjetas-->
 
 
-                    <c:set var="usuarioLogin" value="${signInController.usuarios.numDoc}" />
 
+                        <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista" >
 
-                
+                            <ui:fragment rendered="#{lista.id_usuario.email.equalsIgnoreCase(signInController.usuarios.email)}">
 
-                        <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista"  >
-
-                            <ui:fragment rendered="#{lista.id_usuario.numDoc.equals(usuarioLogin)}">
                                 <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
 
-
-
-                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center citaActiva cuadro">
-                                        <div class="card-header bg-transparent text-muted">
-                                            Consulta # #{lista.id}
-                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
-                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
-                                            </h:outputText>
-
-                                        </div>
-                                        <div class="card-body " >
-                                            #{lista.id_usuario.priNom}
-                                            #{lista.id_usuario.priApe}
-                                            <br/>
-                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
-                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
-                                            </ui:fragment>
-
-                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
-                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
-                                            </ui:fragment>
-
-                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
-                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
-                                            </ui:fragment>
-
-                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
-                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
-                                            </ui:fragment>
-
-
-                                            <br/>
-                                            #{lista.descripcion}
-                                            <div class="card-footer bg-transparent">
-                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
-                                                <h:form>
-
-                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
-                                                    </h:commandButton>
-                                                </h:form>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ui:fragment>
-
-
-                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
-
-
-
-                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center citaPausada cuadro">
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewActiva">
                                         <div class="card-header bg-transparent text-muted">
                                             Consulta # #{lista.id}
                                             <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
@@ -235,146 +251,166 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </ui:fragment>
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada">
+                                        <div class="card-header bg-transparent text-muted">
+                                            Consulta # #{lista.id}
+                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                            </h:outputText>
+
+                                        </div>
+                                        <div class="card-body " >
+                                            #{lista.id_usuario.priNom}
+                                            #{lista.id_usuario.priApe}
+                                            <br/>
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                            </ui:fragment>
+
+
+                                            <br/>
+                                            #{lista.descripcion}
+                                            <div class="card-footer bg-transparent">
+                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
+                                                <h:form >
+
+                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                    </h:commandButton>
+                                                </h:form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:fragment>  
+
+
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada viewEmEspera">
+                                        <div class="card-header bg-transparent text-muted">
+                                            Consulta # #{lista.id}
+                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                            </h:outputText>
+
+                                        </div>
+                                        <div class="card-body " >
+                                            #{lista.id_usuario.priNom}
+                                            #{lista.id_usuario.priApe}
+                                            <br/>
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                            </ui:fragment>
+
+
+                                            <br/>
+                                            #{lista.descripcion}
+                                            <div class="card-footer bg-transparent">
+                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
+                                                <h:form >
+
+                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                    </h:commandButton>
+                                                </h:form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:fragment>  
+
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                    <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada viewEmEspera">
+                                        <div class="card-header bg-transparent text-muted">
+                                            Consulta # #{lista.id}
+                                            <h:outputText value="#{lista.fecha_hora}" class="text-uppercase badge badge-info" >
+                                                <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
+                                            </h:outputText>
+
+                                        </div>
+                                        <div class="card-body " >
+                                            #{lista.id_usuario.priNom}
+                                            #{lista.id_usuario.priApe}
+                                            <br/>
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                                <samp class="badge btn-outline-success">#{lista.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                                <samp class="badge btn-outline-info">#{lista.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                                <samp class="badge btn-outline-warning">#{lista.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
+                                            </ui:fragment>
+
+                                            <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                                <samp class="badge btn-outline-danger">#{lista.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
+                                            </ui:fragment>
+
+
+                                            <br/>
+                                            #{lista.descripcion}
+                                            <div class="card-footer bg-transparent">
+                                                <!--<button  type="button" class="btn btn-info btn-sm btn-block" onclick="asignar(#{lista.id});"  id="boton" data-toggle="modal" data-target="#exampleModal" data-whatever="#{lista.id}"><i class="fa fa-eye"></i> ver...</button>-->
+                                                <h:form >
+
+                                                    <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                    </h:commandButton>
+                                                </h:form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ui:fragment>  
+
                             </ui:fragment>
 
-                        </p:repeat>  
+                        </p:repeat>
 
 
 
 
-
-                    <!--                    <h:panelGrid columns="10" id="list" class="mx-auto">-->
-                    <div id="list" class="mx-auto mt-3">
-                        <table id="listaUsuarios" class="table table-responsive-sm table-sm table-striped table-responsive-sm align-middle   display nowrap"> 
-                            <thead class="text-center text-capitalize">
-                                <th>#</th>
-                                <th>Paciente</th>
-                                <th>Detalle de Cita</th>
-                                <th>Fecha</th>
-                                <th>Estado</th>
-                                <th></th>
-                            </thead>
-                            <tbody>
-                                <c:forEach items="#{ListarCitaControllers.todasCitas()}" var="cita">
-                                    <c:if test="#{cita.id_usuario.numDoc.equals(usuarioLogin)}">
-
-                                        <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
-                                            <tr>
-                                                <td>${c = c+1}</td>
-                                                <td>#{cita.id_usuario.priNom}  #{cita.id_usuario.priApe}</td>
-                                                <td>#{cita.descripcion}</td>
-                                                <td>
-                                                    <h:outputText value="#{cita.fecha_hora}" class="text-uppercase badge badge-info" >
-                                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
-                                                    </h:outputText>
-                                                </td>
-                                                <td>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
-                                                        <samp class="badge btn-outline-success">#{cita.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
-                                                        <samp class="badge btn-outline-info">#{cita.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
-                                                        <samp class="badge btn-outline-warning">#{cita.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
-                                                        <samp class="badge btn-outline-danger">#{cita.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
-                                                    </ui:fragment>
-
-                                                </td>
-                                                <td></td>
-                                            </tr> 
-                                        </c:if>
-                                    </c:if>
-
-
-                                    <c:if test="#{cita.id_usuario.numDoc.equals(usuarioLogin)}">
-
-                                        <c:if test="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausadas')}">
-                                            <tr>
-                                                <td>${c = c+1}</td>
-                                                <td>#{cita.id_usuario.priNom}  #{cita.id_usuario.priApe}</td>
-                                                <td>#{cita.descripcion}</td>
-                                                <td>
-                                                    <h:outputText value="#{cita.fecha_hora}" class="text-uppercase badge badge-info" >
-                                                        <f:convertDateTime pattern="MMMM-dd-yyyy H:mm a" />
-                                                    </h:outputText>
-                                                </td>
-                                                <td>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
-                                                        <samp class="badge btn-outline-success">#{cita.id_estado_cita.estado}  <i class="fa fa-check"></i></samp> 
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
-                                                        <samp class="badge btn-outline-info">#{cita.id_estado_cita.estado} <i class="fa fa-play"></i></samp>
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
-                                                        <samp class="badge btn-outline-warning">#{cita.id_estado_cita.estado} <i class="fa fa-stop"></i></samp>
-                                                    </ui:fragment>
-
-                                                    <ui:fragment rendered="#{cita.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
-                                                        <samp class="badge btn-outline-danger">#{cita.id_estado_cita.estado} <i class="fa fa-times "></i></samp>
-                                                    </ui:fragment>
-
-                                                </td>
-                                                <td></td>
-                                            </tr> 
-                                        </c:if>
-                                    </c:if>
-
-                                </c:forEach>
-                            </tbody>
-                        </table>
                     </div>
-
-
-
-
-                    <!--
-                                        </h:panelGrid>    
-                    -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 </div>
-            </div>
+            </h:panelGroup>
 
 
-
-            <!--mensajes-->
-
-
-
-
+            <!--fin de cuerpo de tarjetas-->
 
 
             <!--js--> 
             <h:outputScript library="js" name="jquery-1.7.js"/> 
 
-            <h:outputScript library="js" name="all.min.js"/> 
-            <h:outputScript library="js" name="bootstrap.js"/> 
-            <h:outputScript library="js" name="loader.js"/> 
+
 
             <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.5.1.js"></script>
             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
@@ -388,6 +424,10 @@
             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
             <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
 
+            <h:outputScript library="js" name="all.min.js"/> 
+            <h:outputScript library="js" name="bootstrap.js"/> 
+            <h:outputScript library="js" name="loader.js"/> 
+            <h:outputScript library="js" name="alerts.js"/> 
 
 
             <script type="text/javascript">
@@ -413,6 +453,7 @@
 
 
                                                         }
+
 
 
 
@@ -475,6 +516,13 @@
                                                             });
                                                         }
                                                         );
+
+
+
+
+
+                                                        //            //modal
+
             </script>
 
         </h:body>

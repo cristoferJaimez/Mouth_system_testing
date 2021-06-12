@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html lang="es" xml:lang="es" 
+      xmlns="http://www.w3.org/1999/xhtml"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" >
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -18,7 +19,8 @@
             <h:outputStylesheet library="css" name="bootstrap-grid.css" />
             <h:outputStylesheet library="css" name="bootstrap-reboot.css" />
             <h:outputStylesheet library="css" name="all.css" />
-            <h:outputStylesheet library="css" name="preloaderP.css" />
+            <h:outputStylesheet library="css" name="preloader.css" />
+            <h:outputScript library="js" name="jquery-1.7.js"/> 
 
         </h:head>
         <h:body>
@@ -55,13 +57,10 @@
                 <h1 class="h2"><i class="fa fa-calendar"></i> #{txt['ms.citas']}</h1> 
                 <div class="btn-toolbar mb-2 mb-md-0">
                     <div class="btn-group mr-2">
-                        <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').hide(); $('#table').show();"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show(); $('#table').hide();"><i class="fa fa-list"></i></button>
-
-
-                        <a href="AgendarPaciente.xhtml"  class="btn btn-sm btn-success" >
-                            <i class="fa fa-calendar-check"></i>
+                        <a href="Agendar.xhtml"  class="btn btn-sm btn-success" >
+                            <i class="fa fa-plus"></i>
                         </a>
-                        <a href="Agenda.xhtml"  class="btn btn-sm btn-outline-danger disabled"  >
+                        <a href="citasP.xhtml"  class="btn btn-sm btn-outline-info "  >
                             <i class="fa fa-calendar"></i>
                         </a>
                     </div>
@@ -70,32 +69,22 @@
                 </div>
             </div>
 
-
-
             <div class="container-fluid">
                 <div class="row">
 
 
 
-                    <div class="card shadow mx-auto mt-5 col-6">
+                    <div class="card shadow mx-auto col-md-6 mt-5">
                         <div class="card-body">
-                            <div class="card-header bg-light">
-                                <h:outputLabel for="numDoc"   class="form-control text-muted btn btn-outline-info text-center"><i class="fa fa-users fa-1x"></i> Paciente #{signInController.usuarios.priNom} #{signInController.usuarios.segNom} #{signInController.usuarios.priApe} #{signInController.usuarios.segApe}</h:outputLabel>
-
-                            </div>
                             <h:form  id="formaCitas" class="col-md-12 col-sm-12 mx-auto">
 
 
 
 
-        <!--                        <h:inputText  required="true" id="numDoc"   value="#{searchPatientControllers.numDoc}"  class="form-control"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
-                                    <f:ajax event="keyup" render="view"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>
-                                </h:inputText>-->
-
-                                <h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}" class="form-control d-none "  />
-                                <script type="text/javascript">
-                                    document.getElementById("formaCitas:idUsu").value = #{signInController.usuarios.id};
-                                </script>
+                                <h:outputLabel for="numDoc"  class="lead text-muted"><i class="fa fa-users fa-1x"></i> Paciente</h:outputLabel>
+                                <h:inputText  required="true" id="numDoc"   value="#{signInController.usuarios.priNom} #{signInController.usuarios.priApe}"  class="form-control text-center" disabled="true"     a:placeholder=" #{txt['ms.placeHolder']}" label="dato">
+                                    <!--<f:ajax event="keyup" render="view"  listener="#{searchPatientControllers.searchUser()}" ></f:ajax>-->
+                                </h:inputText>
 
 
                                 <h:panelGrid id="view" class="col-md-12">
@@ -103,22 +92,26 @@
                                     <div class="">
 
 
-                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userOk')}" >
-                                            <div class="alert alert-success" role="alert">
+                                        <h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}" class="form-control text-center d-none btn-outline-info"   />
+                                        <script type="text/javascript">
+//
+//                                            $(document).ready(function () {
+//                                                $('#formaCitas:idUsu').val('#{signInController.usuarios.numDoc}');
+//                                            })
+                                            window.addEventListener("load", function () {
+                                                document.getElementById("formaCitas:idUsu").value = #{signInController.usuarios.id};
+                                            })
+
+                                        </script>
 
 
 
 
-                                        <!--Paciente Encontrado!. <strong> #{searchPatientControllers.usuario.priNom}  #{searchPatientControllers.usuario.segNom}  #{searchPatientControllers.usuario.priApe}  #{searchPatientControllers.usuario.segApe}</strong>-->
-                                        <!--<h:inputText pt:type="text" id="idUsu"  value="#{citasControllers.id}"   class="bg-white" style="border: none; color: #fff;" disabled="true"></h:inputText>-->
-
-
+                                        <c:if test="#{searchPatientControllers.msm.equalsIgnoreCase('userError02')}" >
+                                            <div class="alert alert-warning" role="alert">
+                                                Usuario no Encontrado  
                                             </div>
                                         </c:if>
-
-
-
-
 
                                     </div>
 
@@ -147,31 +140,33 @@
                                     <div class="form-group input-group-sm">
                                         <h:outputLabel for="fecha" class="lead text-muted">Fecha y hora</h:outputLabel>
                                         <h:inputText id="fecha"  pt:type="datetime-local"   value="#{citasControllers.fecha}" converter="#{null}" required="true" requiredMessage="Ingrese descripcion" class="form-control"   label="Alerta">
-                                            <!--<f:convertDateTime dateStyle="full" pattern="yyyy-mm-dd"/>-->  
+                                            <f:ajax event="mouseup" listener="#{citasControllers.compararFEcha()}"  render="msm">  </f:ajax>
                                         </h:inputText>
                                         <h:message for="fecha" class="card text-center mt-2 bg-danger" style=" color:#fff;"><i class="bg-danger fas fa-exclamation-circle"></i></h:message>
 
                                     </div>
                                 </div>
 
+                                <h:outputLabel id="viewFecha"> 
+
+                                    <!--<ui:fragment  rendered=""></ui:fragment>-->
+
+                                </h:outputLabel>
 
 
 
-                               
+                                <h:commandButton action="#{citasControllers.crear()}"  onclick="document.getElementById('sm').contentWindow.location.reload(true);"  class="mt-2 btn btn-success btn-block" value="Guardar">
+                                    <!--<f:ajax event="click" render="forma_"></f:ajax>-->
+                                </h:commandButton>
 
 
 
 
                             </h:form>
-                            
-                            <div class="card-footer bg-light">
-                                 <h:commandButton action="#{citasControllers.crear()}"  onclick="document.getElementById('sm').contentWindow.location.reload(true);"  class="mt-2 btn btn-success btn-block" value="Guardar">
-                                    <!--<f:ajax event="click" render="forma_"></f:ajax>-->
-                                </h:commandButton>
-                            </div>
-
                         </div>
                     </div>
+
+
 
 
 
@@ -183,10 +178,6 @@
             <h:outputScript library="js" name="bootstrap.js"/> 
             <h:outputScript library="js" name="alerts.js"/> 
             <h:outputScript library="js" name="loader.js"/> 
-
-            <script type="text/javascript">
-                $('#element').toast('show');
-            </script>
 
         </h:body>
     </f:view>

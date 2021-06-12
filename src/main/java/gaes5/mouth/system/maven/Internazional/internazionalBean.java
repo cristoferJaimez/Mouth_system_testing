@@ -48,8 +48,6 @@ public class internazionalBean implements Serializable {
         Locale espanol = new Locale("es");
         listaPaises.put("Español", espanol);
         listaPaises.put("English", Locale.ENGLISH);
-        listaPaises.put("Germany", Locale.GERMANY);
-        listaPaises.put("Italian", Locale.ITALIAN);
 
         
 

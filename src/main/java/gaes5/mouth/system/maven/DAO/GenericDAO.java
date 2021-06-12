@@ -1,6 +1,7 @@
 package gaes5.mouth.system.maven.DAO;
 
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -40,15 +41,17 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
     @Override
     public T obtenerId(PK id) {
-        return em.find(this.className, id);
+
+        if (Objects.nonNull(id)) {
+            return em.find(this.className, id);
+        }
+        return null;
     }
 
     @Override
     public List<T> obtenerTodos() {
-
         em.getEntityManagerFactory().getCache().evictAll();
         TypedQuery<T> tq = (TypedQuery<T>) em.createNamedQuery(className.getSimpleName() + ".getAll", className);
-
         return tq.getResultList();
     }
 

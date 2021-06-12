@@ -40,6 +40,10 @@ public class CitaServices {
        icitasDAO.nuevaCita( idU, des, fecha);
    } 
    
+   public List<Cita> existeCita(String id){
+       return icitasDAO.existeCit(id);
+   }
+   
    
    public void verCitaId(int id){
        icitasDAO.obtenerID(id);
@@ -47,6 +51,10 @@ public class CitaServices {
    
    public void idVer(Integer id){
        icitasDAO.obtenerId(id);
+   }
+   
+   public boolean compararFecha(String fecha){
+      return icitasDAO.compararFechas(fecha);
    }
 
 }

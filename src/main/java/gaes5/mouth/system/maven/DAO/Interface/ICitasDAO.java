@@ -20,4 +20,9 @@ public interface ICitasDAO extends DAO<Cita, Integer> {
     public List<Cita> obtenerID( int id);
     
     public List<Cita> newList();
+    
+    public boolean compararFechas(String fecha);
+
+    
+    public List<Cita> existeCit(String id);
 }

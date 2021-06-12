@@ -12,7 +12,7 @@
     
         <!--Configuracion de localidades-->
         <locale-config>
-            <default-locale>es-*</default-locale>
+            <default-locale>es</default-locale>
             <supported-locale>en</supported-locale>
        
         </locale-config>

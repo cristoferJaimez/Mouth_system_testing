@@ -13,11 +13,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Builder;
 
 /**
  *
  * @author Cristo
  */
+//@Builder
 @Entity
 @Table(name = "datos_usuario")
 @NamedQueries(value = {

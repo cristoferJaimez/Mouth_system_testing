@@ -157,8 +157,8 @@
                                         <h:inputText  pt:type="date"   class="form-control mb-1"  id="fecha_fin" value="#{promocionesControllers.fecha_f}" />
                                         <h:inputTextarea    class="form-control mb-3 "  value="#{promocionesControllers.des}" rows="7" cols="3" />
 
-                                        <h:commandButton value="Guardar" class="btn btn-outline-secondary btn-sm btn-block"  >
-                                            <f:ajax render="msmSend" event="click" execute="@promo"  listener="#{promocionesControllers.crear()}"></f:ajax>
+                                        <h:commandButton value="Guardar" class="btn btn-outline-secondary btn-sm btn-block"  action="#{promocionesControllers.crear()}" >
+                                            <!--<f:ajax render="msmSend" event="click" execute="@form:promo"  listener="#{promocionesControllers.crear()}"></f:ajax>-->
                                         </h:commandButton>
 
                                     </h:form>

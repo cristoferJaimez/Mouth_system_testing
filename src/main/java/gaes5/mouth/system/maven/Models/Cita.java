@@ -14,11 +14,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.Setter;
+import lombok.Builder;
+
+
 
 /**
  *
  * @author cristo
  */
+//@Builder
 @Entity
 @Table(name = "cita")
 @NamedQueries(value = {
@@ -26,6 +31,8 @@ import javax.persistence.TemporalType;
     @NamedQuery(name = "Cita.getAllCita", query = "SELECT obj FROM Cita obj ")
 })
 public class Cita implements Serializable {
+
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

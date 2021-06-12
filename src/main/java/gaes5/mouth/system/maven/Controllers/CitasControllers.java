@@ -47,7 +47,14 @@ public class CitasControllers implements Serializable {
 
     }
 
+    
+
+    
+    
     public void crear() {
+        
+
+        
         msm = "";
         try {
             citaServices.guardarCita(id, descripcion, fecha);

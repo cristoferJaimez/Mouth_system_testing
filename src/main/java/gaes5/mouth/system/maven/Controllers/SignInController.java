@@ -46,9 +46,11 @@ public class SignInController implements Serializable {
         if (usuario != null) {
             try {
                 if (usuarios.getPw().equalsIgnoreCase(pw) && usuarios.getEmail().equalsIgnoreCase(email)) {
-
+                    
                     try {
-                        //msm = "usuarioOk";
+                       //solucionar de otra forma  
+                        FacesContext.getCurrentInstance().getExternalContext().addResponseCookie("JSESSIONID", "ae9448b302e8e21acc19584bd520", null);
+//msm = "usuarioOk";
                         FacesContext fc = FacesContext.getCurrentInstance();
                         fc.getExternalContext().redirect("Mouth_System/mouth_system.xhtml");
                     } catch (IOException e) {

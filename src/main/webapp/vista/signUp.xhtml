@@ -119,7 +119,7 @@
                                 <div class="row col-sm-12">
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
-                                            <label for="tipoDoc" class="lead text-muted">Tipo Documento</label>
+                                            <label for="tipoDoc" class="lead text-muted">#{txt['signUp.tipoDoc']}</label>
                                             <h:selectOneMenu id="tipoDoc" value="#{signUpController.usuario.tipoDoc}" required="true" requiredMessage="Seleccione un tipo de Documento" a:placeholder="o" class="form-control" label="Alerta">
                                                 <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                                 <f:selectItem itemLabel="T. Identidad" itemValue="T. Identidad"></f:selectItem>
@@ -136,7 +136,7 @@
 
                                     <div class="col-sm-12 col-md-6">
                                         <div class="form-group input-group-sm">
-                                            <label for="nacionalidad" class="lead text-muted">Nacionalidad</label>
+                                            <label for="nacionalidad" class="lead text-muted">#{txt['signUp.nacionalidad']}</label>
                                             <h:selectOneMenu  id="nacionalidad" value="#{signUpController.usuario.nacionalidad}" required="true" requiredMessage="Seleccione Nacionalidad" class="form-control" label="Alerta">
                                                 <f:selectItem itemLabel="" itemValue=""></f:selectItem>
                                                 <f:selectItem itemLabel="Colombiano" itemValue="Colombiano"></f:selectItem>

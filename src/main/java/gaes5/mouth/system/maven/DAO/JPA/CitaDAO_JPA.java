@@ -61,7 +61,7 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
 
     @Override
     public List<Cita> newList() {
-      try {
+        try {
             TypedQuery<Cita> tq = em.createNamedQuery("Cita.getAllCita", className);
             List<Cita> lista = tq.getResultList();
             if (lista.isEmpty()) {
@@ -73,6 +73,30 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
             }
         } catch (Exception e) {
             return null;
-        }    
+        }
     }
+
+    @Override
+    public boolean compararFechas(String fecha) {
+        try {
+            System.out.println("fecha desde jpq " + fecha);
+            Query query = em.createNativeQuery("SELECT  c FROM cita c  WHERE c.fecha_hora =  :fecha");
+            query.setParameter("fecha", fecha);
+            query.executeUpdate();
+
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("error al comparar citas: " + e.getLocalizedMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public List<Cita> existeCit(String id) {
+
+      return null;
+
+    }
+
 }
