@@ -44,8 +44,10 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
 
         if (Objects.nonNull(id)) {
             return em.find(this.className, id);
+        } else {
+            return null;
+
         }
-        return null;
     }
 
     @Override
