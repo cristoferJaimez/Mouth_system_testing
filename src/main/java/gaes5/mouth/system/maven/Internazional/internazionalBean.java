@@ -45,12 +45,9 @@ public class internazionalBean implements Serializable {
     static {
         listaPaises = new LinkedHashMap<>();
 
-        Locale espanol = new Locale("es");
+        Locale espanol = new Locale("es", "CO");
         listaPaises.put("Español", espanol);
         listaPaises.put("English", Locale.ENGLISH);
-
-        
-
     }
 
     public void cambiarIdioma(ValueChangeEvent e) {

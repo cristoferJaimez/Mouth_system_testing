@@ -6,7 +6,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <f:view locale="#{internazionalizacionBean.localidad}">
         <h:head>
@@ -21,7 +22,7 @@
         </h:head>
 
         <script type="text/javascript">
-        
+
         </script>
 
         <h:body style="background-image: url(../resources/img/maxresdefault.jpg); background-repeat: no-repeat; background-size: initial  ">
@@ -103,20 +104,23 @@
 
 
                         </div>
-                        
+
 
                     </div>
 
-<!--<div class="col-sm-12 col-md-12 mx-auto mb-2 ">
-                            <small class="d-block  mx-auto">
-                                <h:link class="mx-auto text-decoration-none" value="#{txt['signIn.registro']}" outcome="signUp" ></h:link>
-                            </small>
-                            <small class="d-block  mx-auto">
-                                <h:link class=" mx-auto text-decoration-none ml-5" value="#{txt['signIn.recuperarClave']}" outcome="recoveryPassword" > </h:link>
-                            </small>
-                        </div>-->
+                    <!--<div class="col-sm-12 col-md-12 mx-auto mb-2 ">
+                                                <small class="d-block  mx-auto">
+                                                    <h:link class="mx-auto text-decoration-none" value="#{txt['signIn.registro']}" outcome="signUp" ></h:link>
+                                                </small>
+                                                <small class="d-block  mx-auto">
+                                                    <h:link class=" mx-auto text-decoration-none ml-5" value="#{txt['signIn.recuperarClave']}" outcome="recoveryPassword" > </h:link>
+                                                </small>
+                                            </div>-->
 
                 </div>
+
+
+             
                 <ui:include src="../complementos/footerSystem.xhtml" />
 
             </div>

@@ -16,9 +16,7 @@ import java.time.format.DateTimeFormatter;
 @Named("citasControllers")
 @RequestScoped
 public class CitasControllers implements Serializable {
-    
-    
-    
+
     @EJB
     private CitaServices citaServices;
 
@@ -30,9 +28,8 @@ public class CitasControllers implements Serializable {
     private int idC;
     private int idE;
 
-    
     DateTimeFormatter tiempo = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-    
+
     private String descripcion;
     private String fecha;
     private int agenda = 1;
@@ -47,14 +44,8 @@ public class CitasControllers implements Serializable {
 
     }
 
-    
-
-    
-    
     public void crear() {
-        
 
-        
         msm = "";
         try {
             citaServices.guardarCita(id, descripcion, fecha);
@@ -67,9 +58,9 @@ public class CitasControllers implements Serializable {
 
     public void actualizar() {
         try {
-                    
+
             try {
-                
+
                 citaServices.actualizarCita(idC, idE, descripcion, fecha);
                 cita = new Cita();
                 msm = "actOk";
@@ -83,30 +74,40 @@ public class CitasControllers implements Serializable {
         }
 
     }
-    
-    public boolean compararFEcha(){
+
+    public void eliminar( int id) {
+        msm = "";
         try {
-           if(fecha.equalsIgnoreCase(tiempo.toString())){
-               msm = "fechaPAso";
-           }else{}
-            
-            if(citaServices.compararFecha(fecha) == false){
+            System.out.println(id);
+            citaServices.eliminar(id);
+            msm = "okEli";
+        } catch (Exception e) {
+            msm = "badEli";
+        }
+    }
+
+    public boolean compararFEcha() {
+        try {
+            if (fecha.equalsIgnoreCase(tiempo.toString())) {
+                msm = "fechaPAso";
+            } else {
+            }
+
+            if (citaServices.compararFecha(fecha) == false) {
                 msm = "fechaOK";
                 System.out.println("fecha--> " + fecha);
                 return true;
-            }else{
-                msm ="fechaBad";
+            } else {
+                msm = "fechaBad";
                 return false;
             }
-           
+
         } catch (Exception e) {
             System.out.println("Error al comparar fechas controlador: " + e.getMessage());
             msm = "fachaCath";
             return false;
         }
     }
-    
- 
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
 //<editor-fold defaultstate="collapsed" desc="comment">

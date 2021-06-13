@@ -56,5 +56,10 @@ public class CitaServices {
    public boolean compararFecha(String fecha){
       return icitasDAO.compararFechas(fecha);
    }
+   
+   
+   public void eliminar(int id){
+       icitasDAO.eliminar(id);
+   }
 
 }

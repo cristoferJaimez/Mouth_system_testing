@@ -197,6 +197,8 @@
 
                                                 <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
                                                 </h:commandButton>
+                                                
+                                                
                                             </h:form>
 
 
@@ -242,6 +244,9 @@
                                             <h:form >
 
                                                 <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
+                                                </h:commandButton>
+                                                
+                                                <h:commandButton pt:type="button" class="btn btn-outline-danger btn-sm btn-block" actionListener="#{citasControllers.eliminar(lista.id)}"  id="botonEli" value="Eliminar">
                                                 </h:commandButton>
                                             </h:form>
 
