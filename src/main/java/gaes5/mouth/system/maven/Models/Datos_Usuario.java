@@ -23,11 +23,11 @@ import lombok.Builder;
 @Entity
 @Table(name = "datos_usuario")
 @NamedQueries(value = {
-    @NamedQuery(name = "Datos_Usuario.getAll",query = "SELECT obj FROM Datos_Usuario obj"),
+    @NamedQuery(name = "Datos_Usuario.getAll", query = "SELECT obj FROM Datos_Usuario obj"),
     @NamedQuery(name = "Datos_Usuario.Login", query = "SELECT obj From Datos_Usuario obj WHERE obj.email = :correo  and   obj.pw = :pw"),
-    @NamedQuery(name=  "Datos_usuario.ConsultExistence" , query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :numDoc OR obj.email = :email"),
-    @NamedQuery(name = "Datos_Usuario.Search", query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :dato")
-})  
+    @NamedQuery(name = "Datos_usuario.ConsultExistence", query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :numDoc OR obj.email = :email"),
+    @NamedQuery(name = "Datos_Usuario.Search", query = "SELECT obj FROM Datos_Usuario obj WHERE obj.numDoc = :dato"),
+    @NamedQuery(name = "Datos_Usuario.Recovery", query = "SELECT obj FROM Datos_Usuario obj WHERE obj.email = :email"),})
 
 public class Datos_Usuario implements Serializable {
 
@@ -73,10 +73,6 @@ public class Datos_Usuario implements Serializable {
     @Column(name = "telefono")
     private BigInteger telefono;
 
-    
-    
-    
-    
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public int getId() {
         return id;

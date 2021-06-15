@@ -40,7 +40,7 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
 
     @Override
     public List<Cita> obtenerID(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return  null;
     }
 
     @Override
@@ -95,7 +95,22 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
     @Override
     public List<Cita> existeCit(String id) {
 
-      return null;
+        return null;
+
+    }
+
+    @Override
+    public void eliminarCita(String idC) {
+
+        try {
+
+            Query query = em.createNativeQuery("DELETE FROM cita WHERE id_cita = ?");
+            query.setParameter(1, idC);
+            query.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Error al eliminar Cita" + e.getMessage());
+        }
 
     }
 

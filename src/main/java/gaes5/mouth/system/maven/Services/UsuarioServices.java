@@ -69,4 +69,9 @@ public class UsuarioServices {
     public Datos_Usuario updateUser(Datos_Usuario usuario){
         return ilogindao.actualizar(usuario);
     }
+    
+    
+    public  Datos_Usuario recordarPass(String emailUsu){
+        return ilogindao.recordarPass(emailUsu);
+    }
 }

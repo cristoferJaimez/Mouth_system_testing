@@ -17,6 +17,9 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> implements ILoginDAO {
+    
+   
+    
 
     public Datos_UsuarioDAO_JPA() {
         super(Datos_Usuario.class);
@@ -80,6 +83,16 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
 
     }
 
-  
+    @Override
+    public Datos_Usuario recordarPass(String emailUsu) {
+        try {
+            TypedQuery<Datos_Usuario> tq = em.createNamedQuery(className.getSimpleName() + ".Recovery", className);
+            tq.setParameter("email", emailUsu);
+            return  (Datos_Usuario)  tq.getSingleResult();
+        } catch (Exception e) {
+            System.out.println("error jpa recovery pass --->" + e.getMessage());
+            return null;
+        }
+    }
 
 }

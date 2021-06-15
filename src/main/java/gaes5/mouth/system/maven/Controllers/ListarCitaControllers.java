@@ -35,9 +35,12 @@ public class ListarCitaControllers implements Serializable {
 
         msm = "";
         try {
-            
 
-            return citaServices.todasCitas();
+            if (citaServices.todasCitas().isEmpty()) {
+                return null;
+            } else {
+                return citaServices.todasCitas();
+            }
         } catch (Exception e) {
             return null;
         }

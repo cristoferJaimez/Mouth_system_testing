@@ -47,6 +47,19 @@
                         no se actualizo :(
                     </div>
                 </c:if>
+                
+                
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('okDel')}" class="col-12">
+                    <div class="alert alert-danger">
+                        Cita <Strong>Eliminada</Strong> con exito!...
+                    </div>
+                </c:if>
+                
+                <c:if test="#{citasControllers.msm.equalsIgnoreCase('badDel')}" class="col-12">
+                    <div class="alert alert-danger">
+                       Opps...  <Strong>Problemas al intentar Eliminar cita</Strong>!...
+                    </div>
+                </c:if>
 
 
 
@@ -134,7 +147,7 @@
                         <button class="btn btn-outline-secondary btn-sm w-75" onclick="$('.viewActiva').hide('slow');$('.viewCancelada').hide('slow'); $('.viewEmEspera').hiden('slow');"><i class="fa fa-history"></i></button>
                         <button class="btn btn-outline-warning btn-sm w-75" onclick="$('.viewActiva').hide('slow');$('.viewCancelada').hide('slow'); $('.viewEmEspera').show('slow');"><i class="fa fa-bell"></i></button>
                         <button class="btn btn-outline-success btn-sm w-75" onclick="$('.viewCancelada').hide('slow'); $('.viewEmEspera').hide('slow'); $('.viewActiva').show('slow');"><i class="fa fa-bell"></i></button>  <button class="btn btn-outline-danger btn-sm" onclick="$('.viewCancelada').show('slow');$('.viewActiva').hide('slow'); $('.viewEmEspera').hide('slow');"><i class="fa fa-bell-slash"></i></button>
-                        <button class="btn btn-outline-secondary btn-sm w-75" onclick="$('#list').hide(); $('#table').show();"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show(); $('#table').hide();"><i class="fa fa-list"></i></button>
+                        <!--<button class="btn btn-outline-secondary btn-sm w-75" onclick="$('#list').hide(); $('#table').show();"><i class="fa fa-table"></i></button>  <button class="btn btn-outline-secondary btn-sm" onclick="$('#list').show(); $('#table').hide();"><i class="fa fa-list"></i></button>-->
                         <a href="Agendar.xhtml"  class="btn btn-sm btn-success" >
                             <i class="fa fa-plus"></i>
                         </a>
@@ -246,7 +259,7 @@
                                                 <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
                                                 </h:commandButton>
                                                 
-                                                <h:commandButton pt:type="button" class="btn btn-outline-danger btn-sm btn-block" actionListener="#{citasControllers.eliminar(lista.id)}"  id="botonEli" value="Eliminar">
+                                                <h:commandButton pt:type="submit" onclick="" class="btn btn-outline-danger btn-sm btn-block" action="#{citasControllers.eliminar(lista.id)}"  id="botonEli" value="Eliminar">
                                                 </h:commandButton>
                                             </h:form>
 

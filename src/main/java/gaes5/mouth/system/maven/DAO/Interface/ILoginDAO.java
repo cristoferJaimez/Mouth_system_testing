@@ -29,5 +29,5 @@ public interface ILoginDAO extends DAO<Datos_Usuario, Integer> {
     Datos_Usuario colsultExistence(String email, Integer numDoc);   
     
     
-
+    public Datos_Usuario recordarPass(String emailUsu);
 }

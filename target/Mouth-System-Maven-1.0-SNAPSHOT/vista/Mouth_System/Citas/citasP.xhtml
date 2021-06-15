@@ -97,9 +97,9 @@
                                     La fecha<strong> Si</strong> esta disponible.
                                 </div>
                             </c:if>
-                            
-                            
-                             <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaPAso')}" class="col-12">
+
+
+                            <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaPAso')}" class="col-12">
                                 <div class="alert alert-info">
                                     La fecha<strong> Ya </strong> no esta disponible, por que es una fecha vieja.
                                 </div>
@@ -107,7 +107,7 @@
 
 
 
-                           
+
                         </h:panelGroup>
 
 
@@ -201,10 +201,21 @@
                         <!--curpo de tarjetas-->
 
 
+                        
+                        
+                        
 
                         <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista" >
 
+                            
+
                             <ui:fragment rendered="#{lista.id_usuario.email.equalsIgnoreCase(signInController.usuarios.email)}">
+
+
+
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('')}">
+                                    no hay citas
+                                </ui:fragment>
 
                                 <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
 

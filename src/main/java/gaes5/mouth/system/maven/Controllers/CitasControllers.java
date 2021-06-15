@@ -75,15 +75,16 @@ public class CitasControllers implements Serializable {
 
     }
 
-    public void eliminar( int id) {
+    public void eliminar(String id) {
         msm = "";
         try {
-            System.out.println(id);
-            citaServices.eliminar(id);
-            msm = "okEli";
+            msm = "okDel";
+            citaServices.eliminarCita(id);
         } catch (Exception e) {
-            msm = "badEli";
+            System.out.println("msm de controlador--> " + e.getMessage());
+            msm = "badDel";
         }
+        msm = "queryDabDel";
     }
 
     public boolean compararFEcha() {

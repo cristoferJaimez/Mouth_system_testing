@@ -57,6 +57,11 @@ public class CitaServices {
       return icitasDAO.compararFechas(fecha);
    }
    
+   //eliminar Cita 
+   public void eliminarCita(String idC){
+       icitasDAO.eliminarCita(idC);
+   }
+   
    
    public void eliminar(int id){
        icitasDAO.eliminar(id);
