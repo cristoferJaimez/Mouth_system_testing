@@ -38,11 +38,13 @@ public class CitasControllers implements Serializable {
     public CitasControllers() {
     }
 
+    /*
     @PostConstruct
     public void init() {
         this.cita = new Cita();
 
     }
+*/
 
     public void crear() {
 
@@ -62,7 +64,7 @@ public class CitasControllers implements Serializable {
             try {
 
                 citaServices.actualizarCita(idC, idE, descripcion, fecha);
-                cita = new Cita();
+                //cita = new Cita();
                 msm = "actOk";
 
             } catch (Exception e) {
@@ -89,18 +91,14 @@ public class CitasControllers implements Serializable {
 
     public boolean compararFEcha() {
         try {
-            if (fecha.equalsIgnoreCase(tiempo.toString())) {
-                msm = "fechaPAso";
-            } else {
-            }
-
-            if (citaServices.compararFecha(fecha) == false) {
-                msm = "fechaOK";
-                System.out.println("fecha--> " + fecha);
-                return true;
-            } else {
+          
+            if (citaServices.compararFecha(fecha) == !true) {
                 msm = "fechaBad";
+                System.out.println("fecha--> " + fecha);
                 return false;
+            } else {
+                msm = "fechaOK";
+                return true;
             }
 
         } catch (Exception e) {

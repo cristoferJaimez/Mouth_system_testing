@@ -47,17 +47,17 @@
                         no se actualizo :(
                     </div>
                 </c:if>
-                
-                
+
+
                 <c:if test="#{citasControllers.msm.equalsIgnoreCase('okDel')}" class="col-12">
                     <div class="alert alert-danger">
                         Cita <Strong>Eliminada</Strong> con exito!...
                     </div>
                 </c:if>
-                
+
                 <c:if test="#{citasControllers.msm.equalsIgnoreCase('badDel')}" class="col-12">
                     <div class="alert alert-danger">
-                       Opps...  <Strong>Problemas al intentar Eliminar cita</Strong>!...
+                        Opps...  <Strong>Problemas al intentar Eliminar cita</Strong>!...
                     </div>
                 </c:if>
 
@@ -160,10 +160,15 @@
                 </div>
             </div>
 
+
+
             <h:panelGroup id="newList"  layout="block" class="col-12 mx-auto">
 
                 <div class="container">
                     <div class="row">
+
+                        <img src="http://f5sys.com/img/no-data.svg" id="imagen_" alt="" class="mx-auto img-fluid" title="No hay datos para mostrar"></img>
+
 
                         <!--curpo de tarjetas-->
 
@@ -172,6 +177,12 @@
                         <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista" >
 
                             <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $('#imagen_').hide(Animation); //oculto mediante id                                       
+                                    });
+                                </script>
 
                                 <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewActiva">
                                     <div class="card-header bg-transparent text-muted">
@@ -210,8 +221,8 @@
 
                                                 <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
                                                 </h:commandButton>
-                                                
-                                                
+
+
                                             </h:form>
 
 
@@ -221,6 +232,14 @@
 
                             </ui:fragment>
                             <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+
+
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $('#imagen_').hide(Animation); //oculto mediante id                                       
+                                    });
+                                </script>
+
                                 <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada">
                                     <div class="card-header bg-transparent text-muted">
                                         Consulta # #{lista.id}
@@ -258,7 +277,7 @@
 
                                                 <h:commandButton pt:type="button" class="btn btn-outline-success btn-sm btn-block" onclick="asignar('#{lista.id}', '#{lista.id_usuario.numDoc}', '#{lista.id_estado_cita.estado}', '#{lista.descripcion}', '#{lista.fecha_hora}', '#{lista.id_usuario.priNom} #{lista.id_usuario.priApe}');" id="boton" value="Editar" pt:data-toggle="modal" pt:data-target="#exampleModal" pt:data-whatever="#{lista.id}">
                                                 </h:commandButton>
-                                                
+
                                                 <h:commandButton pt:type="submit" onclick="" class="btn btn-outline-danger btn-sm btn-block" action="#{citasControllers.eliminar(lista.id)}"  id="botonEli" value="Eliminar">
                                                 </h:commandButton>
                                             </h:form>
@@ -271,6 +290,13 @@
 
 
                             <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $('#imagen_').hide(Animation); //oculto mediante id                                       
+                                    });
+                                </script>
+
                                 <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada viewEmEspera">
                                     <div class="card-header bg-transparent text-muted">
                                         Consulta # #{lista.id}

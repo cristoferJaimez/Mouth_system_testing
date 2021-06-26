@@ -27,4 +27,6 @@ public interface ICitasDAO extends DAO<Cita, Integer> {
     public List<Cita> existeCit(String id);
     
     void eliminarCita(String idC);
+    
+    void existeCita(String id);
 }

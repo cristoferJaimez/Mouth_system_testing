@@ -40,7 +40,7 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
 
     @Override
     public List<Cita> obtenerID(int id) {
-        return  null;
+        return null;
     }
 
     @Override
@@ -80,11 +80,11 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
     public boolean compararFechas(String fecha) {
         try {
             System.out.println("fecha desde jpq " + fecha);
-            Query query = em.createNativeQuery("SELECT  c FROM cita c  WHERE c.fecha_hora =  :fecha");
-            query.setParameter("fecha", fecha);
+            Query query = em.createNativeQuery("SELECT  * FROM cita   WHERE fecha_hora = ?");
+            query.setParameter(1, fecha);
             query.executeUpdate();
 
-            return true;
+            return false;
 
         } catch (Exception e) {
             System.out.println("error al comparar citas: " + e.getLocalizedMessage());
@@ -110,6 +110,20 @@ public class CitaDAO_JPA extends GenericDAO<Cita, Integer> implements ICitasDAO 
 
         } catch (Exception e) {
             System.out.println("Error al eliminar Cita" + e.getMessage());
+        }
+
+    }
+
+    @Override
+    public void existeCita(String id) {
+        System.out.println("id en jpa" + id);
+        try {
+            Query query = em.createNativeQuery("SELECT * FROM cita WHERE id_usuario = ?");
+            query.setParameter(1, id);
+            query.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
 
     }

@@ -27,10 +27,12 @@ public class ListasControlls implements Serializable {
     //variables de entorno
     private String msm;
 
+    /*
     @PostConstruct
     public void init() {
         this.usuario = new Datos_Usuario();
     }
+*/
 
     public List<Datos_Usuario> listarUsuarios() {
         msm = "";

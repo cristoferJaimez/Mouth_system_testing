@@ -34,10 +34,12 @@ public class RecoveryPass implements Serializable {
 
     }
 
+    /*
     @PostConstruct
     public void init() {
         this.usuario = new Datos_Usuario();
     }
+*/
 
     public void recoveryPass() {
         msm = "";

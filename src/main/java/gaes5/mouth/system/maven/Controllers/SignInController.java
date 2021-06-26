@@ -23,9 +23,9 @@ public class SignInController implements Serializable {
     private UsuarioServices usuarioServicios;
     private Datos_Usuario usuario;
     private Datos_Usuario usuarios;
-    private Datos_Usuario Editarusuarios = new Datos_Usuario();
+    //private Datos_Usuario Editarusuarios = new Datos_Usuario();
 
-    private Datos_Usuario editUser = new Datos_Usuario();
+    //private Datos_Usuario editUser = new Datos_Usuario();
 
     //variables de entorno
     private String msm;
@@ -35,10 +35,12 @@ public class SignInController implements Serializable {
     public SignInController() {
     }
 
+    /*
     @PostConstruct
     public void init() {
         this.usuario = new Datos_Usuario();
     }
+*/
 
     public void signIn() {
         msm = "";
@@ -73,7 +75,7 @@ public class SignInController implements Serializable {
     public void updateUser() {
         msm = "";
         try {
-            usuarioServicios.actualizar(Editarusuarios);
+  //          usuarioServicios.actualizar(Editarusuarios);
             msm = "updateUserOk";
         } catch (Exception e) {
             msm = "updateError";
@@ -90,7 +92,7 @@ public class SignInController implements Serializable {
     public void setUsuarioServicios(UsuarioServices usuarioServicios) {
         this.usuarioServicios = usuarioServicios;
     }
-
+/*
     public Datos_Usuario getEditUser() {
         return editUser;
     }
@@ -98,7 +100,7 @@ public class SignInController implements Serializable {
     public void setEditUser(Datos_Usuario editUser) {
         this.editUser = editUser;
     }
-
+*/
     public Datos_Usuario getUsuario() {
         return usuario;
     }
@@ -140,12 +142,12 @@ public class SignInController implements Serializable {
     }
 //</editor-fold>
 
-    public Datos_Usuario getEditarusuarios() {
-        return Editarusuarios;
-    }
+   // public Datos_Usuario getEditarusuarios() {
+    //    return Editarusuarios;
+    //}
 
     public void setEditarusuarios(Datos_Usuario Editarusuarios) {
-        this.Editarusuarios = Editarusuarios;
+      //  this.Editarusuarios = Editarusuarios;
     }
     
     

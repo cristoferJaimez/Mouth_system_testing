@@ -42,11 +42,22 @@
 
             <h:panelGroup id="msm">
 
+                <div class="alert alert-success" id="alert-info-">
+                    Cuando tienes una cita Activa no podras agendar de nuevo
+                </div>
+
+
                 <c:if test="#{citasControllers.msm.equalsIgnoreCase('actBad')}" class="col-12">
                     <div class="alert alert-danger">
                         no se actualizo :(
                     </div>
                 </c:if>
+
+<!--                <c:if test="#{ListarCitaControllers.msm.equalsIgnoreCase('no')}" class="col-12">
+                    <div class="alert alert-info">
+                        Actualmente no tiene citas... 
+                    </div>
+                </c:if>-->
 
 
                 <c:if test="#{citasControllers.msm.equalsIgnoreCase('fechaBad')}" class="col-12">
@@ -147,13 +158,16 @@
                                     </h:inputText>
                                 </div>
                                 <div class="form-group">
+
                                     <h:outputText  class="text-uppercase badge badge-info" id="fecha" >
                                         <f:convertDateTime pattern="MMMM-dd-yyyy"  />
                                     </h:outputText>
-                                    <h:inputText pt:type="date" converter="#{null}" value="#{citasControllers.fecha}" class="form-control "  required="true" requiredMessage="Debe expesificar el dia">
+                                    <h:inputText  pt:type="datetime-local"  converter="#{null}" id="fecha_i"   value="#{citasControllers.fecha}" class="form-control "  required="true" requiredMessage="Debe expesificar el dia">
                                         <f:ajax event="click" listener="#{citasControllers.compararFEcha()}"  render="msm2">  </f:ajax>
                                     </h:inputText>
                                 </div>
+
+
 
 
 
@@ -181,7 +195,7 @@
                     <div class="btn-group mr-2">
                         <button class="btn btn-outline-warning btn-sm w-75" onclick="$('.viewActiva').hide('slow');$('.viewCancelada').hide('slow'); $('.viewEmEspera').show('slow');"><i class="fa fa-bell"></i></button>
                         <button class="btn btn-outline-success btn-sm w-75" onclick="$('.viewCancelada').hide('slow'); $('.viewEmEspera').hide('slow'); $('.viewActiva').show('slow');"><i class="fa fa-bell"></i></button>  <button class="btn btn-outline-danger btn-sm" onclick="$('.viewCancelada').show('slow');$('.viewActiva').hide('slow'); $('.viewEmEspera').hide('slow');"><i class="fa fa-bell-slash"></i></button>
-                        <a href="AgendarPaciente.xhtml"  class="btn btn-sm btn-success" >
+                        <a href="AgendarPaciente.xhtml" id="agendarNuevo"  class="btn btn-sm btn-success" >
                             <i class="fa fa-plus"></i>
                         </a>
                         <a href="citasP.xhtml"  class="btn btn-sm btn-outline-secondary disabled"  >
@@ -201,23 +215,34 @@
                         <!--curpo de tarjetas-->
 
 
-                        
-                        
-                        
 
-                        <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista" >
 
-                            
+                        <img src="http://f5sys.com/img/no-data.svg" id="imagen_" alt="" class="mx-auto img-fluid" title="No hay datos para mostrar"></img>
+
+                        <p:repeat value="#{ListarCitaControllers.todasCitas()}"  var="lista">
+
+
+
 
                             <ui:fragment rendered="#{lista.id_usuario.email.equalsIgnoreCase(signInController.usuarios.email)}">
 
+                                <script type="text/javascript">
+                                    $(document).ready(function () {
+                                        $('#imagen_').hide(Animation); //oculto mediante id                                      
 
+                                    });
+                                </script>
 
-                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('')}">
-                                    no hay citas
-                                </ui:fragment>
+                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}" >
 
-                                <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Activa')}">
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#agendarNuevo').hide(Animation); //oculto mediante id    
+                                            $('#alert-info-').show(Animation); //oculto mediante id                                       
+
+                                        });
+                                    </script>
+
 
                                     <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewActiva">
                                         <div class="card-header bg-transparent text-muted">
@@ -265,6 +290,12 @@
 
                                 </ui:fragment>
                                 <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Cancelada')}">
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#alert-info-').hide(Animation); //oculto mediante id                                       
+
+                                        });
+                                    </script>
                                     <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada">
                                         <div class="card-header bg-transparent text-muted">
                                             Consulta # #{lista.id}
@@ -312,6 +343,12 @@
 
 
                                 <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('En Espera')}">
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#alert-info-').hide(Animation); //oculto mediante id                                       
+
+                                        });
+                                    </script>
                                     <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada viewEmEspera">
                                         <div class="card-header bg-transparent text-muted">
                                             Consulta # #{lista.id}
@@ -358,6 +395,12 @@
                                 </ui:fragment>  
 
                                 <ui:fragment rendered="#{lista.id_estado_cita.estado.equalsIgnoreCase('Pausada')}">
+                                    <script type="text/javascript">
+                                        $(document).ready(function () {
+                                            $('#alert-info-').hide(Animation); //oculto mediante id                                       
+
+                                        });
+                                    </script>
                                     <div class="card col-md-3 ml-4 mt-3 shadow-sm text-center viewCancelada viewEmEspera">
                                         <div class="card-header bg-transparent text-muted">
                                             Consulta # #{lista.id}
@@ -442,6 +485,8 @@
 
 
             <script type="text/javascript">
+
+
 
 
 

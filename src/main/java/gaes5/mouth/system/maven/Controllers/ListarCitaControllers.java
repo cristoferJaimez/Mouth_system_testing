@@ -25,26 +25,38 @@ public class ListarCitaControllers implements Serializable {
     @EJB
     private CitaServices citaServices;
 
+    /*
     @PostConstruct
     public void init() {
         this.cita = new Cita();
 
     }
-
+*/
     public List<Cita> todasCitas() {
 
         msm = "";
         try {
 
             if (citaServices.todasCitas().isEmpty()) {
+                msm = "no";
                 return null;
             } else {
+                msm = "no";
                 return citaServices.todasCitas();
             }
         } catch (Exception e) {
+            msm = "no";
             return null;
         }
 
+    }
+
+    public void existeCita(String id) {
+        try {
+            System.out.println("citasssss--------------------------->");
+            citaServices.existeCit(id);
+        } catch (Exception e) {
+        }
     }
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">

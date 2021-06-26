@@ -40,68 +40,68 @@ import org.mockito.Mockito;
 @RunWith(JUnitPlatform.class)
 public class testingCitas {
 
-//    @InjectMocks
-//    private CitaDAO_JPA cdaojpa = new CitaDAO_JPA();
-//    @Mock
-//    private EntityManager emMock;
-//  
-//
-//    public testingCitas() {
-//    }
-//
-//    @Test
-//    public void testBuscarCitaPorIdQueExista() {
-//        Cita citaMock = Cita.builder()
-//               .id(1)
-//              .build();
-//        //Given
-//        int idCita = 1;
-//        when(emMock.find(Cita.class, idCita)).thenReturn(citaMock);
-//        //when
-//        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
-//        //Then
-//        assertNotNull(citaEncontrada);
-//        assertEquals(idCita, citaEncontrada.getId());
-//    }
-//
-//    // no hay cita 
-//    @Test
-//    public void testBuscarCitaPorIdQueNoExista() {
-//        //Given
-//        int idCita = 7;
-//        when(emMock.find(Cita.class, idCita)).thenReturn(null);
-//        //when
-//        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
-//        //Then
-//        System.out.println("resultado ---> id que no existe: " + citaEncontrada);
-//        assertNull(citaEncontrada);
-//        //assertEquals(citaEncontrada, null);
-//    }
-//    
-////    
-//    @Test
-//    public void testBuscarCitaPorIdNull() {        //Given
-//       Integer idCita = null;
-//        //when
-//        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
-//        //Then
-//        System.out.println("Ide null resultado --->" + citaEncontrada);
-//        assertNull(citaEncontrada);
-//   }
-////    
-////
-////    //todas las citas
-//   @Test
-//    public void testBuscarTodasLasCitasQueExista() {
-//        //Given
-//        TypedQuery<Cita> queryMock = Mockito.mock(TypedQuery.class);
-//        when(emMock.createNamedQuery(anyString(), eq(Cita.class))).thenReturn(queryMock);
-//        when(queryMock.getResultList()).thenReturn(Collections.emptyList());
-//        //when 
-//        List<Cita> citasEncontradas = cdaojpa.obtenerTodos();
-//        //Then
-//        assertNotNull(citasEncontradas);
-//        assertTrue(citasEncontradas.isEmpty());
-//    }
+   @InjectMocks
+    private CitaDAO_JPA cdaojpa = new CitaDAO_JPA();
+    @Mock
+    private EntityManager emMock;
+  
+
+    public testingCitas() {
+    }
+
+    @Test
+    public void testBuscarCitaPorIdQueExista() {
+        Cita citaMock = Cita.builder()
+               .id(1)
+              .build();
+        //Given
+        int idCita = 1;
+        when(emMock.find(Cita.class, idCita)).thenReturn(citaMock);
+        //when
+        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
+        //Then
+        assertNotNull(citaEncontrada);
+        assertEquals(idCita, citaEncontrada.getId());
+    }
+
+    // no hay cita 
+    @Test
+    public void testBuscarCitaPorIdQueNoExista() {
+        //Given
+       int idCita = 9;
+        when(emMock.find(Cita.class, idCita)).thenReturn(null);
+        //when
+        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
+        //Then
+        System.out.println("resultado ---> id que no existe: " + citaEncontrada);
+        assertNull(citaEncontrada);
+        assertEquals(citaEncontrada, null);
+    }
+    
+    
+    @Test
+    public void testBuscarCitaPorIdNull() {        //Given
+       Integer idCita = null;
+        //when
+        Cita citaEncontrada = cdaojpa.obtenerId(idCita);
+        //Then
+        System.out.println("Ide null resultado --->" + citaEncontrada);
+        assertNull(citaEncontrada);
+   }
+    
+
+    //todas las citas
+   @Test
+    public void testBuscarTodasLasCitasQueExista() {
+        //Given
+        TypedQuery<Cita> queryMock = Mockito.mock(TypedQuery.class);
+        when(emMock.createNamedQuery(anyString(), eq(Cita.class))).thenReturn(queryMock);
+        when(queryMock.getResultList()).thenReturn(Collections.emptyList());
+        //when 
+        List<Cita> citasEncontradas = cdaojpa.obtenerTodos();
+        //Then
+        assertNull(citasEncontradas);
+        //assertTrue(citasEncontradas.remove());
+    }
 
 }

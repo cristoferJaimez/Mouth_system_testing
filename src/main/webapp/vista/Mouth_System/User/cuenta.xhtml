@@ -61,23 +61,23 @@
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.priNom}"  class="form-control"/>
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.segNom}" class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.priApe}" class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.segApe}" class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.numDoc}" class="form-control" />
                                         </div>
-                                        
+
                                         <div class="form-group">
                                             <h:inputText value="#{signInController.usuarios.email}" class="form-control" disabled="true" />
                                         </div>
@@ -109,7 +109,11 @@
                                         </tr>
                                         <tr>
                                             <td>Nac</td>
-                                            <td>#{signInController.usuarios.fechaNac}</td>
+                                            <td>
+                                                <h:outputText  class="" value=" #{signInController.usuarios.fechaNac}" >
+                                                     <f:convertDateTime pattern="MMMM-dd-yyyy" />
+                                                </h:outputText>
+                                               </td>
                                         </tr>
                                         <tr>
                                             <td>Tipo Doc.</td>

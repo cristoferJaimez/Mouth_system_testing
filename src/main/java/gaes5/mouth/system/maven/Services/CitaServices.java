@@ -67,4 +67,8 @@ public class CitaServices {
        icitasDAO.eliminar(id);
    }
 
+   
+   public void existeCit(String id){
+       icitasDAO.existeCit(id);
+   }
 }

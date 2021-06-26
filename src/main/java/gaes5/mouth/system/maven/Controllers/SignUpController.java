@@ -38,18 +38,18 @@ public class SignUpController implements Serializable {
     public SignUpController() {
 
     }
-
+/*
     @PostConstruct
     public void init() {
         this.usuario = new Datos_Usuario();
     }
-
+*/
     public void crear() {
         msm = "";
         try {
 //            System.out.println("datos del forma" +usuario);
             usuarioServices.crear(usuario);
-            usuario = new Datos_Usuario();
+  //          usuario = new Datos_Usuario();
             msm = "msm2";
         } catch (Exception e) {
             msm = "msm3 ";

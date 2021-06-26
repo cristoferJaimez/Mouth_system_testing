@@ -36,10 +36,11 @@ public class SearchPatientControllers implements Serializable {
     private Integer numDoc;
     private String fecha;
 
+    /*
     @PostConstruct
     public void init() {
         this.usuario = new Datos_Usuario();
-    }
+    }*/
 
     public void searchUser() {
         msm = "";
