@@ -83,7 +83,6 @@ public class CitasControllers implements Serializable {
             msm = "okDel";
             citaServices.eliminarCita(id);
         } catch (Exception e) {
-            System.out.println("msm de controlador--> " + e.getMessage());
             msm = "badDel";
         }
         msm = "queryDabDel";

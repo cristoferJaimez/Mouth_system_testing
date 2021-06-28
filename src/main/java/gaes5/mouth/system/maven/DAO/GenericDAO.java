@@ -57,10 +57,6 @@ public abstract class GenericDAO<T, PK> implements DAO<T, PK> {
         return tq.getResultList();
     }
 
-    @Override
-    public void eliminar(PK id) {
-        em.remove(getInt(id));
-    }
 
     @Override
     public T actualizar(T obj) {

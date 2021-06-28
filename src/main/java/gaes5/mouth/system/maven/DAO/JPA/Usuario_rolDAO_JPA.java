@@ -56,7 +56,14 @@ public class Usuario_rolDAO_JPA extends GenericDAO<Usuario_rol, Integer> impleme
             return null;
         } 
     }
-    
-    
-    
+
+    @Override
+    public void eliminar(Integer id) {
+
+    }
+
+    @Override
+    public Object eliminarCita() {
+        return null;
+    }
 }

@@ -34,4 +34,5 @@ public interface DAO<T, PK> {
     //plantilla :  Actualizar un elemento por ID
     T actualizar(T obj);
 
+    Object eliminarCita();
 }

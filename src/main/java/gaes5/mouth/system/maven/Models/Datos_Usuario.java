@@ -19,7 +19,7 @@ import lombok.Builder;
  *
  * @author Cristo
  */
-@Builder
+//@Builder
 @Entity
 @Table(name = "datos_usuario")
 @NamedQueries(value = {

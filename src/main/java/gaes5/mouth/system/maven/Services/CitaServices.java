@@ -21,13 +21,12 @@ public class CitaServices {
         return icitasDAO.crear(cita);
     }
 
-    public void actualizarCita(int idE, int idC, String des, String fecha){
+    public Cita actualizarCita(int idE, int idC, String des, String fecha){
         icitasDAO.ActualizarCita(idE, idC, des, fecha);
+        return null;
     }
     
     public List<Cita> todasCitas() {
-        System.out.println("retornando desde Servicio");
-        
         return icitasDAO.obtenerTodos();
     }
     
@@ -37,38 +36,19 @@ public class CitaServices {
     }
     
    public void guardarCita(String idU, String des, String fecha){
-       icitasDAO.nuevaCita( idU, des, fecha);
+
+        icitasDAO.nuevaCita( idU, des, fecha);
    } 
-   
-   public List<Cita> existeCita(String id){
-       return icitasDAO.existeCit(id);
-   }
-   
-   
-   public void verCitaId(int id){
-       icitasDAO.obtenerID(id);
-   }
-   
-   public void idVer(Integer id){
-       icitasDAO.obtenerId(id);
-   }
-   
+
    public boolean compararFecha(String fecha){
       return icitasDAO.compararFechas(fecha);
    }
    
    //eliminar Cita 
-   public void eliminarCita(String idC){
+   public Cita eliminarCita(String idC){
        icitasDAO.eliminarCita(idC);
+       return null;
    }
    
-   
-   public void eliminar(int id){
-       icitasDAO.eliminar(id);
-   }
 
-   
-   public void existeCit(String id){
-       icitasDAO.existeCit(id);
-   }
 }

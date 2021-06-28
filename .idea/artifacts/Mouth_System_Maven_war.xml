@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Mouth-System-Maven:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Mouth-System-Maven</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Mouth-System-Maven-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Mouth-System-Maven:war exploded" />
+    </root>
+  </artifact>
+</component>

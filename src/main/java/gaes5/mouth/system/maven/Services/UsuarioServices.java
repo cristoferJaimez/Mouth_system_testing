@@ -30,18 +30,6 @@ public class UsuarioServices {
         return ilogindao.obtenerTodos();
     }
 
-    public Datos_Usuario obtenerId(Integer id) {
-        return ilogindao.obtenerId(id);
-    }
-
-    public void eliminar(Integer id) {
-        ilogindao.eliminar(id);
-    }
-
-    public void actualizar(Datos_Usuario usuario) {
-        ilogindao.actualizar(usuario);
-    }
-
     public Datos_Usuario login(String email, String pw) {
         return ilogindao.signIn(email, pw);
     }
@@ -65,12 +53,7 @@ public class UsuarioServices {
     }
   
     
-//    editar usuario
-    public Datos_Usuario updateUser(Datos_Usuario usuario){
-        return ilogindao.actualizar(usuario);
-    }
-    
-    
+//
     public  Datos_Usuario recordarPass(String emailUsu){
         return ilogindao.recordarPass(emailUsu);
     }

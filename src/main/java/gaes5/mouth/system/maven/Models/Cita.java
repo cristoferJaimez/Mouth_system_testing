@@ -22,7 +22,7 @@ import lombok.Builder;
  *
  * @author cristo
  */
-@Builder
+//@Builder
 @Entity
 @Table(name = "cita")
 @NamedQueries(value = {
@@ -31,7 +31,7 @@ import lombok.Builder;
 })
 public class Cita implements Serializable {
 
-    
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -56,6 +56,8 @@ public class Cita implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_estado_cita")
     private Estado_Cita id_estado_cita;
+
+
 
     public Datos_Usuario getId_usuario() {
         return id_usuario;

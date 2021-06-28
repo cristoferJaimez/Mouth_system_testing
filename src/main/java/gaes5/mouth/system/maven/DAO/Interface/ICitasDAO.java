@@ -17,14 +17,14 @@ public interface ICitasDAO extends DAO<Cita, Integer> {
     void ActualizarCita( int idE, int idC, String des, String fecha);
 //
 
-    public List<Cita> obtenerID( int id);
+    //public List<Cita> obtenerID( int id);
     
     public List<Cita> newList();
     
     public boolean compararFechas(String fecha);
 
     
-    public List<Cita> existeCit(String id);
+    //public List<Cita> existeCit(String id);
     
     void eliminarCita(String idC);
     

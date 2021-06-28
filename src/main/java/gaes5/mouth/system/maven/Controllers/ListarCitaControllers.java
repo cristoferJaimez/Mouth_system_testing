@@ -51,13 +51,7 @@ public class ListarCitaControllers implements Serializable {
 
     }
 
-    public void existeCita(String id) {
-        try {
-            System.out.println("citasssss--------------------------->");
-            citaServices.existeCit(id);
-        } catch (Exception e) {
-        }
-    }
+
 
 //<editor-fold defaultstate="collapsed" desc="Setter and Getter">
     public Cita getCita() {

@@ -68,7 +68,6 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
             TypedQuery<Datos_Usuario> tq = em.createNamedQuery("Datos_usuario.ConsultExistence", className);
             tq.setParameter("numDoc", numDoc);
             tq.setParameter("email", email);
-
             List<Datos_Usuario> lista = tq.getResultList();
             if (lista.isEmpty()) {
                 System.out.println("lista vacia");
@@ -90,9 +89,17 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
             tq.setParameter("email", emailUsu);
             return  (Datos_Usuario)  tq.getSingleResult();
         } catch (Exception e) {
-            System.out.println("error jpa recovery pass --->" + e.getMessage());
             return null;
         }
     }
 
+    @Override
+    public void eliminar(Integer id) {
+
+    }
+
+    @Override
+    public Object eliminarCita() {
+        return null;
+    }
 }
