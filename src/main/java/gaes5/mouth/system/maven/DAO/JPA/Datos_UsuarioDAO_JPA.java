@@ -95,7 +95,6 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
 
     @Override
     public void eliminar(Integer id) {
-
     }
 
     @Override

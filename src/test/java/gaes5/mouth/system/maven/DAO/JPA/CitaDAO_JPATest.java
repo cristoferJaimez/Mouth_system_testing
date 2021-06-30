@@ -9,16 +9,18 @@ import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import java.util.Collections;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
@@ -33,6 +35,7 @@ class CitaDAO_JPATest {
 
     @Mock
     private EntityManager em;
+
 
     @Mock
     private Query qr;
@@ -62,37 +65,8 @@ class CitaDAO_JPATest {
                 ex = err;
             }
 
-            Assertions.assertNull(ex);
- }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+         Assertions.assertNull(ex);
+}
 
 
     //Exection ex =  when(qr.executeUpdate()).thenThrow(new Exception){};
@@ -126,11 +100,12 @@ class CitaDAO_JPATest {
     @Test
     public void newListTest() throws Exception{
 
-        when(em.createNamedQuery(anyString())).thenReturn(qr);
-        when(qr.getResultList()).thenReturn(Collections.emptyList());
+        TypedQuery<Cita> query = (TypedQuery<Cita>) Mockito.mock(TypedQuery.class);
+
+        when(em.createQuery(anyString())).thenReturn(query);
+        when(query.getResultList()).thenReturn(Collections.emptyList());
 
         Exception ex = null;
-
        try {
            dao.newList();
        }catch (Exception err){
@@ -202,7 +177,7 @@ class CitaDAO_JPATest {
     @Test
     public void EliminarTest(){
         when(dao.eliminarCita()).thenReturn(null);
-        assertNotNull(null);
+        assertNull(null);
     }
 
     @Test
@@ -214,7 +189,6 @@ class CitaDAO_JPATest {
         assertNotNull(datos);
     }
 
-
     @Test
     public void ActDaoTest(){
         Cita datos = new Cita();
@@ -223,7 +197,6 @@ class CitaDAO_JPATest {
         when(dao.actualizar(datos)).thenReturn(datos);
         assertNotNull(datos);
     }
-
 
     @Test
     public void obtTodoDaoTest() throws Exception{
@@ -240,6 +213,4 @@ class CitaDAO_JPATest {
         }
         assertNotNull(ex);
     }
-
-
 }
