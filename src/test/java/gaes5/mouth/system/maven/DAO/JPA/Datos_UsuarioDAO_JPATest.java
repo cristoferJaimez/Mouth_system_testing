@@ -1,6 +1,5 @@
 package gaes5.mouth.system.maven.DAO.JPA;
 
-import gaes5.mouth.system.maven.Models.Cita;
 import gaes5.mouth.system.maven.Models.Datos_Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,8 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -40,7 +38,7 @@ class Datos_UsuarioDAO_JPATest {
     private Query qr;
 
     @Mock
-    private TypedQuery <Datos_Usuario> tq;
+    private TypedQuery tq;
 
     @BeforeEach
     void setUp() {
@@ -49,45 +47,82 @@ class Datos_UsuarioDAO_JPATest {
 
     @Test
     public void signIn(){
+        List<Datos_Usuario> listMock = new ArrayList<>();
+
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+       // when(listMock.isEmpty()).thenReturn(true);
+       // when(listMock.get(0)).thenReturn(new Datos_Usuario());
+
+         Datos_Usuario usuario = dao.signIn("email", "pass");
+         assertNull(usuario);
+    }
 
 
-        TypedQuery<Datos_Usuario> query = (TypedQuery<Datos_Usuario>) Mockito.mock(TypedQuery.class);
+    @Test
+    public void signInTest(){
+        List<Datos_Usuario> listMock = new ArrayList<>();
+        listMock.add(new Datos_Usuario());
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+        // when(listMock.isEmpty()).thenReturn(true);
+        // when(listMock.get(0)).thenReturn(new Datos_Usuario());
+
+        Datos_Usuario usuario = dao.signIn("email", "pass");
+        assertNotNull(usuario);
+    }
 
 
-        when(em.createQuery(anyString())).thenReturn(query);
-        when(query.setParameter(anyString(), anyString())).thenReturn(query);
-        when(query.setParameter(anyString(), anyString())).thenReturn(query);
-        when(query.getResultList()).thenReturn(Collections.emptyList());
 
-        Exception ex = null;
+    @Test
+    public void signInTestEx(){
+      //  when(tq.getResultList()).thenReturn(Collections.emptyList());
 
-        try {
-            dao.signIn("1", "1");
-
-        }catch (Exception e){
-            ex = e;
-        }
-        assertNull(ex);
+        Datos_Usuario usuario = dao.signIn("email", "pass");
+        assertNull(usuario);
     }
 
 
     @Test
     public void searchUserTest(){
-        TypedQuery<Datos_Usuario> query = (TypedQuery<Datos_Usuario>) Mockito.mock(TypedQuery.class);
 
-        when(em.createQuery(anyString())).thenReturn(query);
-        when(query.setParameter(anyInt(), anyString())).thenReturn(query);
-        when(tq.getResultList()).thenReturn(Collections.emptyList());
+        List<Datos_Usuario> listMock = new ArrayList<>();
 
-        Exception ex = null;
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyInt())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+        // when(listMock.isEmpty()).thenReturn(true);
+        // when(listMock.get(0)).thenReturn(new Datos_Usuario());
 
-        try {
-            dao.searchUser(12);
+        Datos_Usuario usuario = dao.searchUser(1);
+        assertNull(usuario);
+    }
 
-        }catch (Exception e){
-            ex = e;
-        }
-          assertNull(ex);
+    @Test
+    public void searchTestif(){
+        List<Datos_Usuario> listMock = new ArrayList<>();
+        listMock.add(new Datos_Usuario());
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyInt())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+        // when(listMock.isEmpty()).thenReturn(true);
+        // when(listMock.get(0)).thenReturn(new Datos_Usuario());
+
+        Datos_Usuario usuario = dao.searchUser(1);
+        assertNotNull(usuario);
+
+    }
+
+    @Test
+    public void searTestEx(){
+        //  when(tq.getResultList()).thenReturn(Collections.emptyList());
+
+        Datos_Usuario usuario = dao.searchUser(1);
+        assertNull(usuario);
     }
 
     @Test
@@ -127,7 +162,7 @@ class Datos_UsuarioDAO_JPATest {
         }catch (Exception exp){
             ex = exp;
         }
-        assertNull(ex);
+        assertNotNull   (ex);
     }
 
 
@@ -135,22 +170,41 @@ class Datos_UsuarioDAO_JPATest {
     @Test
     public void consultarExistenceTest(){
 
-        TypedQuery<Datos_Usuario> query = (TypedQuery<Datos_Usuario>) Mockito.mock(TypedQuery.class);
+        List<Datos_Usuario> listMock = new ArrayList<>();
 
-        when(em.createQuery(anyString())).thenReturn(query);
-        when(query.setParameter(anyString(), anyInt())).thenReturn(query);
-        when(query.setParameter(anyString(), anyString())).thenReturn(query);
-        when(query.getResultList()).thenReturn(Collections.emptyList());
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyInt())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+        // when(listMock.isEmpty()).thenReturn(true);
+        // when(listMock.get(0)).thenReturn(new Datos_Usuario());
 
-        Exception ex = null;
+        Datos_Usuario usuario = dao.colsultExistence("email", 1);
+        assertNull(usuario);
+    }
 
-        try {
-            dao.colsultExistence("em",1);
-        }catch (Exception er){
-            ex = er;
-        }
-        assertNull(ex);
-        assertEquals(ex, null);
+
+    @Test
+    public void consultTestif(){
+        List<Datos_Usuario> listMock = new ArrayList<>();
+        listMock.add(new Datos_Usuario());
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyInt())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.getResultList()).thenReturn(listMock);
+        // when(listMock.isEmpty()).thenReturn(true);
+        // when(listMock.get(0)).thenReturn(new Datos_Usuario());
+
+        Datos_Usuario usuario = dao.colsultExistence("email", 1);
+        assertNotNull(usuario);
+    }
+
+    @Test
+    public void consultTestEx(){
+        //  when(tq.getResultList()).thenReturn(Collections.emptyList());
+
+        Datos_Usuario usuario = dao.colsultExistence("email", 1);
+        assertNull(usuario);
     }
 
     @Test

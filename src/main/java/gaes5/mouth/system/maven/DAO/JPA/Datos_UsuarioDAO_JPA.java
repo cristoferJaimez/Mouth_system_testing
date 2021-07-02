@@ -70,13 +70,11 @@ public class Datos_UsuarioDAO_JPA extends GenericDAO<Datos_Usuario, Integer> imp
             tq.setParameter("email", email);
             List<Datos_Usuario> lista = tq.getResultList();
             if (lista.isEmpty()) {
-                System.out.println("lista vacia");
                 return null;
             } else {
                 return lista.get(0);
             }
         } catch (Exception e) {
-            System.out.println(e);
             return null;
         }
 
