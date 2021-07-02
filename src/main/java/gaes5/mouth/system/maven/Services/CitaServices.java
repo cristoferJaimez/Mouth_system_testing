@@ -21,10 +21,7 @@ public class CitaServices {
         return icitasDAO.crear(cita);
     }
 
-    public Cita actualizarCita(int idE, int idC, String des, String fecha){
-        icitasDAO.ActualizarCita(idE, idC, des, fecha);
-        return null;
-    }
+
     
     public List<Cita> todasCitas() {
         return icitasDAO.obtenerTodos();
@@ -35,10 +32,7 @@ public class CitaServices {
         return  icitasDAO.newList();
     }
     
-   public void guardarCita(String idU, String des, String fecha){
 
-        icitasDAO.nuevaCita( idU, des, fecha);
-   } 
 
    public boolean compararFecha(String fecha){
       return icitasDAO.compararFechas(fecha);

@@ -46,36 +46,7 @@ public class CitasControllers implements Serializable {
     }
 */
 
-    public void crear() {
 
-        msm = "";
-        try {
-            citaServices.guardarCita(id, descripcion, fecha);
-            msm = "citaOk";
-        } catch (Exception e) {
-            msm = "citaBad";
-        }
-
-    }
-
-    public void actualizar() {
-        try {
-
-            try {
-
-                citaServices.actualizarCita(idC, idE, descripcion, fecha);
-                //cita = new Cita();
-                msm = "actOk";
-
-            } catch (Exception e) {
-                msm = "actBad";
-            }
-
-        } catch (Exception e) {
-            msm = "actBad";
-        }
-
-    }
 
     public void eliminar(String id) {
         msm = "";

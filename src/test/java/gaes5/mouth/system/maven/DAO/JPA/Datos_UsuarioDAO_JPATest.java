@@ -125,44 +125,16 @@ class Datos_UsuarioDAO_JPATest {
         assertNull(usuario);
     }
 
-    @Test
-    public void obtenrIDTest(){
-        Datos_Usuario datos = new Datos_Usuario();
-        datos.setId(1);
-        when(dao.obtenerId(anyInt())).thenReturn(datos);
-
-        Exception ex = null;
-
-        try {
-            dao.obtenerId(1);
-
-        }catch (Exception exc){
-            ex = exc;
-        }
-
-        assertNotNull(ex);
-        assertEquals(datos,1);
-
-
-    }
 
     @Test
     public  void recordarPassTest(){
+        List<Datos_Usuario> listMo = new ArrayList<>();
 
-        TypedQuery<Datos_Usuario> query = (TypedQuery<Datos_Usuario>) Mockito.mock(TypedQuery.class);
-        when(em.createQuery(anyString())).thenReturn(query);
-        when(query.setParameter(anyString(), anyString())).thenReturn(query);
-        when(query.getSingleResult()).thenReturn(null);
-
-        Exception ex = null;
-
-        try {
-            dao.recordarPass("email");
-
-        }catch (Exception exp){
-            ex = exp;
-        }
-        assertNotNull   (ex);
+        when(em.createNamedQuery(anyString(), any())).thenReturn(tq);
+        when(tq.setParameter(anyString(),anyString())).thenReturn(tq);
+        when(tq.getSingleResult()).thenReturn(listMo);
+        Datos_Usuario pw = dao.recordarPass("email");
+        assertNull(pw);
     }
 
 

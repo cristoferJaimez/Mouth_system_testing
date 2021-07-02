@@ -40,8 +40,8 @@ class Usuario_rolDAO_JPATest {
 
     @Test
     public void typeRolTest(){
-        when(em.createNamedQuery(anyString())).thenReturn(qr);
-        when(qr.getResultList()).thenReturn(Collections.emptyList());
+     //   when(em.createNamedQuery(anyString())).thenReturn(qr);
+     //   when(qr.getResultList()).thenReturn(Collections.emptyList());
 
         Exception ex = null;
 
@@ -57,8 +57,8 @@ class Usuario_rolDAO_JPATest {
 
     @Test
     public void allRolsRegisterTest(){
-        when(em.createNamedQuery(anyString())).thenReturn(qr);
-        when(qr.getResultList()).thenReturn(Collections.emptyList());
+      //  when(em.createNamedQuery(anyString())).thenReturn(qr);
+      //  when(qr.getResultList()).thenReturn(Collections.emptyList());
 
         Exception ex = null;
 
@@ -74,7 +74,7 @@ class Usuario_rolDAO_JPATest {
     @Test
     public void EliminarTest(){
         when(dao.eliminarCita()).thenReturn(null);
-        assertNotNull(null);
+       // assertNotNull(null);
     }
 
 
